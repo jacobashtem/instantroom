@@ -1,2 +1,11 @@
+<template>
+    <section class="flex items-center justify-between mb-10">
+      <h1 class="text-4xl font-extrabold">
+        Summary
+      </h1>
+      <div>
 
-<template><h1 class="text-5xl">Test</h1></template>
+      </div>
+    </section>
+  </template>
+  
