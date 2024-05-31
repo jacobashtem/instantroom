@@ -1,4 +1,7 @@
 module.exports = {
+  config: {
+    plugins: [require("@tailwindcss/typography")],
+  },
   darkmode: "class",
   plugin: [require("@tailwindcss/typography")],
   theme: {
