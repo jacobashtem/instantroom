@@ -27,16 +27,17 @@ const success = ref(false);
 
 const pending = ref(false);
 const signInWithGoogle = async (response) => {
-  pending.value = true;
-  try {
-    supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-      redirectTo: 'http://localhost:3000/confirm',
+    pending.value = true;
+    try {
+        const redirectTo = window.location.origin + '/confirm'; // Get current domain
+        await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: redirectTo,
+            }
+        });
+    } finally {
+        pending.value = false;
     }
-    });
-  } finally {
-    pending.value = false;
-  }
 };
 </script>
