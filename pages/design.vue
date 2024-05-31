@@ -1,6 +1,6 @@
 <template>
     <main class="grid grid-cols-12 gap-4">
-        <article class="col-span-9 rounded bg-white">
+        <article class="col-span-12 xl:col-span-9 rounded bg-white">
             <h1 class="text-6xl mb-4 font-bold ">Redesign <span class="text-sunsetOrange-500">your room</span> in
                 seconds</h1>
             <h2 class="text-2xl text-coolGray-500">Upload a room, specify the room type, and select your room theme to
@@ -19,13 +19,13 @@
                     prediction.status }}.</p>
             </div>
         </article>
-        <aside class="col-span-3 p-4 rounded">
+        <aside class="col-span-12 xl:col-span-3 p-4 rounded">
             <div v-if="userUploadedPhotos">
                 <UploadedGallery :items="userUploadedPhotos" @chosenImgSrc="getImage" />
                 <h3 class="text-xl mb-2 font-semibold text-coolGray-900 mt-6">
                     Or... <br /> <span class="text-sunsetOrange-500">upload something</span> brand new
                 </h3>
-                <div class="w-[400px] relative border-2 border-midnightBlue-300 border-dashed rounded-lg p-6"
+                <div class="w-full relative border-2 border-midnightBlue-300 border-dashed rounded-lg p-6"
                     id="dropzone">
                     <!-- <input type="file" class="absolute inset-0 w-full h-full opacity-0 z-50" /> -->
                     <div class="text-center">

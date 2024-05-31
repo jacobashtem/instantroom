@@ -7,9 +7,6 @@
         <NuxtLink v-if="!user" to="/login" class="text-sm">
         Login
       </NuxtLink>
-      <NuxtLink v-if="user" to="/generator" class="text-xl mr-4">
-        Generator
-      </NuxtLink>
       <NuxtLink v-if="user" to="/design" class="text-xl mr-4">
         Design
       </NuxtLink>
