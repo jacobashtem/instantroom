@@ -19,7 +19,6 @@
   
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  console.log('uservalu', user.value)
   const { toastSuccess, toastError } = useAppToast()
   const pending = ref(false)
   
