@@ -12,11 +12,17 @@ export default defineEventHandler(async (event) => {
   }
 
   const body = await readBody(event);
-  const { prompt } = body;
-
+  const { image, prompt } = body;
+console.log(body);
   const options = {
-    version: '8beff3369e81422112d93b89ca01426147de542cd4684c244b673b105188fe5f',
-    input: { prompt }
+    // Interior design
+    version: '76604baddc85b1b4616e1c6475eca080da339c8875bd4996705440484a6eac38',
+    // Image Generator
+    // 8beff3369e81422112d93b89ca01426147de542cd4684c244b673b105188fe5f
+    input: {
+      image: image,
+      prompt: prompt
+    }
   };
 
   if (WEBHOOK_HOST) {
