@@ -9,17 +9,11 @@ export default defineNuxtConfig({
   },
   css: ["/layouts/global.css"],
   modules: [
-    "@nuxtjs/tailwindcss",
     '@nuxt/image-edge',
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/supabase',
   ],
-  tailwindcss: {
-    config: {
-      plugins: [require("@tailwindcss/typography")],
-    },
-  },
   supabase: {
     redirectOptions: {
       login: '/login',
