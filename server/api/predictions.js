@@ -13,7 +13,6 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event);
   const { image, prompt } = body;
-console.log(body);
   const options = {
     // Interior design
     version: '76604baddc85b1b4616e1c6475eca080da339c8875bd4996705440484a6eac38',
@@ -21,7 +20,11 @@ console.log(body);
     // 8beff3369e81422112d93b89ca01426147de542cd4684c244b673b105188fe5f
     input: {
       image: image,
-      prompt: prompt
+      prompt: prompt,
+      guidance_scale: 15,
+      negative_prompt: "lowres, watermark, banner, logo, watermark, contactinfo, text, deformed, blurry, blur, out of focus, out of frame, surreal, extra, ugly, upholstered walls, fabric walls, plush walls, mirror, mirrored, functional, realistic",
+      prompt_strength: 0.8,
+      num_inference_steps: 50
     }
   };
 
