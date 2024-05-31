@@ -4,6 +4,15 @@
         Instantroom
       </NuxtLink>
       <div>
+        <NuxtLink v-if="!user" to="/login" class="text-sm">
+        Login
+      </NuxtLink>
+      <NuxtLink v-if="user" to="/generator" class="text-xl mr-4">
+        Generator
+      </NuxtLink>
+      <NuxtLink v-if="user" to="/design" class="text-xl mr-4">
+        Design
+      </NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />
   
@@ -17,7 +26,7 @@
               </p>
             </div>
           </template>
-  
+          
           <template #item="{ item }">
             <span class="truncate">{{ item.label }}</span>
   
