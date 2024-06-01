@@ -1,7 +1,7 @@
 <template>
-    <div class="container mx-auto max-w-full xl:max-w-7xl px-4">
+    <div class="mx-auto">
       <AppHeader />
-      <main class="my-10">
+      <main>
         <slot />
       </main>
     </div>

@@ -2,7 +2,7 @@
     <div class="w-full relative" @mouseup="handleMouseUp" @touchend="handleMouseUp">
       <div
         ref="sliderRef"
-        class="relative w-full max-w-[700px] aspect-[70/45] m-auto overflow-hidden select-none"
+        class="relative w-full aspect-[70/45] m-auto overflow-hidden select-none shadow-2xl shadow-sunsetOrange-900"
         @mousemove="handleMove"
         @touchmove="handleMove"
         @mousedown="handleMouseDown"
@@ -16,7 +16,7 @@
         />
   
         <div
-          class="absolute top-0 left-0 right-0 w-full max-w-[700px] aspect-[70/45] m-auto overflow-hidden select-none"
+          class="absolute top-0 left-0 right-0 w-full  aspect-[70/45] m-auto overflow-hidden select-none"
           :style="{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }"
         >
           <img
@@ -37,9 +37,14 @@
     </div>
   </template>
   <script setup>
-  const props = defineProps({
-    images: Array
-  })
+const props = defineProps({
+  images: {
+    type: Array,
+    required: true,
+    default: () => []
+  }
+});
+
   import { useMouse, useElementSize } from '@vueuse/core';
   
   const sliderPosition = ref(50);

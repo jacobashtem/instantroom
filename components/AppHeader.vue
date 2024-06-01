@@ -1,10 +1,10 @@
 <template>
-    <header class="flex justify-between items-center mt-10">
+    <header class="flex justify-between items-center my-3 mx-auto container">
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-72" src="/public/logo.png">
       </NuxtLink>
       <div>
-        <NuxtLink v-if="!user" to="/login" class="text-sm">
+        <NuxtLink v-if="!user" to="/login" class="text-lg font-semibold text-aquaBlue-500">
         Login
       </NuxtLink>
       <NuxtLink v-if="user" to="/design" class="text-xl mr-4">
