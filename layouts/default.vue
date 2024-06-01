@@ -1,7 +1,7 @@
 <template>
-    <div class="container mx-auto max-w-full xl:max-w-8xl px-4">
+    <div class="mx-auto">
       <AppHeader />
-      <main class="my-10">
+      <main>
         <slot />
       </main>
     </div>
@@ -10,6 +10,8 @@
   <script setup>
   // Link to Google Fonts
   useHead({
+    title: 'Instant Room | Projekty wnętrz | Aplikacja do projektowania mieszkania on-line | Unikalne projekty wykończenia domu',
+    description: 'Zaprojektuj wnętrze mieszkania z AI. Skorzystaj z programu Instant Room i jednym kliknięciem stwórz wyjątkowy projekt domu w swoim wymarzonym stylu.',
     link: [
       {
         rel: 'preconnect',
