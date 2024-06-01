@@ -1,7 +1,7 @@
 <template>
     <header class="flex justify-between items-center mt-10">
       <NuxtLink to="/" class="text-xl font-bold">
-        Instantroom
+        <img class="w-72" src="/public/logo.png">
       </NuxtLink>
       <div>
         <NuxtLink v-if="!user" to="/login" class="text-sm">
