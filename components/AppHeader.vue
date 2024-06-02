@@ -1,7 +1,8 @@
 <template>
-    <header class="flex justify-between items-center my-3 mx-auto container">
+  <div class="fixed top-0 bg-white w-full z-10 shadow-2xl">
+    <header class="px-4 flex justify-between items-center my-3 mx-auto container max-w-6xl">
       <NuxtLink to="/" class="text-xl font-bold">
-        <img class="w-72" src="/public/logo.png">
+        <img class="w-52" src="/public/logo.png">
       </NuxtLink>
       <div>
         <NuxtLink v-if="!user" to="/login" class="text-lg font-semibold text-aquaBlue-500">
@@ -32,6 +33,7 @@
         </UDropdown>
       </div>
     </header>
+    </div>
   </template>
   
   <script setup>

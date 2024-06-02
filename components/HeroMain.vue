@@ -1,8 +1,8 @@
 <template>
-  <div class="h-[61vh] w-screen bg-aquaBlue-500 mb-48">
-    <div class="mx-auto container pt-16 sm:pt-24">
-        <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
-            <div class="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
+  <div class="h-[700px] bg-aquaBlue-500 mb-48 md:items-center flex pt-10 xs:pt-32 sm:pt-80 lg:pt-0">
+    <div class="mx-auto pt-16 px-3 flex justify-between items-center my-3 container max-w-6xl">
+        <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8 max-w-6xl mx-auto">
+            <div class="sm:text-center md:mx-auto md:max-w-2xl col-span-12 lg:col-span-6 lg:flex lg:items-center lg:text-left">
                 <div class="space-y-8">
                     <div class="space-y-4">
                         <div class="space-y-2">
@@ -21,15 +21,19 @@
                         <p class="text-base font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
                           Szukasz ciekawego projektu wnętrz przed nadchodzącym remontem? Zainspiruj się wizualizacjami, stworzonymi na podstawie Twoich zdjęć. Wystarczy dodać obraz, wybrać rodzaj pomieszczenia oraz styl i... gotowe!
                         </p>
-
+                        <NuxtLink to="/login">
+                            <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
+                            <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                            </UButton>
+                        </NuxtLink>
                     </div>
 
                     <!-- <div class="border-t border-coolGray-700"></div> -->
                 </div>
             </div>
 
-            <div class="flex items-center w-full col-span-6">
-                <div class="px-6 h-96 lg:h-100% w-full col-span-12 flex items-center mx-auto">
+            <div class="flex items-center col-span-12  lg:col-span-6 ">
+                <div class="w-full col-span-12 flex items-center mx-auto">
                     <ComparisonSlider :images="images" />
                 </div>
             </div>
