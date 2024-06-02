@@ -1,10 +1,8 @@
 <template>
-    <main class="grid grid-cols-12 gap-4">
-        <article class="col-span-12 xl:col-span-9 rounded bg-white">
-            <h1 class="text-6xl mb-4 font-bold ">Redesign <span class="text-sunsetOrange-500">your room</span> in
-                seconds</h1>
-            <h2 class="text-2xl text-coolGray-500">Upload a room, specify the room type, and select your room theme to
-                redesign.</h2>
+    <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20">
+        <article class="col-span-12 xl:col-span-9 rounded bg-white mt-12">
+            <h1 class="text-3xl mb-4 font-semibold">Znajdź swoją <span class="text-sunsetOrange-500">inspirację</span> w kilka sekund.</h1>
+            <h2 class="text-2xl text-coolGray-500">Upload a room, specify the room type, and select your room theme to redesign.</h2>
             <div v-if="!loading" class="mt-4 flex justify-left">
                 <img class="max-w-2xl" :src="upladedImageSrc">
             </div>
@@ -15,8 +13,7 @@
                 <div v-if="prediction.output" class="image-wrapper relative w-full" style="aspect-ratio: 1 / 1;">
                     <img :src="imgSrc" alt="output" layout="fill" object-fit="cover" />
                 </div>
-                <p v-if="loading" class="py-3 text-sm opacity-50">Musisz chwilę poczekać. Obecny status: {{
-                    prediction.status }}.</p>
+                <p v-if="loading" class="py-3 text-sm opacity-50">Musisz chwilę poczekać. Obecny status: {{ prediction.status }}.</p>
             </div>
         </article>
         <aside class="col-span-12 xl:col-span-3 p-4 rounded">
@@ -25,27 +22,16 @@
                 <h3 class="text-xl mb-2 font-semibold text-coolGray-900 mt-6">
                     Or... <br /> <span class="text-sunsetOrange-500">upload something</span> brand new
                 </h3>
-                <div class="w-full relative border-2 border-midnightBlue-300 border-dashed rounded-lg p-6"
-                    id="dropzone">
-                    <!-- <input type="file" class="absolute inset-0 w-full h-full opacity-0 z-50" /> -->
+                <div class="w-full relative border-2 border-midnightBlue-300 border-dashed rounded-lg p-6" id="dropzone">
                     <div class="text-center">
-                        <UIcon class="text-midnightBlue-500" width="36" height="36" name="mage:image-upload" dynamic>
-                        </UIcon>
-                        <UFormGroup class="w-full" name="room"
-                            help="After choosing an image, click Save to actually upload image of your room">
+                        <UIcon class="text-midnightBlue-500" width="36" height="36" name="mage:image-upload" dynamic></UIcon>
+                        <UFormGroup class="w-full" name="room" help="After choosing an image, click Save to actually upload image of your room">
                             <UInput class="" type="file" ref="fileInput" @change="handleFileChange" />
                         </UFormGroup>
-                        <h3 class="mt-2 text-sm font-medium text-midnightBlue-500">
-
-                        </h3>
-                        <p class="mt-1 text-xs text-midnightBlue-500">
-                            WEBP, JPG, JPEG, PNG up to 1mb
-                        </p>
+                        <p class="mt-1 text-xs text-midnightBlue-500">WEBP, JPG, JPEG, PNG up to 1mb</p>
                     </div>
                 </div>
-                <UButton v-if="isFileSelected" type="submit"
-                    class="mt-4 rounded-lg text-center bg-sunsetOrange-500  hover:bg-sunsetOrange-700 py-3 mx-auto"
-                    variant="solid" label="Save" :loading="uploading" :disabled="uploading" @click="saveImage">
+                <UButton v-if="isFileSelected" type="submit" class="mt-4 rounded-lg text-center bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-3 mx-auto" variant="solid" label="Save" :loading="uploading" :disabled="uploading" @click="saveImage">
                     <UIcon class="w-8 h-8 mr-3" name="bytesize:upload" dynamic></UIcon>
                     Upload image
                 </UButton>
@@ -54,24 +40,27 @@
                     <h2 class="text-xl font-semibold">Redesign Room</h2>
                     <UTextarea autoresize placeholder="Search..." v-model="customPrompt" />
                     <UButton type="submit" variant="solid" class="bg-goldenAmber-500 hover:bg-goldenAmber-700 w-full"
-                        @click="handleSubmit">Redesign</UButton>
+                        @click="handleCustomPromptSubmit">Redesign</UButton>
+                    <UFormGroup class="w-full" label="Select Theme">
+                        <USelect v-model="selectedTheme" :options="themes" />
+                    </UFormGroup>
+                    <UFormGroup class="w-full mt-4" label="Select Room Type">
+                        <USelect v-model="selectedRoomType" :options="roomTypes" />
+                    </UFormGroup>
+                    <UButton type="submit" variant="solid" class="bg-goldenAmber-500 hover:bg-goldenAmber-700 w-full" @click="handleSubmit(1)">Redesign</UButton>
                 </div>
-                <!-- <h2  class="text-2xl font-bold text-sunsetOrange-500">Your 10 uploaded images to redesign</h2>
-                <div class="grid grid-cols-5 gap-2">
-                    <img class="w-[300px] h-[300px] object-cover" v-for="item in userUploadedPhotos" :src="item" :key="item">
-                </div> -->
             </div>
         </aside>
     </main>
 </template>
 
 <script setup>
-
-
 const isFileSelected = ref(false);
 const userUploadedPhotos = ref([]);
 const upladedImageSrc = ref('');
 const customPrompt = ref('');
+const selectedTheme = ref('');
+const selectedRoomType = ref('');
 const uploading = ref(false);
 const pending = ref(false);
 const loading = ref(false);
@@ -79,18 +68,36 @@ const prediction = ref(null);
 const error = ref(null);
 const imgSrc = ref('');
 const fileInput = ref();
-const isFileInputPrepared = ref(false);
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const { toastSuccess, toastError } = useAppToast();
-
 const { data: userData, error: fetchError } = await supabase.auth.getUser();
-console.log('userData', userData);
-onMounted(() => {
-    customPrompt.value = customPrompt.value;
-})
-if (fetchError) throw fetchError;
 userUploadedPhotos.value = userData.user.user_metadata.imagesUploaded || [];
+const themes = ref([]);
+const roomTypes = ref([
+    "Living room",
+    "Dining room",
+    "Bedroom",
+    "Bathroom",
+    "Office",
+    "Kitchen",
+    "Terrace",
+    "Kids room"
+]);
+
+onMounted(async () => {
+    const { data: themesData, error: themesError } = await supabase
+      .from('prompts')
+      .select('theme');
+
+    if (themesError) {
+        toastError({ title: 'Error fetching themes', description: themesError.message });
+        return;
+    }
+
+    themes.value = themesData.map(theme => theme.theme);
+});
+
 const getImage = (imageSrc) => {
     toastSuccess({ title: 'Image chosen successfuly from gallery.' });
     upladedImageSrc.value = imageSrc;
@@ -134,11 +141,9 @@ const saveProfile = async (newImage) => {
         pending.value = false;
     }
 };
-
 const saveImage = async () => {
     const file = fileInput.value.input.files[0];
 
-    console.log('file', file);
     if (!file) {
         toastError({ title: 'Select a file to upload first' });
         return;
@@ -198,8 +203,33 @@ const fetchPredictionStatus = async (id) => {
 const handleSubmit = async () => {
     error.value = null;
     prediction.value = null;
+        const response = await fetch('/api/predictions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            image: upladedImageSrc.value,
+            theme: selectedTheme.value,
+            roomType: selectedRoomType.value,
+        }),
+    });
 
-    const response = await fetch('/api/predictions', {
+
+    const predictionData = await response.json();
+
+    if (response.status !== 201) {
+        error.value = predictionData.detail;
+        return;
+    }
+
+    prediction.value = predictionData;
+    fetchPredictionStatus(predictionData.id);
+};
+const handleCustomPromptSubmit = async () => {
+    error.value = null;
+    prediction.value = null;
+        const response = await fetch('/api/custom-predictions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -209,6 +239,7 @@ const handleSubmit = async () => {
             prompt: customPrompt.value
         }),
     });
+
 
     const predictionData = await response.json();
 
