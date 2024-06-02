@@ -26,7 +26,7 @@
             class="disabled:bg-aquaBlue-200 bg-aquaBlue-500 hover:bg-aquaBlue-700 mt-5 tracking-wide font-semibold text-gray-100 w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
             <div v-if="!loading">
               <UIcon width="24" height="24" name="ant-design:user-add-outlined" dynamic />
-              <span class="ml-3"> Sign Up </span>
+              <span class="ml-3"> {{item.btnTxt}} </span>
             </div>
           </UButton>
           <!-- <div v-if="item.key === 'Rejestracja'">
