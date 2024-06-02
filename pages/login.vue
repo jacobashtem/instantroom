@@ -4,19 +4,25 @@
       class="max-w-screen-xl m-0  bg-white shadow sm:rounded-lg flex justify-center flex-1"
     >
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-        <div>
-          <h1 class="text-6xl font-bold mb-2">Instantroom</h1>
+        <!-- <div>
+          <h1 class="text-6xl font-bold mb-2 text-center">Instantroom</h1>
           <h2 class="text-2xl text-center">Your private <span class="text-sunsetOrange-500 font-semibold">Interior Decorator</span>. Dream up, your dream room.</h2>
           
-        </div>
+        </div> -->
         <div class="mt-12 flex flex-col items-center">
-          <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">Log in</h1>
+          <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">Zaloguj się</h1>
           <div class="w-full flex-1 mt-8">
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center mb-8">
               <AuthGoogle />
               <AuthMagicLink/>
             </div>
-            <SignupForm/>
+            <div class="mb-4 border-b text-center">
+            <div
+              class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+              lub zarejestruj się za pomocą e-mail
+            </div>
+          </div>
+            <SignupForm />
           </div>
         </div>
       </div>
