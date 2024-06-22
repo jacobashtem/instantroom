@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 bg-white w-full z-10 shadow-2xl">
+  <div class="fixed top-0 bg-white w-full z-20 shadow-2xl">
     <header class="px-4 flex justify-between items-center my-3 mx-auto container max-w-6xl">
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-52" src="/public/logo.png">
@@ -10,6 +10,9 @@
       </NuxtLink>
       <NuxtLink v-if="user" to="/design" class="text-xl mr-4">
         Design
+      </NuxtLink>
+      <NuxtLink v-if="user" to="/dela" class="text-xl mr-4">
+        Dela
       </NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />

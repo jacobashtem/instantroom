@@ -11,7 +11,6 @@ export default defineEventHandler(async (event) => {
       'The REPLICATE_API_TOKEN environment variable is not set. See README.md for instructions on how to set it.'
     );
   }
-
   const body = await readBody(event);
   const { image, theme, roomType, prompt } = body;
   const supabase = await serverSupabaseClient(event)

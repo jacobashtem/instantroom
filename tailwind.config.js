@@ -7,6 +7,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: {
+          50: '#fff5f3',
+          100: '#ffeae6',
+          200: '#ffcdc1',
+          300: '#ff9a83',
+          400: '#ff6745',
+          500: '#F86041',  // nowy kolor dla primary-500
+          600: '#e1503a',
+          700: '#c73d30',
+          800: '#ad2925',
+          900: '#94111b',
+        },
         sunsetOrange: {
           100: "#FFE3DE",
           200: "#FFB8AF",
