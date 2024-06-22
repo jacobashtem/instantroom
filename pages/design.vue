@@ -125,8 +125,29 @@ onMounted(async () => {
 
     themes.value = themesData.map(theme => theme.theme);
     selectedRoomType.value = roomTypes.value[0].name
+    removeExpiredCookies();
 });
 
+const setImageCookie = (value) => {
+    if (!value.startsWith('https')) {return};
+    const imagesCookie = useCookie('generatedImages', { expires: new Date(Date.now() + 60 * 60 * 1000) });
+    let images = imagesCookie.value || [];
+    images.push({ src: value, timestamp: new Date().getTime() });
+    imagesCookie.value = images;
+};
+
+const removeExpiredCookies = () => {
+    const imagesCookie = useCookie('generatedImages', { expires: new Date(Date.now() + 60 * 60 * 1000) });
+    let images = imagesCookie.value || [];
+    const oneHour = 3600000;
+    const now = new Date().getTime();
+    images = images.filter(image => now - image.timestamp < oneHour);
+    if (images.length > 0) {
+        imagesCookie.value = images;
+    } else {
+        imagesCookie.value = null;
+    }
+};
 
 const getImage = (imageSrc) => {
     toastSuccess({ title: 'Image chosen successfuly from gallery.' });
@@ -161,6 +182,7 @@ const fetchPredictionStatus = async (id, theme) => {
         if (statusResponse.status !== 200) {
             error.value = statusData.detail;
             generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed' };
+            setImageCookie('generatedImages', prediction.value.output);
             loading.value = false;
             break;
         }
@@ -175,6 +197,7 @@ const fetchPredictionStatus = async (id, theme) => {
             loading.value = false;
             if (statusData.status === 'succeeded') {
                 generatedImages.value[placeholderIndex] = { src: prediction.value.output, theme, status: 'succeeded', progress: '100%' };
+                setImageCookie(prediction.value.output);
                 firstGenerationFinished.value = true;
             } else {
                 generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed', progress: progress };

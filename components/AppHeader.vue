@@ -5,15 +5,16 @@
         <img class="w-52" src="/public/logo.png">
       </NuxtLink>
       <div>
-        <NuxtLink v-if="!user" to="/login" class="text-lg font-semibold text-aquaBlue-500">
+        <NuxtLink v-if="!user" to="/login" class="text-sm font-semibold text-aquaBlue-500">
         Login
       </NuxtLink>
-      <NuxtLink v-if="user" to="/design" class="text-xl mr-4">
+      <NuxtLink v-if="user" to="/design" class="text-sm mr-4">
         Design
       </NuxtLink>
-      <NuxtLink v-if="user" to="/dela" class="text-xl mr-4">
-        Dela
-      </NuxtLink>
+      <!-- <NuxtLink v-if="user" to="/dela" class="text-lg mr-4">
+        Custom
+      </NuxtLink> -->
+      <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />
   
