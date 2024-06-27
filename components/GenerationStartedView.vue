@@ -7,7 +7,8 @@
         </span> 
         wizualizacji...
     </h2>
-    <p class="text-base mb-2 text-coolGray-500 animate-pulse" >Nie powinno to potrwać dłużej niż 60 sekund.</p>
+    <p class="text-base mb-2 text-coolGray-500 animate-pulse" >Nie powinno to potrwać dłużej niż 60 sekund.</p> 
+    <p class="text-base mb-2 text-coolGray-500 animate-pulse">Obecny czas realizacji to:</p><Counter :is-generating="true" />
     <UProgress animation="carousel" />
 </div>  
 </template>
@@ -17,6 +18,10 @@ const props = defineProps({
     type: Array,
     required: true,
     default: () => []
+  },
+  currentStatus: {
+    type: String,
+    default: () => ''
   }
 });
 </script>

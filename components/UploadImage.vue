@@ -10,7 +10,7 @@
     </div>
     <UButton v-if="isFileSelected" :disabled="!isFileSelected" type="submit" class="mt-4 rounded-lg text-center bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-3 mx-auto w-full" variant="solid" label="Save" :loading="uploading"  @click="saveImage">
         <UIcon class="w-8 h-8 mr-3" name="bytesize:upload" dynamic></UIcon>
-        Upload image
+            Wgraj zdjęcie
         </UButton>
 </template>
 <script setup>

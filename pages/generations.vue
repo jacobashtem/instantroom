@@ -2,10 +2,14 @@
     <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20 min-h-screen">
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
                 <div class="flex flex-col mb-9">
-                    <h2 class="text-3xl font-semibold mb-4">
+                    <h2 v-if="validImages?.length > 0 " class="text-3xl font-semibold mb-4">
                         Twoje ostatnio wygenerowane <span class="text-sunsetOrange-500">wizualizacje.</span> Przechowujemy je tylko przez 1h.
                     </h2>
-                    <UButton @click="downloadAllImages" variant="solid" class="max-w-96 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
+                    <h2 class="text-3xl font-semibold mb-4" v-else>
+                        Nie masz żadnych wizualizacji <span class="text-sunsetOrange-500">wygenerowanych</span> w przeciągu ostatniej godziny.
+                    </h2>
+
+                    <UButton v-if="validImages?.length > 0 " @click="downloadAllImages" variant="solid" class="max-w-96 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
                         <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Pobierz wszystkie wizualizacje
                     </UButton>
                 </div>
