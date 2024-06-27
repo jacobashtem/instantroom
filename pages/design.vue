@@ -3,16 +3,16 @@
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
             <template v-if="!isGenerationStarted">
                 <div class="flex flex-col mb-9">
-                    <h2 class="text-3xl font-semibold">
-                        Znajdź swoją <span class="text-sunsetOrange-500">inspirację.</span>
+                    <h2 class="text-3xl font-semibold text-center md:text-left">
+                        Znajdź <span class="hidden md:inline-block">swoją</span> <span class="text-sunsetOrange-500">inspirację.</span>
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-2">
                         <div class="flex mt-6 items-center">
-                            <p class=" text-3xl font-extralight mr-6">Po pierwsze: </p>
-                            <UploadedGallery :items="userUploadedPhotos" />
+                            <p class="text-3xl font-extralight mr-6 hidden md:inline-block">Po pierwsze: </p>
+                            <UploadedGallery />
                         </div>
-                        <div class="flex items-center mt-6 flex-wrap">
-                                <p class="mr-4 block text-3xl font-extralight">Odmień w kilka sekund</p>
+                        <div class="flex items-center md:mt-6 justify-center md:justify-start">
+                                <p class="mr-4 block text-3xl font-extralight">Odmień <span class="hidden md:inline-block">w kilka sekund</span></p>
                                 <UFormGroup class="mt-6 mb-4 mr-4 ring-0">
                                     <USelect option-attribute="label"  size="xl" selected padded  class="text-center font-semibold" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
                                 </UFormGroup>
@@ -26,7 +26,7 @@
                                 {{ item }}</p>
                         </div>
                         <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'"
-                            :src="`/themes/${item}.webp`" width="400" draggable="false">
+                            :src="`/themes/${item}.webp`" width="350" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleselectedThemess(item)"
                             class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white"
                             width="36" height="36" name="subway:add" dynamic></UIcon>

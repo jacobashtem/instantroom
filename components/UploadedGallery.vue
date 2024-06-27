@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <UButton label="Open" @click="isModal = true" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-full mx-auto">
+    <div class="w-full md:w-[unset]">
+        <UButton label="Open" @click="isModal = true" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
             <UIcon class="w-8 h-8 mr-3" name="solar:gallery-wide-broken" dynamic></UIcon>
                 Wgraj zdjęcie!
             </UButton>
