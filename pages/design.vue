@@ -26,7 +26,7 @@
                                 {{ item }}</p>
                         </div>
                         <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'"
-                            :src="`/_nuxt/public/themes/${item}.webp`" width="400" draggable="false">
+                            :src="`/themes/${item}.webp`" width="400" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleselectedThemess(item)"
                             class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white"
                             width="36" height="36" name="subway:add" dynamic></UIcon>
@@ -74,7 +74,7 @@
                 </div>
             </template>
             <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="isGenerationStarted && !firstGenerationFinished" />
-            <GenerationFinishedView @start-new-generation="resetForm; isGenerationStarted = false;" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
+            <GenerationFinishedView @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
         </article>
     </main>
 </template>
@@ -92,7 +92,7 @@ const loading = ref(false);
 const prediction = ref(null);
 const error = ref(null);
 const imgSrc = ref('');
-
+const currentStatus = ref('');
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const { toastSuccess, toastError } = useAppToast();
@@ -178,7 +178,7 @@ const fetchPredictionStatus = async (id, theme) => {
         await sleep(1000);
         const statusResponse = await fetch(`/api/predictions/${id}`);
         const statusData = await statusResponse.json();
-
+        currentStatus.value = statusData.status;
         if (statusResponse.status !== 200) {
             error.value = statusData.detail;
             generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed' };
@@ -219,12 +219,19 @@ const extractLastPercentage = (log) => {
     return lastPercentage;
 };
 
-const resetForm = async () => {
+const resetForm  = async () => {
     selectedThemes.value = [];
     isChosenImgSrc.value = '';
     generatedImages.value = [];
+    selectedRoomType.value = roomTypes.value[0].name;
+    isGenerationStarted.value = false;
+    firstGenerationFinished.value = false;
+    upladedImageSrc.value = '';
+    currentStatus.value = '';
+    loading.value = false;
+    prediction.value = null;
+    error.value = null;
 }
-
 const handleSubmit = async () => {
     error.value = null;
     prediction.value = null;

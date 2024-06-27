@@ -10,7 +10,7 @@
             <UButton @click="downloadAllImages" variant="solid" class="focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
                 <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Pobierz wszystkie wizualizacje
             </UButton>
-            <UButton @click="emit('startNewGeneration')" variant="solid" class="bg-coolGray-500 font-semibold disabled:bg-coolGray-300 rounded-lg hover:bg-coolGray-700 text-lg  p-4">
+            <UButton @click="emit('start-new-generation')" variant="solid" class="bg-coolGray-500 font-semibold disabled:bg-coolGray-300 rounded-lg hover:bg-coolGray-700 text-lg  p-4">
                 <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> Zacznij od nowa
             </UButton>
         </div>
