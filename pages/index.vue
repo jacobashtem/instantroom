@@ -13,5 +13,9 @@
     </section>
   </template>
   <script setup>
+const gtm = useGtm();
 
+onMounted(() => {
+  gtm.trackView("Homepage", "/");
+});
   </script>

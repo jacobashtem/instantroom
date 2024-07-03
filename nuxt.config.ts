@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/supabase',
+    '@zadigetvoltaire/nuxt-gtm'
   ],
   supabase: {
     redirectOptions: {
@@ -25,7 +26,17 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      replicateApiToken: process.env.REPLICATE_API_TOKEN
+      replicateApiToken: process.env.REPLICATE_API_TOKEN,
+      gtm: {
+        id: "GTM-KSNTQNG8",
+        defer: false,
+        compatibility: false,
+        enabled: true,
+        debug: true,
+        loadScript: true,
+        trackOnNextTick: false,
+        devtools: true,
+      },
     }
   },
 })
