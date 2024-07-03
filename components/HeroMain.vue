@@ -21,7 +21,7 @@
                         <p class="text-base font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
                           Szukasz ciekawego projektu wnętrz przed nadchodzącym remontem? Zainspiruj się wizualizacjami, stworzonymi na podstawie Twoich zdjęć. Wystarczy dodać obraz, wybrać rodzaj pomieszczenia oraz styl i... gotowe!
                         </p>
-                        <NuxtLink to="/login">
+                        <NuxtLink to="/design">
                             <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
                             <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
                             </UButton>
