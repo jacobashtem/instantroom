@@ -11,9 +11,6 @@
       <NuxtLink v-if="user" to="/design" class="text-sm mr-4">
         Design
       </NuxtLink>
-      <!-- <NuxtLink v-if="user" to="/dela" class="text-lg mr-4">
-        Custom
-      </NuxtLink> -->
       <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />
@@ -43,6 +40,7 @@
   <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
+  console.log("user", user);
   const { url } = useAvatarUrl()
   const items = [
     [{
