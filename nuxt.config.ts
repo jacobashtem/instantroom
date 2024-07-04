@@ -13,7 +13,11 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/supabase',
-    '@zadigetvoltaire/nuxt-gtm'
+    '@zadigetvoltaire/nuxt-gtm',
+    // ['nuxt-stripe-module', {
+    //   publishableKey: process.env.NUXT_PUBLIC_STRIPE_KEY,
+    // }],
+    "@unlok-co/nuxt-stripe"
   ],
   supabase: {
     redirectOptions: {
@@ -23,6 +27,22 @@ export default defineNuxtConfig({
       exclude: [],
       cookieRedirect: false,
     }
+  },
+  stripe: {
+    // Server
+    server: {
+      key: process.env.NUXT_STRIPE_SECRET,
+      options: {
+        // your api options override for stripe server side
+        // https://github.com/stripe/stripe-node?tab=readme-ov-file#configuration
+      },
+      // CLIENT
+    },
+    client: {
+      key: process.env.NUXT_PUBLIC_STRIPE_KEY,
+      // your api options override for stripe client side https://stripe.com/docs/js/initializing#init_stripe_js-options
+      options: {},
+    },
   },
   runtimeConfig: {
     public: {
