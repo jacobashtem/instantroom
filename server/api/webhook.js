@@ -2,50 +2,35 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET);
 
-// Helper function to parse raw body
-async function getRawBody(req) {
-  return new Promise((resolve, reject) => {
-    let data = '';
-    req.on('data', (chunk) => {
-      data += chunk;
-    });
-    req.on('end', () => {
-      resolve(Buffer.from(data));
-    });
-    req.on('error', (err) => {
-      reject(err);
-    });
-  });
-}
-
 export default defineEventHandler(async (event) => {
-  const req = event.node.req;
-  const res = event.node.res;
-  const sig = req.headers['stripe-signature'];
-
-  const rawBody = await getRawBody(req);
+  const body = await readBody(event);
+  const sig = event.req.headers['stripe-signature'];
 
   let stripeEvent;
 
   try {
-    stripeEvent = stripe.webhooks.constructEvent(rawBody, sig, process.env.STRIPE_WE);
+    stripeEvent = stripe.webhooks.constructEvent(body, sig, proccess.env.STRIPE_WE);
   } catch (err) {
-    res.statusCode = 400;
-    res.end(`Webhook Error: ${err.message}`);
+    event.res.statusCode = 400;
+    event.res.end(`Webhook Error: ${err.message}`);
     return;
   }
 
-  // Handle the event
-  switch (stripeEvent.type) {
-    case 'checkout.session.completed':
-      const session = stripeEvent.data.object;
-      // TODO: Przydziel tokeny użytkownikowi
-      console.log(`PaymentIntent was successful: ${session.id}`);
-      break;
-    default:
-      console.log(`Unhandled event type ${stripeEvent.type}`);
+  if (stripeEvent.type === 'checkout.session.completed') {
+    const session = stripeEvent.data.object;
+    // Zaktualizuj status płatności w bazie danych
+    // session.customer - ID klienta
+
+    // Przykład aktualizacji statusu płatności
+    await updatePaymentStatus(session);
   }
 
-  res.statusCode = 200;
-  res.end();
+  event.res.statusCode = 200;
+  event.res.end('Success');
 });
+
+async function updatePaymentStatus(session) {
+  // Logika aktualizacji statusu płatności w bazie danych
+  // Możesz użyć np. ORM do aktualizacji danych użytkownika
+  console.log('Payment received for customer:', session.customer);
+}
