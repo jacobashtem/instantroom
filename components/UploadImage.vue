@@ -1,17 +1,17 @@
 <template>
-    <div class="relative border-2 border-aquaBlue-500 border-dashed rounded-lg p-4 md:max-w-56" id="dropzone">
+    <div v-show="!uploading" class="relative border-2 border-aquaBlue-500 border-dashed rounded-lg p-4 md:max-w-56" id="dropzone">
         <div class="text-center cursor-pointer" @click="triggerFileInput">
             <UIcon class="text-aquaBlue-500" width="50" height="50" name="mage:image-upload" dynamic></UIcon>
-            <UFormGroup class="" name="room">
+            <UFormGroup class="" name="room" >
                 <UInput class="hidden" placeholder="" type="file" ref="fileInput" @change="handleFileChange" />
             </UFormGroup>
             <p class="text-coolGray-500 text-sm">Wgraj zdjęcie <br/><span class="text-xs">(max 1mb, jpg/jpeg/png/)</span></p>
         </div>
     </div>
-    <UButton v-if="isFileSelected" :disabled="!isFileSelected" type="submit" class="mt-4 rounded-lg text-center bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-3 mx-auto w-full flex justify-center" variant="solid" label="Save" :loading="uploading"  @click="saveImage">
-        <UIcon class="w-8 h-8 mr-3" name="bytesize:upload" dynamic></UIcon>
-            Wgraj zdjęcie
-        </UButton>
+    <div class="text-base mb-2 text-coolGray-500 animate-pulse" v-show="uploading">
+            Trwa upload zdjęcia. Proszę czekać.
+            <UProgress  animation="carousel" />          
+        </div>
 </template>
 <script setup>
     const isFileSelected = ref(false);
@@ -27,6 +27,7 @@
     const { toastSuccess, toastError } = useAppToast();
     const handleFileChange = () => {
         isFileSelected.value = fileInput.value.input.files.length > 0;
+        saveImage();
     };
 
     const triggerFileInput = () => {
@@ -68,7 +69,7 @@ const saveProfile = async (newImage) => {
         const file = fileInput.value.input.files[0];
 
         if (!file) {
-            toastError({ title: 'Select a file to upload first' });
+            toastError({ title: 'Nie wybrano zdjęcia.' });
             return;
         }
 
@@ -93,8 +94,9 @@ const saveProfile = async (newImage) => {
             isModal.value = false;
 
         } catch (error) {
+            console.log('error', error)
             toastError({
-                title: 'Error uploading avatar',
+                title: 'Wystąpił błąd podczas wgrywania zdjęcia',
                 description: error.message
             });
         } finally {
