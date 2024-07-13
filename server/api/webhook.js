@@ -1,32 +1,41 @@
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
+// Konfiguracja Stripe
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET);
+
+// Konfiguracja Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
-  const sig = event.req.headers['stripe-signature'];
-  let body = await getRawBody(event);
-
-  let stripeEvent;
-
   try {
-    stripeEvent = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WE);
-  } catch (err) {
-    event.res.statusCode = 400;
-    event.res.end(`Webhook Error: ${err.message}`);
-    return;
-  }
+    const sig = event.req.headers['stripe-signature'];
+    const body = await getRawBody(event);
 
-  if (stripeEvent.type === 'checkout.session.completed') {
-    const session = stripeEvent.data.object;
-    await updateUserTokens(session);
-  }
+    let stripeEvent;
+    try {
+      stripeEvent = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WE);
+    } catch (err) {
+      console.error(`Webhook Error: ${err.message}`);
+      event.res.statusCode = 400;
+      event.res.end(`Webhook Error: ${err.message}`);
+      return;
+    }
 
-  event.res.statusCode = 200;
-  event.res.end('Success');
+    if (stripeEvent.type === 'checkout.session.completed') {
+      const session = stripeEvent.data.object;
+      await updateUserTokens(session);
+    }
+
+    event.res.statusCode = 200;
+    event.res.end('Success');
+  } catch (error) {
+    console.error(`Handler Error: ${error.message}`);
+    event.res.statusCode = 500;
+    event.res.end(`Internal Server Error: ${error.message}`);
+  }
 });
 
 async function updateUserTokens(session) {
@@ -40,18 +49,21 @@ async function updateUserTokens(session) {
     const { data: userData, error: getUserError } = await supabase.auth.admin.getUserById(userId);
     if (getUserError) {
       console.error('Error fetching user:', getUserError);
-      return;
+      throw new Error(`Error fetching user: ${getUserError.message}`);
     }
 
+    // Oblicz nowe tokeny
+    const currentTokens = userData.user_metadata?.tokens ? parseInt(userData.user_metadata.tokens, 10) : 0;
+    const newTokens = currentTokens + parseInt(tokens, 10);
+
     // Zaktualizuj użytkownika dodając nowe tokeny
-    const newTokens = parseInt(userData.user_metadata.tokens || 0, 10) + parseInt(tokens, 10);
     const { error: updateUserError } = await supabase.auth.admin.updateUserById(userId, {
       user_metadata: { tokens: newTokens },
     });
 
     if (updateUserError) {
       console.error('Error updating user tokens:', updateUserError);
-      return;
+      throw new Error(`Error updating user tokens: ${updateUserError.message}`);
     }
 
     console.log('User tokens updated successfully.');
