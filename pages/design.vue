@@ -3,8 +3,6 @@
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
             <template v-if="!isGenerationStarted">
                 <div class="flex flex-col mb-9">
-                    <h1>Twoje tokeny {{ tokens}}</h1>
-                    <button @click="addTokens(1)">Add 1 token</button>
                     <h2 class="text-3xl font-semibold text-center md:text-left">
                         Znajdź <span class="hidden md:inline-block">swoją</span> <span class="text-sunsetOrange-500">inspirację.</span>
                     </h2>
@@ -90,18 +88,6 @@ const selectedRoomType = ref('');
 const generatedImages = ref([]);
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
-
-const { tokens, updateTokens } = useUserTokens();
-const userTokensState = useUserTokensState();
-watch(tokens, (newTokens) => {
-  userTokensState.value = newTokens;
-});
-const addTokens = (amount) => {
-  if (tokens.value !== null) {
-    const newTokens = tokens.value + amount;
-    updateTokens(newTokens);
-  }
-};
 const loading = ref(false);
 const prediction = ref(null);
 const error = ref(null);
