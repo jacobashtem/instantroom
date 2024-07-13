@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   let stripeEvent;
 
   try {
-    stripeEvent = stripe.webhooks.constructEvent(body, sig, proccess.env.STRIPE_WE);
+    stripeEvent = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WE);
   } catch (err) {
     event.res.statusCode = 400;
     event.res.end(`Webhook Error: ${err.message}`);
