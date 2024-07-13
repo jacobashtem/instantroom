@@ -83,12 +83,12 @@ async function updateUserTokens(session) {
 
 async function getRawBody(event) {
   return new Promise((resolve, reject) => {
-    let data = '';
+    let data = [];
     event.req.on('data', (chunk) => {
-      data += chunk;
+      data.push(chunk);
     });
     event.req.on('end', () => {
-      resolve(Buffer.from(data));
+      resolve(Buffer.concat(data));
     });
     event.req.on('error', (err) => {
       reject(err);

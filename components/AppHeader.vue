@@ -12,6 +12,7 @@
         Design
       </NuxtLink>
       <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
+      <NuxtLink v-if="user" to="/payments" class="text-sm mr-4">Cennik</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />
   
@@ -34,32 +35,38 @@
         </UDropdown>
       </div>
     </header>
-    </div>
-  </template>
-  
-  <script setup>
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const { tokens, updateTokens } = useUserTokens();
-  console.log("user", user);
-  const { url } = useAvatarUrl()
-  const items = [
-    [{
-      label: user.value?.email,
-      slot: 'account',
-      disabled: true
-    }], [{
-      label: 'Ilość tokenów: '+ tokens.value,
-      icon: 'i-heroicons-shopping-cart-solid',
-      click: async () => navigateTo('/settings/profile')
-    }, {
-      label: 'Wyloguj',
-      icon: 'i-heroicons-arrow-left-on-rectangle',
-      click: async () => {
-        console.log()
-        await supabase.auth.signOut()
-        return navigateTo('/login')
-      }
-    }]
-  ]
-  </script>
+  </div>
+</template>
+
+<script setup>
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+const { tokens, getTokens, updateTokens } = useUserTokens()
+const { url } = useAvatarUrl()
+const route = useRoute()
+
+const items = ref([
+  [{
+    label: user.value?.email,
+    slot: 'account',
+    disabled: true
+  }], [{
+    label: `Ilość tokenów: ${tokens.value}`,
+    icon: 'i-heroicons-shopping-cart-solid',
+    click: async () => navigateTo('/settings/profile')
+  }, {
+    label: 'Wyloguj',
+    icon: 'i-heroicons-arrow-left-on-rectangle',
+    click: async () => {
+      await supabase.auth.signOut()
+      navigateTo('/login')
+    }
+  }]
+])
+
+watch(tokens, (newTokens) => {
+  items.value[1][0].label = `Ilość tokenów: ${newTokens}`
+})
+
+
+</script>
