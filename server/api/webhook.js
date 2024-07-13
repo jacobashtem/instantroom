@@ -10,29 +10,38 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
+  const sig = event.req.headers['stripe-signature'];
+  let body;
+
   try {
-    const sig = event.req.headers['stripe-signature'];
-    const body = await getRawBody(event);
+    body = await getRawBody(event);
+  } catch (err) {
+    console.error('Error getting raw body:', err.message);
+    event.res.statusCode = 500;
+    event.res.end('Error getting raw body');
+    return;
+  }
 
-    let stripeEvent;
-    try {
-      stripeEvent = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WE);
-    } catch (err) {
-      console.error(`Webhook Error: ${err.message}`);
-      event.res.statusCode = 400;
-      event.res.end(`Webhook Error: ${err.message}`);
-      return;
-    }
+  let stripeEvent;
 
+  try {
+    stripeEvent = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WE);
+  } catch (err) {
+    console.error('Webhook Error:', err.message);
+    event.res.statusCode = 400;
+    event.res.end(`Webhook Error: ${err.message}`);
+    return;
+  }
+
+  try {
     if (stripeEvent.type === 'checkout.session.completed') {
       const session = stripeEvent.data.object;
       await updateUserTokens(session);
     }
-
     event.res.statusCode = 200;
     event.res.end('Success');
   } catch (error) {
-    console.error(`Handler Error: ${error.message}`);
+    console.error('Handler Error:', error.message);
     event.res.statusCode = 500;
     event.res.end(`Internal Server Error: ${error.message}`);
   }
@@ -48,7 +57,7 @@ async function updateUserTokens(session) {
     // Pobierz użytkownika po jego ID
     const { data: userData, error: getUserError } = await supabase.auth.admin.getUserById(userId);
     if (getUserError) {
-      console.error('Error fetching user:', getUserError);
+      console.error('Error fetching user:', getUserError.message);
       throw new Error(`Error fetching user: ${getUserError.message}`);
     }
 
@@ -62,7 +71,7 @@ async function updateUserTokens(session) {
     });
 
     if (updateUserError) {
-      console.error('Error updating user tokens:', updateUserError);
+      console.error('Error updating user tokens:', updateUserError.message);
       throw new Error(`Error updating user tokens: ${updateUserError.message}`);
     }
 
