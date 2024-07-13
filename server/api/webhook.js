@@ -1,17 +1,14 @@
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-// Konfiguracja Stripe
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET);
-
-// Konfiguracja Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
   const sig = event.req.headers['stripe-signature'];
+  let body = await getRawBody(event);
 
   let stripeEvent;
 
@@ -38,18 +35,42 @@ async function updateUserTokens(session) {
 
   if (userId && tokens) {
     console.log('Updating user:', userId, 'with tokens:', tokens);
-    const { data, error } = await supabase
-      .from('users')
-      .update({ tokens: parseInt(tokens, 10) })
-      .eq('id', userId);
 
-    if (error) {
-      console.error('Error updating user tokens:', error);
+    // Pobierz użytkownika po jego ID
+    const { data: userData, error: getUserError } = await supabase.auth.admin.getUserById(userId);
+    if (getUserError) {
+      console.error('Error fetching user:', getUserError);
       return;
     }
 
-    console.log('User tokens updated:', data);
+    // Zaktualizuj użytkownika dodając nowe tokeny
+    const newTokens = parseInt(userData.user_metadata.tokens || 0, 10) + parseInt(tokens, 10);
+    const { error: updateUserError } = await supabase.auth.admin.updateUserById(userId, {
+      user_metadata: { tokens: newTokens },
+    });
+
+    if (updateUserError) {
+      console.error('Error updating user tokens:', updateUserError);
+      return;
+    }
+
+    console.log('User tokens updated successfully.');
   } else {
     console.log('Missing userId or tokens.');
   }
+}
+
+async function getRawBody(event) {
+  return new Promise((resolve, reject) => {
+    let data = '';
+    event.req.on('data', (chunk) => {
+      data += chunk;
+    });
+    event.req.on('end', () => {
+      resolve(Buffer.from(data));
+    });
+    event.req.on('error', (err) => {
+      reject(err);
+    });
+  });
 }
