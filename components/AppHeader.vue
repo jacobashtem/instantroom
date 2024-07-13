@@ -18,7 +18,7 @@
           <template #account="{ item }">
             <div class="text-left">
               <p>
-                Signed in as
+                Zalogowany jako
               </p>
               <p class="font-medium text-gray-900 dark:text-white">
                 {{ item.label }}
@@ -40,6 +40,7 @@
   <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
+  const { tokens, updateTokens } = useUserTokens();
   console.log("user", user);
   const { url } = useAvatarUrl()
   const items = [
@@ -48,11 +49,11 @@
       slot: 'account',
       disabled: true
     }], [{
-      label: 'Settings',
-      icon: 'i-heroicons-cog-8-tooth',
+      label: 'Ilość tokenów: '+ tokens.value,
+      icon: 'i-heroicons-shopping-cart-solid',
       click: async () => navigateTo('/settings/profile')
     }, {
-      label: 'Sign out',
+      label: 'Wyloguj',
       icon: 'i-heroicons-arrow-left-on-rectangle',
       click: async () => {
         console.log()
