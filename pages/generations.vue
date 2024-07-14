@@ -26,7 +26,7 @@
             </div>
         </div>
         </article>
-        <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center', width: ' min-w-[50vw]'}">
+        <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center'}">
         <div class="flex">
             <img class="cursor-pointer" :src="modalImg" alt="">
             <UIcon @click="downloadImage(modalImg)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>

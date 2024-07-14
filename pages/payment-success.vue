@@ -35,7 +35,7 @@ const user = useSupabaseUser();
 const { tokens, getTokens, updateTokens } = useUserTokens();
 const addedTokens = ref('');
 const loading = ref(true);
-
+const gtm = useGtm()
 onBeforeMount(() => {
   const sessionId = route.query.session_id;
   if (!sessionId) {
@@ -65,6 +65,24 @@ onMounted(async () => {
           addedTokens.value = data.session.metadata.tokens;
           getTokens();
           loading.value = false;
+          gtm.trackEvent({
+          event: 'purchase',
+          category: 'p',
+          action: '',
+          transaction_id: data.session.id,
+          value: `${data.session.amount_total / 100}`,
+          user: data.session.client_reference_id,
+          email: user.value.email,
+          currency: data.session.currency, 
+          items: [
+            {
+              item_id: `tokens${data.session.metadata.tokens}`,
+              item_name: `${data.session.metadata.tokens}`,
+              price: `${data.session.amount_total / 100}`,
+              quantify: 1
+            }
+          ]
+        })
         }
       } else {
         console.error('Weryfikacja płatności nie powiodła się.');
