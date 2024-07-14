@@ -6,7 +6,7 @@
                 {{selectedThemes.length <= 1 ? 'Twoją wizualizację:' : 'Twoje wizualizacje:' }} 
             </span> 
         </h2>
-        <div class="flex items-center gap-6 mt-6 justify-between">
+        <div class="flex flex-wrap items-center gap-6 mt-6 justify-between">
             <UButton @click="downloadAllImages" variant="solid" class="focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
                 <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Pobierz wszystkie wizualizacje
             </UButton>
@@ -35,7 +35,7 @@
     <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center', width: ' min-w-[50vw]'}">
         <div class="flex">
             <img class="cursor-pointer" :src="modalImg.src" alt="">
-            <UIcon @click="downloadImage(modalImg)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
+            <UIcon @click="downloadImage(modalImg.src)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
             <UIcon @click="isLightbox = false;" width="48" height="48"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
         </div>
     </UModal>

@@ -35,7 +35,7 @@
                                 {{ item }}</p>
                         </div>
                         <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'"
-                            :src="`/themes/${item}.webp`" width="330" draggable="false">
+                            :src="`/themes/${item}.webp`" width="300" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleselectedThemess(item)"
                             class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white"
                             width="36" height="36" name="subway:add" dynamic></UIcon>
@@ -64,7 +64,7 @@
 
                     <div class="col-span-4">
                         <h3 class="text-left text-2xl font-semibold mb-2">Za wybrane wizualizacje, wydasz:</h3>
-                        <p><span class="text-sunsetOrange-500 font-bold ">{{tokensToSpend}}</span> tokenów</p>
+                        <p><span class="text-sunsetOrange-500 font-bold ">{{tokensToSpend}}</span> tokenów </p>
                     </div>
 
                     <div class="col-span-4">
@@ -75,14 +75,30 @@
 
                         <UButton type="submit" variant="solid"
                         :disabled="!isChosenImgSrc?.length || !selectedThemes?.length"
-                        class="bg-goldenAmber-500 disabled:bg-goldenAmber-300 rounded-full px-6 w-full py-6 hover:bg-goldenAmber-700 h-10 flex justify-center text-2xl font-light self-end"
-                        @click="handleSubmit()">Generuj</UButton>
+                        class="bg-sunsetOrange-500 disabled:bg-sunsetOrange-200 rounded-full px-6 w-full py-6 hover:bg-sunsetOrange-700 h-10 flex justify-center text-2xl font-light self-end"
+                        @click="isSpendTokensModal = true">Generuj</UButton>
                     </div>
 
                 </div>
             </template>
             <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="isGenerationStarted && !firstGenerationFinished"/>
             <GenerationFinishedView :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
+            <UModal :overlay="true" v-model="isSpendTokensModal" :transition="true" :ui="{container: 'items-center'}">
+                <div class="flex px-4 py-8">
+                    <h3 class="text-2xl font-semibold text-center md:text-left">
+                        Czy na pewno chcesz zamienić <span class="text-sunsetOrange-500 text-2xl">{{tokensToSpend}} {{inflectToken(tokensToSpend)}}</span>  <br/>na <span class="text-sunsetOrange-500 text-2xl">{{ tokensToSpend}} {{ inflectVisualization(tokensToSpend)}}</span>?</h3>
+                </div>
+                <div class="mb-8 flex justify-between">
+                    <UButton label="Open" @click="isSpendTokensModal = false" class="rounded-lg text-center  transition-all w-auto mx-auto flex justify-center bg-coolGray-500  disabled:bg-coolGray-300 px-6 py-6 hover:bg-coolGray-700 py-3">
+                        <UIcon class="w-8 h-8 mr-3" name="material-symbols:cancel" dynamic></UIcon>
+                        Anuluj
+                    </UButton>
+                    <UButton  label="Open" @click="handleSubmit();" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
+                        <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
+                        Tak. Generuj!
+                    </UButton>
+                </div>
+            </UModal>
         </article>
     </main>
 </template>
@@ -90,13 +106,15 @@
 <script setup>
 const isGenerationStarted = ref(false);
 const firstGenerationFinished = ref(false);
-const { decrementToken } = useUserTokens();
+const { decrementToken, tokens } = useUserTokens();
+const { inflectToken, inflectVisualization } = useInflection();
 const upladedImageSrc = ref('');
 const selectedThemes = ref([]);
 const selectedRoomType = ref('');
 const generatedImages = ref([]);
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
+const isSpendTokensModal = useState("spendTokensModal");
 const tokensToSpend = computed(() => selectedThemes.value.length);
 const loading = ref(false);
 const prediction = ref(null);
@@ -244,36 +262,44 @@ const resetForm  = async () => {
     error.value = null;
 }
 const handleSubmit = async () => {
-    error.value = null;
-    prediction.value = null;
-    const themes = Array.isArray(selectedThemes.value) ? selectedThemes.value : [selectedThemes.value];
-    for (const theme of themes) {
-        try {
-            const response = await fetch('/api/predictions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    image: isChosenImgSrc.value,
-                    theme: theme,
-                    roomType: selectedRoomType.value,
-                }),
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+    isSpendTokensModal.value = false;
+    if(tokensToSpend.value <= tokens.value){
+        error.value = null;
+        prediction.value = null;
+        const themes = Array.isArray(selectedThemes.value) ? selectedThemes.value : [selectedThemes.value];
+        for (const theme of themes) {
+            try {
+                const response = await fetch('/api/predictions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        image: isChosenImgSrc.value,
+                        theme: theme,
+                        roomType: selectedRoomType.value,
+                    }),
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
 
-            const predictionData = await response.json();
-            prediction.value = predictionData;
-            fetchPredictionStatus(predictionData.id);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-};
+                const predictionData = await response.json();
+                prediction.value = predictionData;
+                fetchPredictionStatus(predictionData.id);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        toastError({
+        title: 'Masz za mało tokenów.',
+        description: `Posiadasz ${tokens.value} ${inflectToken(tokens.value)}, a próbujesz wygenerować ${tokensToSpend.value} ${inflectVisualization(tokensToSpend.value)}`
+      })
+    }
+}
 </script>

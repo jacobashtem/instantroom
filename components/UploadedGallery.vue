@@ -12,12 +12,7 @@
             </UIcon>
         </div>
             <UModal v-model="isModal" :ui="{container: 'items-center', width: ' min-w-[75vw]' }">
-            <UIcon 
-                @click="isModal = true"
-                class="hover:scale-110 transition-all cursor-pointer absolute right-4 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                width="36" height="36" name="material-symbols-light:close" dynamic>
-            </UIcon>
-                <div class="flex flex-wrap md:flex-nowrap">
+                <div class="flex flex-wrap md:flex-nowrap relative">
                     <div class="p-4 w-full md:w-auto flex flex-col items-center">
                         <h2 class="text-2xl font-semibold mb-4 text-center md:text-left">
                             <span class="text-sunsetOrange-500">Dodaj nowe </span> zdjęcie
@@ -32,6 +27,11 @@
                             <img @click="chosenImgHandler($event)" class="col-span-12 md:col-span-6 lg:col-span-4 hover:opacity-75 object-cover w-full max-h-36 cursor-pointer" v-for="item in userUploadedPhotos" :src="item" :key="item">
                         </div>
                     </div>
+                    <UIcon 
+                        @click="isModal = false"
+                        class="hover:scale-110 transition-all cursor-pointer absolute   top-8 right-0 transform -translate-x-1/2 -translate-y-1/2"
+                        width="36" height="36" name="material-symbols-light:close" dynamic>
+                    </UIcon>
                 </div>
             </UModal>
     </div>
