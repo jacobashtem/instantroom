@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-aquaBlue-500">
+    <section class="bg-aquaBlue-500 h-full">
         <div class="mx-auto pt-40 pb-40 px-3 my-3 container max-w-6xl">
             <div class="mb-10">
                 <div class="space-y-4">
@@ -26,7 +26,7 @@
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
                             <h3>Pakiet podstawowy</h3>
                             <p class="text-5xl font-bold pb-0">
-                                17.90<span class="text-2xl">zł</span>
+                                17,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
@@ -35,26 +35,28 @@
                             <p class="text-md uppercase"></p>
                         </div>
                         <div class="flex justify-center">
-                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>60 groszy za wizualizację!</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Another feature plan feature</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Yet another plan feature</p>
+                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,6 zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <NuxtLink :to="'https://buy.stripe.com/test_00gaGPgs34Du65ycMM?client_reference_id='+user.id">
-                            <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <!-- <NuxtLink to=""> -->
+                            <UButton @click="navigate(`https://buy.stripe.com/test_00gaGPgs34Du65ycMM?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                                 <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                             </UButton>
-                        </NuxtLink>
+                            
+                        <!-- </NuxtLink> -->
                     </div>
                 </div>
                 <!-- standard plan -->
                 <div class="w-full p-4 md:w-1/2 lg:w-1/3">
                     <div class="flex flex-col rounded-xl bg-white  text-black pb-4 shadow-2xl">
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
-                            <h3>Pakiet podstawowy</h3>
+                            <h3>Pakiet rozszerzony</h3>
                             <p class="text-5xl font-bold pb-0">
-                                39.90<span class="text-2xl">zł</span>
+                                39,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
@@ -63,15 +65,16 @@
                             <p class="text-md uppercase"></p>
                         </div>
                         <div class="flex justify-center">
-                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>50 groszy za wizualizację!</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Another feature plan feature</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Yet another plan feature</p>
+                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,5 zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton @click="navigate(`https://buy.stripe.com/test_4gwbKTgs36LC65y145?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
-                        </UButton>
+                        </UButton>                           
                     </div>
                 </div>
                 <!-- Luxury plan -->
@@ -80,7 +83,7 @@
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
                             <h3>Pakiet podstawowy</h3>
                             <p class="text-5xl font-bold pb-0">
-                                79.90<span class="text-2xl">zł</span>
+                                79,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
@@ -89,13 +92,14 @@
                             <p class="text-md uppercase"></p>
                         </div>
                         <div class="flex justify-center">
-                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>40 groszy za wizualizację!</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Another feature plan feature</p>
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Yet another plan feature</p>
+                            <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,4zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton @click="navigate(`https://buy.stripe.com/test_28o8yH7Vx1ribpS146?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                         </UButton>
                     </div>
@@ -105,5 +109,9 @@
     </section>
 </template>
 <script setup>
-  const user = useSupabaseUser();
+    const user = useSupabaseUser();
+    const router = useRouter();
+    const navigate = (url) => {
+        window.location.href = url;
+    };
 </script>
