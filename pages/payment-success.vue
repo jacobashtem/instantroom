@@ -67,8 +67,8 @@ onMounted(async () => {
           loading.value = false;
           gtm.trackEvent({
           event: 'purchase',
-          category: 'p',
-          action: '',
+          category: 'purchase',
+          action: 'purchase',
           transaction_id: data.session.id,
           value: `${data.session.amount_total / 100}`,
           user: data.session.client_reference_id,
