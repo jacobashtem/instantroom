@@ -1,20 +1,33 @@
 <template>
     <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20 min-h-screen">
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
-            <template v-if="!isGenerationStarted">
+            <template v-if="true">
                 <div class="flex flex-col mb-9">
                     <h2 class="text-3xl font-semibold text-center md:text-left">
                         Znajdź <span class="hidden md:inline-block">swoją</span> <span class="text-sunsetOrange-500">inspirację.</span>
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-2">
-                        <div class="flex mt-6 items-center">
-                            <p class="text-3xl font-extralight mr-6 hidden md:inline-block">Po pierwsze: </p>
-                            <UploadedGallery />
+                        <div class="flex mt-6 items-center justify-center md:justify-start">
+                            <template v-if="!isChosenImgSrc">
+                                <p  class="mr-6 hidden md:inline-block text-2xl font-semibold">Po pierwsze: </p>
+                                <UploadedGallery  />
+                            </template>
+                            <div class="col-span-4 flex flex-col" v-else>
+                                <h3 class="text-2xl font-semibold mb-2 text-center md:text-left">Wybrane <span class="text-sunsetOrange-500">zdjęcie: </span></h3>
+                                <div class="relative">
+                                    <img class="h-40 w-80 object-cover mb-2 brightness-75" :src="isChosenImgSrc" alt="wybrane zdjęcie zdjęcie">
+                                    <UploadedGallery changeImgView/>
+                                    <!-- <UIcon @click="handleselectedThemess(item)"
+                                        class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500"
+                                        width="36" height="36" name="zondicons:minus-solid" dynamic>
+                                    </UIcon> -->
+                                </div>
+                            </div>
                         </div>
                         <div class="flex items-center md:mt-6 justify-center md:justify-start">
-                                <p class="mr-4 block text-3xl font-extralight">Odmień <span class="hidden md:inline-block">w kilka sekund</span></p>
+                                <p class="text-2xl font-semibold mr-4">Odmień <span class="hidden md:inline-block">w kilka <span class="text-sunsetOrange-500">sekund</span></span></p>
                                 <UFormGroup class="mt-6 mb-4 mr-4 ring-0">
-                                    <USelect option-attribute="label"  size="xl" selected padded  class="text-center font-semibold" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
+                                    <USelect option-attribute="label"  size="xl" selected padded  class="text-center font-semibold text-sunsetOrange-500" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
                                 </UFormGroup>
                             </div>
                         </div>
@@ -26,7 +39,7 @@
                                 {{ item }}</p>
                         </div>
                         <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'"
-                            :src="`/themes/${item}.webp`" width="350" draggable="false">
+                            :src="`/themes/${item}.webp`" width="330" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleselectedThemess(item)"
                             class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white"
                             width="36" height="36" name="subway:add" dynamic></UIcon>
@@ -54,9 +67,8 @@
                     </div>
 
                     <div class="col-span-4">
-                        <h3 class="text-left text-2xl font-semibold mb-2">Wybrane <span class="text-sunsetOrange-500">zdjęcie: </span></h3>
-                        <img v-if="isChosenImgSrc" class="w-52  object-cover mb-2" :src="isChosenImgSrc" alt="wybrane zdjęcie zdjęcie">
-                        <p v-else>Nie wybrano zdjęcia.</p>
+                        <h3 class="text-left text-2xl font-semibold mb-2">Za wybrane wizualizacje, wydasz:</h3>
+                        <p><span class="text-sunsetOrange-500 font-bold ">{{tokensToSpend}}</span> tokenów</p>
                     </div>
 
                     <div class="col-span-4">
@@ -73,8 +85,8 @@
 
                 </div>
             </template>
-            <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="isGenerationStarted && !firstGenerationFinished" />
-            <GenerationFinishedView @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
+            <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="else" />
+            <GenerationFinishedView :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" />
         </article>
     </main>
 </template>
@@ -82,12 +94,14 @@
 <script setup>
 const isGenerationStarted = ref(false);
 const firstGenerationFinished = ref(false);
+const { decrementToken } = useUserTokens();
 const upladedImageSrc = ref('');
 const selectedThemes = ref([]);
 const selectedRoomType = ref('');
 const generatedImages = ref([]);
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
+const tokensToSpend = computed(() => selectedThemes.value.length);
 const loading = ref(false);
 const prediction = ref(null);
 const error = ref(null);
@@ -198,6 +212,7 @@ const fetchPredictionStatus = async (id, theme) => {
             if (statusData.status === 'succeeded') {
                 generatedImages.value[placeholderIndex] = { src: prediction.value.output, theme, status: 'succeeded', progress: '100%' };
                 setImageCookie(prediction.value.output);
+                decrementToken();
                 firstGenerationFinished.value = true;
             } else {
                 generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed', progress: progress };

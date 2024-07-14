@@ -1,5 +1,5 @@
 <template>
-  <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20 min-h-screen">
+  <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20">
     <article class="col-span-12 px-4 rounded bg-white mt-12">
       <div v-if="loading">
         <h2 class="text-3xl font-semibold mb-6 text-coolGray-500 animate-pulse">
@@ -8,12 +8,20 @@
         <UProgress animation="carousel" />
       </div>
       <div v-else>
-        <div class="space-y-2">
-          <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl">
-            <span class="sm:text-6xl"></span> Konto zostało <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">zweryfikowane.</span>
-            <br>
-          </h1>
-          <p class="text-base font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">Dodaliśmy {{ addedTokens }} tokenów do Twojego konta.</p>
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          <div class="space-y-2 col-span- text-center lg:text-left col-span-4">
+            <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
+              <span class="sm:text-6xl"></span> Konto zostało <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">zweryfikowane.</span>
+              <br>
+            </h1>
+            <p class="text-base font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">Dodaliśmy {{ addedTokens }} tokenów do Twojego konta.</p>
+            <NuxtLink to="/design">
+              <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
+              <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+              </UButton>
+          </NuxtLink>
+          </div>
+            <img class="w-full col-span-8" src="/payment-success.webp" />
         </div>
       </div>
     </article>
@@ -31,10 +39,8 @@ const loading = ref(true);
 onBeforeMount(() => {
   const sessionId = route.query.session_id;
   if (!sessionId) {
-    // Redirect to home if session_id is missing
     router.replace({ path: '/' });
   } else {
-    // Change URL without reloading the page
     router.replace({ path: '/payment-success' });
   }
 });

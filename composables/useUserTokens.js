@@ -29,6 +29,25 @@ export const useUserTokens = () => {
       tokens.value = updatedTokens;
     };
   
+    const decrementToken = async () => {
+      if (!user.value || tokens.value <= 0) return;
+  
+      const updatedTokens = parseInt(tokens.value) - 1;
+  
+      const { error } = await supabase.auth.updateUser({
+        data: {
+          tokens: updatedTokens,
+        },
+      });
+  
+      if (error) {
+        console.error('Error decrementing token:', error);
+        return;
+      }
+  
+      tokens.value = updatedTokens;
+    };
+  
     watch(user, () => {
       if (user.value) {
         getTokens();
@@ -37,6 +56,6 @@ export const useUserTokens = () => {
       }
     }, { immediate: true });
   
-    return { tokens, getTokens, updateTokens };
+    return { tokens, getTokens, updateTokens, decrementToken };
   };
   

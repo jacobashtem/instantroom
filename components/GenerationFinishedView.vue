@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-3xl font-semibold">
-            Udało się! Poniżej znajdziesz 
+            Udało się! Poniżej znajdziesz
             <span class="text-sunsetOrange-500">
                 {{selectedThemes.length <= 1 ? 'Twoją wizualizację:' : 'Twoje wizualizacje:' }} 
             </span> 
@@ -56,6 +56,11 @@ const props = defineProps({
     required: true,
     default: () => []
   },
+  paidTokens: {
+    type: Number,
+    required: true,
+    default: () => 0
+  }
 });
 
 const emit = defineEmits(['startNewGeneration'])
