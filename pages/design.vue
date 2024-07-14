@@ -1,7 +1,7 @@
 <template>
     <main class="grid grid-cols-12 gap-4 container max-w-6xl mx-auto mt-20 min-h-screen">
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
-            <template v-if="true">
+            <template v-if="!isGenerationStarted">
                 <div class="flex flex-col mb-9">
                     <h2 class="text-3xl font-semibold text-center md:text-left">
                         Znajdź <span class="hidden md:inline-block">swoją</span> <span class="text-sunsetOrange-500">inspirację.</span>
@@ -17,10 +17,6 @@
                                 <div class="relative">
                                     <img class="h-40 w-80 object-cover mb-2 brightness-75" :src="isChosenImgSrc" alt="wybrane zdjęcie zdjęcie">
                                     <UploadedGallery changeImgView/>
-                                    <!-- <UIcon @click="handleselectedThemess(item)"
-                                        class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500"
-                                        width="36" height="36" name="zondicons:minus-solid" dynamic>
-                                    </UIcon> -->
                                 </div>
                             </div>
                         </div>
@@ -85,8 +81,8 @@
 
                 </div>
             </template>
-            <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="else" />
-            <GenerationFinishedView :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" />
+            <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="isGenerationStarted && !firstGenerationFinished"/>
+            <GenerationFinishedView :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
         </article>
     </main>
 </template>
