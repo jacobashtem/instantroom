@@ -16,28 +16,32 @@
         </div>
     </section>
     <article class="mx-auto container max-w-6xl mt-10">
-        <p class="text-lg">Poniższa informacja stanowi zwięzły, zrozumiały i przejrzysty skrót informacji zamieszczonych w 
-            <a href="https://instantroom.pl/polityka-prywatnosci">Polityce Prywatności</a> odnośnie
+        <p class="text-lg">Poniższa informacja stanowi zwięzły, zrozumiały i przejrzysty skrót informacji zamieszczonych
+            w
+            <a class="text-sunsetOrange-500" href="https://instantroom.pl/polityka-prywatnosci">Polityce Prywatności</a> odnośnie
             Administratora danych, celu i sposobu przetwarzania danych osobowych oraz Twoich praw w związku z tym
             przetwarzaniem, w formie wymaganej do spełnienia obowiązku informacyjnego RODO. Szczegóły dotyczące sposobu
-            przetwarzania i podmiotów uczestniczących w tym procesie dostępne są we wskazanej polityce.</p>
+            przetwarzania i podmiotów uczestniczących w tym procesie dostępne są we wskazanej polityce.
+        </p>
         <h2 class="text-4xl py-4"><span>Kto jest administratorem danych?</span></h2>
-            <p class="text-lg">Administratorem Danych Osobowych (dalej Administrator) jest osoba fizyczna „Jakub Asztemborski”
-                zamieszkały we Wrocławiu, świadczący usługi drogą elektroniczną za pośrednictwem Serwisu.</p>
+        <p class="text-lg">Administratorem Danych Osobowych (dalej Administrator) jest osoba fizyczna „Jakub
+            Asztemborski”
+            zamieszkały we Wrocławiu, świadczący usługi drogą elektroniczną za pośrednictwem Serwisu.</p>
         <h2 class="text-4xl py-4"><span>Jak można skontaktować się z administratorem danych?</span></h2>
         <p class="text-lg">Z Administratorem można skontaktować się w jeden z poniższych sposobów</p>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><b>Adres poczty elektronicznej</b><span> – team@instantroom.pl</span></li>
         </ul>
         &nbsp;
         <h2 class="text-4xl py-4"><span>Czy Administrator powołał Inspektora Danych Osobowych?</span></h2>
         <p class="text-lg">Na podstawie Art. 37 RODO, Administrator nie powołał Inspektora Ochrony Danych.</p>
 
-        <p class="text-lg">W sprawach dotyczących przetwarzania danych, w tym danych osobowych, należy kontaktować się bezpośrednio z
+        <p class="text-lg">W sprawach dotyczących przetwarzania danych, w tym danych osobowych, należy kontaktować się
+            bezpośrednio z
             Administratorem.</p>
         <h2 class="text-4xl py-4"><span>Skąd pozyskujemy dane osobowe i jakie są ich źródła?</span></h2>
         <p class="text-lg">Dane pozyskiwane są z następujących źródeł:</p>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><span>od osób, których dane dotyczą</span></li>
             <li><span>w przypadku rejestracji przy użyciu portali społecznościowych, za wyrażoną świadomą zgodą tych
                     osób, z tych portali społecznościowych</span></li>
@@ -48,14 +52,15 @@
             których dotyczą (Np. imię i nazwisko, login, adres e-mail, telefon, adres IP, itp.)
         </p>
 
-        <p class="text-lg">Szczegółowy zakres przetwarzanych danych dostępny jest w 
-            <a href="https://instantroom.pl/polityka-prywatnosci">Polityce Prywatności</a>.
+        <p class="text-lg">Szczegółowy zakres przetwarzanych danych dostępny jest w
+            <a class="text-sunsetOrange-500" href="https://instantroom.pl/polityka-prywatnosci">Polityce Prywatności</a>.
         </p>
         <h2 class="text-4xl py-4"><span>Jakie są cele przetwarzania przez nas danych?</span></h2>
-        <p class="text-lg">Dane osobowe dobrowolnie podane przez Użytkowników są przetwarzane w jednym z następujących celów:</p>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <p class="text-lg">Dane osobowe dobrowolnie podane przez Użytkowników są przetwarzane w jednym z następujących
+            celów:</p>
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><span>Realizacji usług elektronicznych:</span>
-                 <ul style="list-style: lower-alpha;" class="text-lg py-2 pl-16">
+                <ul style="list-style: lower-alpha;" class="text-lg py-2 pl-16">
                     <li aria-level="2"><span>Usługi rejestracji i utrzymania konta Użytkownika w Serwisie i
                             funkcjonalności z nim związanych</span></li>
                     <li aria-level="2"><span>Usługi Newslettera (w tym przesyłania za zgodą treści reklamowych)</span>
@@ -70,11 +75,11 @@
         </ul>
         <h2 class="text-4xl py-4"><span>Jakie są podstawy prawne przetwarzania danych?</span></h2>
         <p class="text-lg">Serwis gromadzi i przetwarza dane Użytkowników na podstawie:</p>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><span>Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie
                     ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu
                     takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych)</span>
-                 <ul style="list-style: lower-alpha;" class="text-lg py-2 pl-16">
+                <ul style="list-style: lower-alpha;" class="text-lg py-2 pl-16">
                     <li aria-level="2"><span>art. 6 ust. 1 lit. a</span><span>
                         </span><span>osoba, której dane dotyczą wyraziła zgodę na przetwarzanie swoich danych osobowych
                             w jednym lub większej liczbie określonych celów</span></li>
@@ -92,8 +97,9 @@
             <li><span>Ustawa z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz. U. 1994 Nr 24 poz.
                     83)</span></li>
         </ul>
-        <h2 class="text-4xl py-4"><span>Jaki jest prawnie uzasadniony interes realizowany przez Administratora?</span></h2>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <h2 class="text-4xl py-4"><span>Jaki jest prawnie uzasadniony interes realizowany przez Administratora?</span>
+        </h2>
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><span>W celu ewentualnego ustalenia, dochodzenia lub obrony przed roszczeniami – podstawą prawną
                     przetwarzania jest nasz uzasadniony interes (art. 6 ust. 1 lit. f) RODO) polegający na ochronie
                     naszych praw, w tym między innymi;</span></li>
@@ -102,12 +108,14 @@
             <li><span>W celu realizacji marketingu bezpośredniego</span></li>
         </ul>
         <h2 class="text-4xl py-4"><span>Przez jaki okres przetwarzamy dane osobowe?</span></h2>
-        <p class="text-lg">Co do zasady, wskazane dane osobowe są przechowywane wyłącznie przez okres świadczenia usługi w ramach
+        <p class="text-lg">Co do zasady, wskazane dane osobowe są przechowywane wyłącznie przez okres świadczenia usługi
+            w ramach
             prowadzonego serwisu przez Administratora. Są one usuwane lub anonimizowane w okresie do <b>30 dni od
-            chwili zakończenia świadczenia usług</b> (np. usunięcie zarejestrowanego konta użytkownika, wypisanie
+                chwili zakończenia świadczenia usług</b> (np. usunięcie zarejestrowanego konta użytkownika, wypisanie
             z listy Newsletter, itp.)</p>
 
-        <p class="text-lg">W wyjątkowych sytuacjach, w celu zabezpieczenie prawnie uzasadnionego interesu realizowanego przez
+        <p class="text-lg">W wyjątkowych sytuacjach, w celu zabezpieczenie prawnie uzasadnionego interesu realizowanego
+            przez
             Administratora, okres ten może ulec wydłużeniu. W takiej sytuacji Administrator będzie przechowywał wskazane
             dane, od czasu żądania ich usunięcia przez Użytkownika, nie dłużej niż przez okres 3 lat w przypadku
             naruszenia lub podejrzenia naruszenia zapisów regulaminu serwisu przez osobę, której dane dotyczą.</p>
@@ -117,7 +125,7 @@
         <p class="text-lg">Przetwarzanie danych może jednak być powierzone innym podmiotom, realizującym usługi na rzecz
             Administratora w celu utrzymania działalności Serwisu. Do podmiotów takich można zaliczyć między
             innymi:</p>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><span>Firmy hostingowe, świadczące usługi hostingu lub usług pokrewnych dla Administratora</span></li>
             <li><span>Firmy, za pośrednictwem których świadczona jest usługa Newslettera</span></li>
             <li><span>Firmy, za pośrednictwem których świadczone mogą być usługi SEO/SEM</span></li>
@@ -128,11 +136,12 @@
         <p class="text-lg">Dane osobowe<b>nie będą przekazywane poza Unię Europejską</b>, chyba że zostały opublikowane
             na skutek indywidualnego działania Użytkownika (np. wprowadzenie komentarza lub wpisu), co sprawi, że dane
             będą dostępne dla każdej osoby odwiedzającej serwis.</p>
-        <h2 class="text-4xl py-4"><span>Czy dane osobowe będą podstawą zautomatyzowanego podejmowania decyzji?</span></h2>
+        <h2 class="text-4xl py-4"><span>Czy dane osobowe będą podstawą zautomatyzowanego podejmowania decyzji?</span>
+        </h2>
         <p class="text-lg">Dane osobowe <b>nie będą wykorzystywane</b> do zautomatyzowanego podejmowania decyzji
             (profilowania).</p>
         <h2 class="text-4xl py-4"><span>Jakie mają Państwo prawa związane z przetwarzaniem danych osobowych?</span></h2>
-         <ul class="list-decimal text-lg py-2 pl-16">
+        <ul class="list-decimal text-lg py-2 pl-16">
             <li><b>Prawo dostępu do danych osobowych</b><b>
                 </b><span>Użytkownikom przysługuje prawo uzyskania dostępu do swoich danych osobowych, realizowane na
                     żądanie złożone do Administratora</span></li>

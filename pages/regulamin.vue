@@ -370,8 +370,8 @@
             </li>
             <li>
                 <p><span>W przypadku kontaktu Usługobiorcy z Usługodawcą, dane osobowe Usługobiorc&oacute;w będą przetwarzane
-                        zgodnie z &bdquo;</span><a href="https://instantroom.pl/polityka-prywatnosci/"><u><span
-                                style="color:#1155cc;font-size:12pt;">Polityką Prywatności</span></u></a><span>&bdquo;,
+                        zgodnie z &bdquo;</span><NuxtLink class="text-sunsetOrange-500" to="polityka-prywatnosci"><u><span
+                               >Polityką Prywatności</span></u></NuxtLink><span>&bdquo;,
                         stanowiącą integralną część Regulaminu.</span></p>
             </li>
             <li>
@@ -424,10 +424,10 @@
         <p><span>W celu prawidłowego świadczenia usług, Serwis wykorzystuje i zapisuje niekt&oacute;re anonimowe informacje o
                 Usługobiorcy w plikach cookies.</span></p>
         <p><span>Zakres, cele, spos&oacute;b oraz zasady przetwarzania danych dostępne są w załącznikach do Regulaminu:
-                &bdquo;</span><a href="https://instantroom.pl/obowiazek-informacyjny-rodo/"><u><span
-                        style="color:#1155cc;font-size:12pt;">Obowiązek informacyjny RODO</span></u></a><span>&rdquo; oraz w
-                &bdquo;</span><a href="https://instantroom.pl/polityka-prywatnosci/"><u><span
-                        style="color:#1155cc;font-size:12pt;">Polityce prywatności</span></u></a><span>&bdquo;, stanowiących
+                &bdquo;</span><NuxtLink class="text-sunsetOrange-500" to="obowiazek-informacyjny/"><u><span
+                        >Obowiązek informacyjny RODO</span></u></NuxtLink><span>&rdquo; oraz w
+                &bdquo;</span><NuxtLink class="text-sunsetOrange-500" to="polityka-prywatnosci/"><u><span
+                       >Polityce prywatności</span></u></NuxtLink><span>&bdquo;, stanowiących
                 integralną część Regulaminu.</span></p>
         <ul class="list-decimal text-lg py-2 pl-16">
             <li class="py-2">
