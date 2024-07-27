@@ -41,6 +41,7 @@
 <script setup>
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
+console.log('user', user);
 const { tokens, getTokens, updateTokens } = useUserTokens()
 const { url } = useAvatarUrl()
 const route = useRoute()

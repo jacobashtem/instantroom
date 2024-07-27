@@ -86,6 +86,13 @@ module.exports = {
           900: "#111827",
         },        
       },
+      listStyleType: {
+        none: 'none',
+        disc: 'disc',
+        decimal: 'decimal',
+        square: 'square',
+        roman: 'upper-roman',
+      },
       screens: {
         xs: "480px",
         xxs: "320px",
