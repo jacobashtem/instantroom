@@ -28,7 +28,14 @@
                             </div>
                         </div>
                 </div>
-                <UCarousel arrows indicators v-slot="{ item }" :items="themes" :ui="{ item: 'snap-start' }">
+                <UCarousel arrows="z-20" indicators v-slot="{ item }" :items="themes"
+                :prev-button="{
+                    class: 'z-20'
+                    }"
+                    :next-button="{
+                    class: 'z-20'
+                    }"
+                :ui="{ item: 'snap-start' }">
                     <div class="relative select-none  transition-all">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="z-10 relative py-2 px-6 rounded-xl text-white bg-aquaBlue-500/60 font-light text-2xl">
