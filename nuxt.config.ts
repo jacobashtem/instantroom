@@ -14,9 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
-    // ['nuxt-stripe-module', {
-    //   publishableKey: process.env.NUXT_PUBLIC_STRIPE_KEY,
-    // }],
+    'nuxt-scheduler',
     "@unlok-co/nuxt-stripe"
   ],
   supabase: {
