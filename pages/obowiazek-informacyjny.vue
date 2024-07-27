@@ -142,15 +142,12 @@
             (profilowania).</p>
         <h2 class="text-4xl py-4"><span>Jakie mają Państwo prawa związane z przetwarzaniem danych osobowych?</span></h2>
         <ul class="list-decimal text-lg py-2 pl-16">
-            <li><b>Prawo dostępu do danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo uzyskania dostępu do swoich danych osobowych, realizowane na
+            <li><b>Prawo dostępu do danych osobowych</b><br/><span>Użytkownikom przysługuje prawo uzyskania dostępu do swoich danych osobowych, realizowane na
                     żądanie złożone do Administratora</span></li>
-            <li><b>Prawo do sprostowania danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego sprostowania danych
+            <li><b>Prawo do sprostowania danych osobowych</b><br/><span>Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego sprostowania danych
                     osobowych, które są nieprawidłowe lub / oraz uzupełnienia niekompletnych danych osobowych,
                     realizowane na żądanie złożone do Administratora</span></li>
-            <li><b>Prawo do usunięcia danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego usunięcia danych
+            <li><b>Prawo do usunięcia danych osobowych</b><br/><span>Użytkownikom przysługuje prawo żądania od Administratora niezwłocznego usunięcia danych
                     osobowych, realizowane na żądanie złożone do Administratora.</span><span>
                 </span><span>
                 </span><span>W przypadku kont użytkowników, usunięcie danych polega na anonimizacji danych
@@ -159,20 +156,16 @@
                 </span><span>W przypadku usługi Newsletter, Użytkownik ma możliwość samodzielnego usunięcia swoich
                     danych osobowych korzystając z odnośnika umieszczonego w każdej przesyłanej wiadomości
                     e-mail.</span></li>
-            <li><b>Prawo do ograniczenia przetwarzania danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo ograniczenia przetwarzania danych osobowych w przypadkach
+            <li><b>Prawo do ograniczenia przetwarzania danych osobowych</b><br/><span>Użytkownikom przysługuje prawo ograniczenia przetwarzania danych osobowych w przypadkach
                     wskazanych w art. 18 RODO, m.in. kwestionowania prawidłowość danych osobowych, realizowane na
                     żądanie złożone do Administratora</span></li>
-            <li><b>Prawo do przenoszenia danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo uzyskania od Administratora, danych osobowych dotyczących
+            <li><b>Prawo do przenoszenia danych osobowych</b><br/><span>Użytkownikom przysługuje prawo uzyskania od Administratora, danych osobowych dotyczących
                     Użytkownika w ustrukturyzowanym, powszechnie używanym formacie nadającym się do odczytu maszynowego,
                     realizowane na żądanie złożone do Administratora</span></li>
-            <li><b>Prawo wniesienia sprzeciwu wobec przetwarzania danych osobowych</b><b>
-                </b><span>Użytkownikom przysługuje prawo wniesienia sprzeciwu wobec przetwarzania jego danych osobowych
+            <li><b>Prawo wniesienia sprzeciwu wobec przetwarzania danych osobowych</b><br/><span>Użytkownikom przysługuje prawo wniesienia sprzeciwu wobec przetwarzania jego danych osobowych
                     w przypadkach określonych w art. 21 RODO, realizowane na żądanie złożone do Administratora</span>
             </li>
-            <li><b>Prawo wniesienia skargi</b><b>
-                </b><span>Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną
+            <li><b>Prawo wniesienia skargi</b><br/><span>Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną
                     danych osobowych.</span></li>
         </ul>
         &nbsp;

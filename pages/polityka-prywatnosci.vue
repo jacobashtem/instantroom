@@ -23,9 +23,9 @@
         </p>
 
         <p class="text-lg">Poniższa Polityka Prywatności jest integralną częścią 
-            <a class="text-sunsetOrange-500" href="https://instantroom.pl/regulamin">
+            <NuxtLink class="text-sunsetOrange-500" to="regulamin">
             <span class="text-lg">Regulaminu Serwisu</span>
-        </a>
+            </NuxtLink>
         , który określa zasady, prawa i obowiązki Użytkowników korzystających z Serwisu.</p>
         <h2 class="text-4xl py-4">§1 Definicje</h2>
         <ul class="list-decimal text-lg py-2 pl-16">
@@ -395,12 +395,12 @@
         <h2 class="text-4xl py-4">§14 Prawa Użytkowników związane z przetwarzaniem danych osobowych</h2>
         <p class="text-lg">Serwis gromadzi i przetwarza dane Użytkowników na podstawie:</p>
         <ul class="list-decimal text-lg py-2 pl-16">
-            <li><b>Prawo dostępu do danych osobowych</b>Użytkownikom przysługuje prawo uzyskania dostępu do swoich
+            <li><b>Prawo dostępu do danych osobowych</b><br/>Użytkownikom przysługuje prawo uzyskania dostępu do swoich
                 danych osobowych, realizowane na żądanie złożone do Administratora</li>
-            <li><b>Prawo do sprostowania danych osobowych</b>Użytkownikom przysługuje prawo żądania od Administratora
+            <li><b>Prawo do sprostowania danych osobowych</b><br/>Użytkownikom przysługuje prawo żądania od Administratora
                 niezwłocznego sprostowania danych osobowych, które są nieprawidłowe lub / oraz uzupełnienia
                 niekompletnych danych osobowych, realizowane na żądanie złożone do Administratora</li>
-            <li><b>Prawo do usunięcia danych osobowych</b>Użytkownikom przysługuje prawo żądania od Administratora
+            <li><b>Prawo do usunięcia danych osobowych</b><br/>Użytkownikom przysługuje prawo żądania od Administratora
                 niezwłocznego usunięcia danych osobowych, realizowane na żądanie złożone do Administratora W przypadku
                 kont użytkowników, usunięcie danych polega na anonimizacji danych umożliwiających identyfikację
                 Użytkownika. Administrator zastrzega sobie prawo wstrzymania realizacji żądania usunięcia danych w celu
@@ -408,16 +408,16 @@
                 Regulaminu czy dane zostały pozyskane wskutek prowadzonej korespondencji).
                 W przypadku usługi Newsletter, Użytkownik ma możliwość samodzielnego usunięcia swoich danych osobowych
                 korzystając z odnośnika umieszczonego w każdej przesyłanej wiadomości e-mail.</li>
-            <li><b>Prawo do ograniczenia przetwarzania danych osobowych</b>Użytkownikom przysługuje prawo ograniczenia
+            <li><b>Prawo do ograniczenia przetwarzania danych osobowych</b><br/>Użytkownikom przysługuje prawo ograniczenia
                 przetwarzania danych osobowych w przypadkach wskazanych w art. 18 RODO, m.in. kwestionowania
                 prawidłowość danych osobowych, realizowane na żądanie złożone do Administratora</li>
-            <li><b>Prawo do przenoszenia danych osobowych</b>Użytkownikom przysługuje prawo uzyskania od Administratora,
+            <li><b>Prawo do przenoszenia danych osobowych</b><br/>Użytkownikom przysługuje prawo uzyskania od Administratora,
                 danych osobowych dotyczących Użytkownika w ustrukturyzowanym, powszechnie używanym formacie nadającym
                 się do odczytu maszynowego, realizowane na żądanie złożone do Administratora</li>
-            <li><b>Prawo wniesienia sprzeciwu wobec przetwarzania danych osobowych</b>Użytkownikom przysługuje prawo
+            <li><b>Prawo wniesienia sprzeciwu wobec przetwarzania danych osobowych</b><br/>Użytkownikom przysługuje prawo
                 wniesienia sprzeciwu wobec przetwarzania jego danych osobowych w przypadkach określonych w art. 21 RODO,
                 realizowane na żądanie złożone do Administratora</li>
-            <li><b>Prawo wniesienia skargi</b>Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego
+            <li><b>Prawo wniesienia skargi</b><br/>Użytkownikom przysługuje prawo wniesienia skargi do organu nadzorczego
                 zajmującego się ochroną danych osobowych.</li>
         </ul>
         <h2 class="text-4xl py-4">§15 Kontakt do Administratora</h2>
