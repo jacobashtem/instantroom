@@ -44,7 +44,7 @@
                             width="36" height="36" name="zondicons:minus-solid" dynamic></UIcon>
                     </div>
                 </UCarousel>
-                <div class="shadow-2xl rounded-2xl mt-12 py-8 px-4 flex flex-col items-left grid grid-cols-1  xs:grid-cols-12 gap-4">
+                <div class="shadow-2xl rounded-2xl mt-12 py-8 px-4  flex-col items-left grid grid-cols-1  xs:grid-cols-12 gap-4">
                     <div class="col-span-4">
                         <h3 class="text-left text-2xl font-semibold mb-2">
                             Wybrane <span class="text-sunsetOrange-500">motywy: </span>
@@ -82,20 +82,36 @@
                 </div>
             </template>
             <GenerationStartedView :selected-themes="selectedThemes"  v-else-if="isGenerationStarted && !firstGenerationFinished"/>
-            <GenerationFinishedView :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
+            <GenerationFinishedView :upladedImageSrc="upladedImageSrc" :paid-tokens="tokensToSpend"  @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
             <UModal :overlay="true" v-model="isSpendTokensModal" :transition="true" :ui="{container: 'items-center'}">
                 <div class="flex px-4 py-8">
-                    <h3 class="text-2xl font-semibold text-center md:text-left">
-                        Czy na pewno chcesz zamienić <span class="text-sunsetOrange-500 text-2xl">{{tokensToSpend}} {{inflectToken(tokensToSpend)}}</span>  <br/>na <span class="text-sunsetOrange-500 text-2xl">{{ tokensToSpend}} {{ inflectVisualization(tokensToSpend)}}</span>?</h3>
+                    <h3 v-if="!notEnoughTokensAlert" class="text-2xl font-semibold text-center md:text-left">
+                        Czy na pewno chcesz zamienić 
+                        <span class="text-sunsetOrange-500 text-2xl">{{tokensToSpend}} {{inflectToken(tokensToSpend)}}</span><br/>
+                        na 
+                        <span class="text-sunsetOrange-500 text-2xl">{{ tokensToSpend}} {{ inflectVisualization(tokensToSpend)}}</span>?
+                    </h3>
+                    <h3 class="text-xl font-semibold text-center md:text-left" v-else>
+                        Masz za mało tokenów. Posiadasz 
+                        <span class="text-sunsetOrange-500 text-lg">{{tokens}} {{inflectToken(tokens)}}</span>, <br/>
+                        a próbujesz wygenerować 
+                        <span class="text-sunsetOrange-500 text-lg">
+                          {{tokensToSpend}} {{inflectVisualization(tokensToSpend.value)}}.
+                        </span><br/> 1 token to 1 wizualizacja 
+                    </h3>
                 </div>
                 <div class="mb-8 flex justify-between">
-                    <UButton label="Open" @click="isSpendTokensModal = false" class="rounded-lg text-center  transition-all w-auto mx-auto flex justify-center bg-coolGray-500  disabled:bg-coolGray-300 px-6 py-6 hover:bg-coolGray-700 py-3">
+                    <UButton label="Open" @click="isSpendTokensModal = false;notEnoughTokensAlert = false;" class="rounded-lg text-center  transition-all w-auto mx-auto flex justify-center bg-coolGray-500  disabled:bg-coolGray-300 px-3 sm:px-6 hover:bg-coolGray-700 py-3">
                         <UIcon class="w-8 h-8 mr-3" name="material-symbols:cancel" dynamic></UIcon>
                         Anuluj
                     </UButton>
-                    <UButton  label="Open" @click="handleSubmit();" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
+                    <UButton v-if="!notEnoughTokensAlert"  label="Open" @click="handleSubmit();" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
                         <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
                         Tak. Generuj!
+                    </UButton>
+                    <UButton v-else  label="Open" @click="notEnoughTokensAlert = false;isSpendTokensModal = false; navigateTo('/payments')" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
+                        <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
+                        Kup tokeny 
                     </UButton>
                 </div>
             </UModal>
@@ -115,6 +131,7 @@ const generatedImages = ref([]);
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
 const isSpendTokensModal = useState("spendTokensModal");
+const notEnoughTokensAlert = ref(false);
 const tokensToSpend = computed(() => selectedThemes.value.length);
 const loading = ref(false);
 const prediction = ref(null);
@@ -296,10 +313,8 @@ const handleSubmit = async () => {
             behavior: 'smooth'
         });
     } else {
-        toastError({
-        title: 'Masz za mało tokenów.',
-        description: `Posiadasz ${tokens.value} ${inflectToken(tokens.value)}, a próbujesz wygenerować ${tokensToSpend.value} ${inflectVisualization(tokensToSpend.value)}`
-      })
+        isSpendTokensModal.value = true;
+        notEnoughTokensAlert.value = true;
     }
 }
 </script>
