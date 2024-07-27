@@ -28,7 +28,7 @@
                             </div>
                         </div>
                 </div>
-                <UCarousel indicators v-slot="{ item }" :items="themes"
+                <UCarousel arrows indicators v-slot="{ item }" :items="themes"
                 :prev-button="{
                     class: 'z-20'
                     }"
