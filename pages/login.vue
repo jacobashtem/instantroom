@@ -4,11 +4,6 @@
       class="max-w-screen-xl m-0  bg-white shadow sm:rounded-lg flex justify-center flex-1"
     >
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-        <!-- <div>
-          <h1 class="text-6xl font-bold mb-2 text-center">Instantroom</h1>
-          <h2 class="text-2xl text-center">Your private <span class="text-sunsetOrange-500 font-semibold">Interior Decorator</span>. Dream up, your dream room.</h2>
-          
-        </div> -->
         <div class="mt-12 flex flex-col items-center">
           <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">Zaloguj się</h1>
           <div class="w-full flex-1 mt-8">
@@ -44,6 +39,6 @@ const pending = ref(false);
 
 const { toastError } = useAppToast();
 const supabase = useSupabaseClient();
-useRedirectIfAuthenticated();
+useRedirectBasedOnAuth('/', '/login') 
 
 </script>

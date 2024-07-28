@@ -37,6 +37,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: ["auth"]
+})
 const generatedImages = ref([]);
 const validImages = ref([]);
 const isLightbox = useState("lightbox");
