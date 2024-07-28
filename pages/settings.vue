@@ -8,6 +8,10 @@
   </template>
   
   <script setup>
+  definePageMeta({
+  middleware: ["auth"]
+})
+
   const links = [
     {
       label: 'Profile',

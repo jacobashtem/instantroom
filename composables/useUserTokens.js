@@ -1,6 +1,6 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
+  const user = useSupabaseUser()
   const tokens = ref(null);
   const showModal = ref(false);
 

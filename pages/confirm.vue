@@ -7,5 +7,10 @@
 </template>
 
 <script setup>
- useRedirectIfAuthenticated()
+definePageMeta({
+  middleware: ["auth"]
+})
+
+const supabase = useSupabaseClient();
+useRedirectBasedOnAuth()
 </script>

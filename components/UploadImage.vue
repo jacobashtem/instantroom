@@ -42,17 +42,17 @@ const saveProfile = async (newImage) => {
         console.log('user2', user);
         if (fetchError) throw fetchError;
 
-        const updatedImages = [...userUploadedPhotos.value];
-        if (updatedImages.length >= 9) {
-            updatedImages.shift();
+        const updatedImages = [newImage, ...userUploadedPhotos.value];
+        if (updatedImages.length > 9) {
+            updatedImages.pop();
         }
-        updatedImages.push(newImage);
+
         const data = {
             imagesUploaded: updatedImages
         };
 
-
-
+        
+        
         const { error } = await supabase.auth.updateUser({ data: data })
 
         if (error) throw error;

@@ -64,7 +64,7 @@ const items = [{
 const loading = ref(false);
 const success = ref(false);
 const supabase = useSupabaseClient();
-useRedirectIfAuthenticated();
+useRedirectBasedOnAuth();
 const { toastSuccess, toastError } = useAppToast();
 const state = ref({
   email: undefined,
