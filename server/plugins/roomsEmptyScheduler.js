@@ -1,5 +1,3 @@
-// plugins/scheduler.js
-
 import { useScheduler } from '#scheduler';
 import { createClient } from '@supabase/supabase-js';
 
@@ -43,6 +41,25 @@ const emptyBucket = async () => {
   }
 };
 
+const resetUserImagesUploaded = async () => {
+  try {
+    console.log('Resetting imagesUploaded for all users...');
+    const { data: users, error: fetchError } = await supabase
+      .rpc('reset_images_uploaded');
+
+    if (fetchError) {
+      console.error('Error fetching users:', fetchError);
+      return { success: false, message: 'Error fetching users', error: fetchError };
+    }
+
+    console.log('Successfully reset imagesUploaded for all users');
+    return { success: true, message: 'Successfully reset imagesUploaded for all users' };
+  } catch (err) {
+    console.error('Unexpected error during user metadata reset:', err);
+    return { success: false, message: 'Unexpected error', error: err };
+  }
+};
+
 export default defineNitroPlugin(() => {
   startScheduler();
 });
@@ -51,10 +68,15 @@ function startScheduler() {
   const scheduler = useScheduler();
 
   scheduler.run(async () => {
-    console.log('Running cron job to empty bucket...');
-    const result = await emptyBucket();
-    if (!result.success) {
-      console.error('Failed to empty bucket:', result.message);
+    console.log('Running cron job to empty bucket and reset user images...');
+    const bucketResult = await emptyBucket();
+    if (!bucketResult.success) {
+      console.error('Failed to empty bucket:', bucketResult.message);
     }
-  }).cron('1 0 * * *');
+
+    const resetResult = await resetUserImagesUploaded();
+    if (!resetResult.success) {
+      console.error('Failed to reset user images:', resetResult.message);
+    }
+  }).cron('01 04 * * *');
 }

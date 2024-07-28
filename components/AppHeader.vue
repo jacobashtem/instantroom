@@ -6,13 +6,13 @@
       </NuxtLink>
       <div>
         <NuxtLink v-if="!user" to="/login" class="text-sm font-semibold text-aquaBlue-500">
-          Login
+          Logowanie
         </NuxtLink>
         <NuxtLink v-if="user" to="/design" class="text-sm mr-4">
-          Design
+          Twórz
         </NuxtLink>
         <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
-        <NuxtLink v-if="user" to="/payments" class="text-sm mr-4">Cennik</NuxtLink>
+        <NuxtLink v-if="user" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
           <UAvatar :src="url" alt="Avatar" />
           <template #account="{ item }">
@@ -48,9 +48,16 @@ const items = ref([
     disabled: true
   }], [{
     label: `Ilość tokenów: ${tokens.value}`,
+    icon: 'i-heroicons-cog-8-tooth-20-solid',
+    click: async () => navigateTo('/cennik')
+  },
+  {
+    label: `Ustawienia profilu`,
     icon: 'i-heroicons-shopping-cart-solid',
     click: async () => navigateTo('/settings/profile')
-  }, {
+  },
+  
+  {
     label: 'Wyloguj',
     icon: 'i-heroicons-arrow-left-on-rectangle',
     click: async () => {

@@ -291,6 +291,6 @@ const closeSpendTokensModal = () => {
 const buyTokens = () => {
     notEnoughTokensAlert.value = false;
     isSpendTokensModal.value = false;
-    navigateTo('/payments');
+    navigateTo('/cennik');
 };
 </script>
