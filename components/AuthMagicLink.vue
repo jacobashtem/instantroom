@@ -4,7 +4,7 @@
         <div class="w-8 h-8 flex bg-white p-2 rounded-full">
             <UIcon class="" name="i-fa-solid:hat-wizard" dynamic></UIcon>
         </div>
-        <span class="ml-4 text-sm">
+        <span class="ml-4 text-xs">
             Skorzystaj z 'Magic Link'
         </span>
         <div>

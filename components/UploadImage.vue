@@ -39,7 +39,6 @@ const saveProfile = async (newImage) => {
     pending.value = true;
     try {
         const { data: { user }, error: fetchError } = await supabase.auth.getUser();
-        console.log('user2', user);
         if (fetchError) throw fetchError;
 
         const updatedImages = [newImage, ...userUploadedPhotos.value];
