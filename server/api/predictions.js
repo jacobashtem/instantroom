@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   // Pobranie prompta z Supabase
   const { data, error } = await supabase
-    .from('prompts')
+    .from('sorted_prompts')
     .select('room_types')
     .eq('theme', theme)
     .single();

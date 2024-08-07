@@ -33,7 +33,7 @@
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="z-10 relative py-2 px-6 rounded-xl text-white bg-aquaBlue-500/60 font-light text-2xl">{{ item }}</p>
                         </div>
-                        <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'" :src="`/themes/${item}.webp`" width="300" draggable="false">
+                        <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'" :src="`/themes/${item}.webp`" width="320" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" width="36" height="36" name="subway:add" dynamic></UIcon>
                         <UIcon v-else @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500" width="36" height="36" name="zondicons:minus-solid" dynamic></UIcon>
                     </div>
@@ -146,7 +146,7 @@ const roomTypes = ref([
 const isSelected = (item) => selectedThemes.value.includes(item);
 
 onMounted(async () => {
-    const { data: themesData, error: themesError } = await supabase.from('prompts').select('theme');
+    const { data: themesData, error: themesError } = await supabase.from('sorted_prompts').select('theme');
     if (themesError) {
         toastError({ title: 'Error fetching themes', description: themesError.message });
         return;
