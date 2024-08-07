@@ -4,7 +4,7 @@
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-52" src="/public/logo.png">
       </NuxtLink>
-      <div>
+      <div v-if="!isMobile">
         <NuxtLink v-if="!user" to="/login" class="text-sm font-semibold text-aquaBlue-500">
           Logowanie
         </NuxtLink>
@@ -31,11 +31,14 @@
           </template>
         </UDropdown>
       </div>
+      <MobileMenu :menu-items="items" v-if="isMobile"  />
     </header>
   </div>
 </template>
 
 <script setup>
+import { useMediaQuery } from "@vueuse/core";
+const isMobile = useMediaQuery("(max-width: 640px)");
 const supabase = useSupabaseClient()
 const user = useSupabaseUser();
 const { tokens, getTokens, updateTokens } = useUserTokens()
@@ -72,5 +75,9 @@ const items = ref([
 
 watch(tokens, (newTokens) => {
   items.value[1][0].label = `Ilość tokenów: ${newTokens}`
+})
+
+onBeforeMount(() => {
+
 })
 </script>
