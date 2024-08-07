@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 bg-white w-full z-20 shadow-2xl">
+  <div class="fixed top-0 bg-white w-full z-30 shadow-2xl">
     <header class="px-4 flex justify-between items-center my-3 mx-auto container max-w-6xl">
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-52" src="/public/logo.png">
@@ -52,22 +52,22 @@ const items = ref([
   }], [{
     label: `Ilość tokenów: ${tokens.value}`,
     icon: 'i-heroicons-cog-8-tooth-20-solid',
-    click: async () => navigateTo('/cennik')
+    click: async () => navigateTo('/cennik'),
+    url: '/cennik'
   },
   {
     label: `Ustawienia profilu`,
     icon: 'i-heroicons-shopping-cart-solid',
-    click: async () => navigateTo('/settings/profile')
+    click: async () => navigateTo('/settings/profile'),
+    url: '/settings/profile'
   },
   
   {
     label: 'Wyloguj',
     icon: 'i-heroicons-arrow-left-on-rectangle',
     click: async () => {
-      console.log('before user', user);
       await supabase.auth.signOut()
       const { data: { user: userData } } = await supabase.auth.getUser()
-      console.log('after user', user);
       useRedirectBasedOnAuth('/') 
     }
   }]
