@@ -16,7 +16,7 @@
                     fill="#ea4335" />
             </svg>
         </div>
-        <span class="ml-4 text-sm" @click="signInWithGoogle">
+        <span class="ml-4 text-xs" @click="signInWithGoogle">
             Kontynuuj za pośrednictwem Google
         </span>
     </button>

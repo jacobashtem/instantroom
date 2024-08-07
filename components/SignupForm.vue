@@ -178,7 +178,7 @@ const registerWithEmail = async () => {
         title: `Wystąpił błąd. Spróbuj ponownie.`,
         color: "red",
       });
-    } else if (data.user.aud === "authenticated") {
+    } else if (data.user.user_metadata.email_verified === true) {
         toastError({
           title: `Konto o tym adresie email już istnieje.`,
           color: "red",
