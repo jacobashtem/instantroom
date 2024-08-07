@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-3xl font-semibold">
-            Udało się! Poniżej znajdziesz
+            Udało się! Poniżej znajdziesz 
             <span class="text-sunsetOrange-500">
                 {{selectedThemes.length <= 1 ? 'Twoją wizualizację:' : 'Twoje wizualizacje:' }} 
             </span> 
@@ -16,12 +16,15 @@
         </div>
         <div v-if="error" class="text-red-500 mt-2">{{ error }}</div>
         <div class="mt-5">
-            <div class="grid grid-cols-2 xs:grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 xs:grid-cols-4 gap-4">
                 <div v-for="(image, index) in props.generatedImages" :key="index" class="relative w-full flex items-center">
                     <div class="relative" v-if="image.status === 'succeeded' && image.src.length > 0">
                         <div class="group relative">
                             <img :src="image.src" alt="output" class="transition-all cursor-pointer object-cover w-full h-full group-hover:brightness-50" />
                             <UIcon @click="lightBoxHandler(image, index)" width="64" height="64" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-all cursor-pointer text-white" name="mdi:eye" dynamic/>
+                        </div>
+                        <div class="transition absolute left-1/2 -translate-x-1/2 top-0 flex items-center justify-center">
+                            <p class="top-4 relative py-2 px-6 rounded-xl text-white bg-aquaBlue-500/60 font-light text-2xl">{{ selectedThemes[index] }}</p>
                         </div>
                     </div>
                     <div v-else class="w-full h-full flex flex-col items-center justify-center">
@@ -32,9 +35,8 @@
             </div>
         </div>
     </div>
-    <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center', width: ' min-w-[50vw]'}">
+    <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center'}">
         <div class="flex">
-            <!-- <ComparisonSlider :images="[uploadedImageSrc, modalImg.src]" /> -->
             <img class="cursor-pointer" :src="modalImg.src" alt="">
             <UIcon @click="downloadImage(modalImg.src)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
             <UIcon @click="isLightbox = false;" width="48" height="48"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
