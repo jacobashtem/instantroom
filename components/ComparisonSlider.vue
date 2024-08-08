@@ -2,7 +2,7 @@
   <div class="w-full relative" @mouseup="handleMouseUp" @touchend="handleMouseUp">
     <div
       ref="sliderRef"
-      :class="isHome ? 'w-full aspect-[70/45] m-auto' : 'w-full h-full min-h-[100vh]'"
+      :class="isHome ? 'w-full aspect-[70/45] m-auto' : 'aspect-[70/45] w-full h-full'"
       class="relative overflow-hidden select-none shadow-2xl shadow-sunsetOrange-900"
       @mousemove="handleMove"
       @touchmove="handleMove"
