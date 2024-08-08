@@ -77,7 +77,7 @@ watch(tokens, (newTokens) => {
   items.value[1][0].label = `Ilość tokenów: ${newTokens}`
 })
 
-onBeforeMount(() => {
+onMounted(() => {
 
 })
 </script>

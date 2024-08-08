@@ -69,7 +69,6 @@ const toggleMenu = () => {
 };
 
 const logOut = async() => {
-    console.log('test')
     await supabase.auth.signOut()
     const { data: { user: userData } } = await supabase.auth.getUser()
     useRedirectBasedOnAuth('/') 

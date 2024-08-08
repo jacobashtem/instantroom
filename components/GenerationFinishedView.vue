@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-3xl font-semibold">
-            Udało się! Poniżej znajdziesz 
+            Udało się! Poniżej znajdziesz
             <span class="text-sunsetOrange-500">
                 {{selectedThemes.length <= 1 ? 'Twoją wizualizację:' : 'Twoje wizualizacje:' }} 
             </span> 
@@ -16,7 +16,7 @@
         </div>
         <div v-if="error" class="text-red-500 mt-2">{{ error }}</div>
         <div class="mt-5">
-            <div class="grid grid-cols-2 xs:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
                 <div v-for="(image, index) in props.generatedImages" :key="index" class="relative w-full flex items-center">
                     <div class="relative" v-if="image.status === 'succeeded' && image.src.length > 0">
                         <div class="group relative">
@@ -35,13 +35,18 @@
             </div>
         </div>
     </div>
-    <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center'}">
-        <div class="flex">
-            <img class="cursor-pointer" :src="modalImg.src" alt="">
-            <UIcon @click="downloadImage(modalImg.src)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
-            <UIcon @click="isLightbox = false;" width="48" height="48"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
-        </div>
-    </UModal>
+    <UModal v-model="isLightbox" :transition="false" :ui="{ container: 'items-center justify-center', width: 'w-full h-full' }">
+  <div class="flex items-center justify-center w-full h-full">
+    <ComparisonSlider :images="[originalImage, modalImg.src]" :is-home="false" class="w-full h-full" />
+    <UIcon @click="downloadImage(modalImg.src)" width="56" height="56" class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline" />
+    <UIcon @click="isLightbox = false;" width="48" height="48" class="icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic />
+  </div>
+</UModal>
+
+
+
+
+
 </template>
 <script setup>
 const error = ref(null);
@@ -64,7 +69,7 @@ const props = defineProps({
     required: true,
     default: () => 0
   },
-  uploadedImageSrc: {
+  originalImage: {
     type: String,
     required: true,
     default: () => ''

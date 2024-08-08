@@ -35,7 +35,7 @@
 
             <div class="flex items-center col-span-12  lg:col-span-6 ">
                 <div class="w-full col-span-12 flex items-center mx-auto">
-                    <ComparisonSlider :images="images" />
+                    <ComparisonSlider :is-home="true" :images="images" />
                 </div>
             </div>
 

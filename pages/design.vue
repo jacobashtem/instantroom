@@ -63,7 +63,7 @@
                 </div>
             </template>
             <GenerationStartedView :selected-themes="selectedThemes" v-else-if="isGenerationStarted && !firstGenerationFinished" />
-            <GenerationFinishedView :upladedImageSrc="upladedImageSrc" :paid-tokens="tokensToSpend" @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
+            <GenerationFinishedView :original-image="isChosenImgSrc" :paid-tokens="tokensToSpend" @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
             <UModal :overlay="true" v-model="isSpendTokensModal" :transition="true" :ui="{ container: 'items-center' }">
                 <div class="flex px-4 py-8">
                     <h3 v-if="!notEnoughTokensAlert" class="text-2xl font-semibold text-center md:text-left">

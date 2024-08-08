@@ -68,7 +68,6 @@
   };
   
   const handleSubmit = async () => {
-    console.log('test');
     error.value = null;
     prediction.value = null;
   
