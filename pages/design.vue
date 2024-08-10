@@ -128,8 +128,8 @@ const { inflectToken, inflectVisualization } = useInflection();
 const { toastSuccess, toastError } = useAppToast();
 const { data: userData, error: fetchError } = await supabase.auth.getUser();
 const images =  [];
-images.value = userData?.user.user_metadata.imagesUploaded;
-userUploadedPhotos.value = userData?.user.user_metadata.imagesUploaded.slice().reverse();
+images.value = userData?.user?.user_metadata?.imagesUploaded || [];
+userUploadedPhotos.value = (userData?.user?.user_metadata?.imagesUploaded?.slice() || []).reverse();
 
 const themes = ref([]);
 const roomTypes = ref([
