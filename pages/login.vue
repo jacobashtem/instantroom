@@ -6,6 +6,7 @@
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
         <div class="mt-12 flex flex-col items-center">
           <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">Zaloguj się</h1>
+          <p>Założenie konta oznacza akceptację <NuxtLink class="text-sunsetOrange-500" href="/regulamin">Regulaminu</NuxtLink  ></p>
           <div class="w-full flex-1 mt-8">
             <div class="flex flex-col items-center mb-8">
               <AuthGoogle />

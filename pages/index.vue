@@ -1,14 +1,25 @@
 <template>
     <HeroMain/>
-    <section class="flex items-center flex-col justify-between mb-10">
-      <div class="w-full items-center flex-col  lg:flex-row container max-w-full xl:max-w-7xl mx-auto justify-between flex mb-12">
-      <h1 class="text-4xl font-extrabold my-12 pr-12 lg:mb-0 text-black-500">
-        Stwórz swoje wizualizacje w kilka sekund! 
-      </h1>
+    <section class="flex items-center flex-col justify-between">
+    <section class="mx-auto container max-w-6xl">
+    <div class="mx-auto px-4 lg:flex">
+        <div class="sm:text-center lg:text-left lg:w-1/2">
+            <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none">AI Room Design -  <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">przeprojektuj</span> swój dom za pomocą AI!</h2>
+            <p class="text-xl lg:text-2xl mt-6 font-light">Instant Room to <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">pierwsze polskie narzędzie AI</span>, które pomoże Ci w przeprojektowaniu domu lub mieszkania według Twojej wizji.</p>
+            <p class="text-xl lg:text-2xl mt-6 font-light">Bez względu na to, czy marzysz o elegancji lat 20-tych, rustykalnym uroku czy może odważnym stylu Barbie – nasz AI Room Generator <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">przemebluje Twoją przestrzeń </span>nie do poznania!</p>
+        </div>
+        <div class="lg:w-1/2">
+          <img src="/public/promo-img.webp"/>
+        </div>
     </div>
-    <!-- <HowItWorks />
-      <PortfolioExamples /> -->
-      <div>
+</section>
+     <HowItWorks />
+      <PortfolioExamples />
+      <div class="w-full">
+        <AppTestimonials />
+      </div>
+      <div class="w-full">
+        <FaqList />
       </div>
     </section>
     <UModal v-if="showModal" :overlay="true" v-model="freeTokensGrantedModal" :transition="true" :ui="{container: 'items-center'}">

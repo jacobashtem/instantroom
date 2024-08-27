@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="block lg:hidden" @click="toggleMenu">
+        <button class="absolute top-4 right-4 block lg:hidden" @click="toggleMenu">
             <UIcon width="36" height="36" name="ci:hamburger-md" dynamic />
         </button>
         <transition name="slide" mode="out-in">
