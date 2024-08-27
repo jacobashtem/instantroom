@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[700px] bg-aquaBlue-500 mb-48 md:items-center flex pt-10 xs:pt-32 sm:pt-80 lg:pt-0">
+  <div class="h-[700px] bg-aquaBlue-500 mb-40 sm:mb-80 lg:mb-24 md:items-center flex pt-32 xs:pt-32 sm:pt-80 lg:pt-0">
     <div class="mx-auto pt-16 px-3 flex justify-between items-center my-3 container max-w-6xl">
         <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8 max-w-6xl mx-auto">
             <div class="sm:text-center md:mx-auto md:max-w-2xl col-span-12 lg:col-span-6 lg:flex lg:items-center lg:text-left">
@@ -18,7 +18,7 @@
                             </h1>
                         </div>
 
-                        <p class="text-base font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
+                        <p class="text-xl font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
                           Szukasz ciekawego projektu wnętrz przed nadchodzącym remontem? Zainspiruj się wizualizacjami, stworzonymi na podstawie Twoich zdjęć. Wystarczy dodać obraz, wybrać rodzaj pomieszczenia oraz styl i... gotowe!
                         </p>
                         
