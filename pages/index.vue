@@ -14,7 +14,10 @@
     </div>
 </section>
      <HowItWorks />
-      <!-- <PortfolioExamples /> -->
+      <PortfolioExamples />
+      <div class="w-full">
+        <AppTestimonials />
+      </div>
       <div class="w-full">
         <FaqList />
       </div>

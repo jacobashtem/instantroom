@@ -13,32 +13,38 @@
             <div class="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
                 <div>
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                        <span class="text-xl font-semibold text-sunsetOrange-500">1</span>
+                        class="flex items-center justify-center w-32 h-32 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                        <span class="text-xl font-semibold text-sunsetOrange-500">
+                            <UIcon class="w-24 h-24" name="bi:camera-fill" dynamic>1</UIcon>
+                        </span>
                     </div>
-                    <h3 class="mt-6 text-xl  text-white font-semibold leading-tight md:mt-10">Wgraj zdjęcie...</h3>
-                    <p class="mt-4 text-base text-white md:text-lg">
+                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">1. Wgraj zdjęcie...</h3>
+                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         ...swojego pomieszczenia lub skorzystaj z naszej Biblioteki
                     </p>
                 </div>
                 <div>
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                        <span class="text-2xl font-bold text-sunsetOrange-500">2</span>
+                        class="flex items-center justify-center w-32 h-32 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                        <span class="text-2xl font-bold text-sunsetOrange-500">
+                            <UIcon class="w-24 h-24" dynamic name="fluent:conference-room-20-filled"></UIcon>
+                        </span>
                     </div>
-                    <h3 class="mt-6 text-xl text-white font-semibold leading-tight md:mt-10">
-                        Wybierz rodzaj pokoju...</h3>
-                    <p class="mt-4 text-base text-white md:text-lg">
+                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">
+                        2. Wybierz rodzaj pokoju...</h3>
+                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         ...salon, jadalnia, pokój dziecięcy, taras, łazienka, kuchnia, sypialnia, biuro – <span class="bg-sunsetOrange-500 font-semibold text-white leading-6 px-3">wybór należy do Ciebie!</span>
                     </p>
                 </div>
                 <div>
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                        <span class="text-3xl font-bold text-sunsetOrange-500">3</span>
+                        class="flex items-center justify-center w-32 h-32 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                        <span class="text-3xl font-bold text-sunsetOrange-500">
+                            <UIcon class="w-20 h-20" name="fa6-solid:broom" dynamic></UIcon>
+                        </span>
                     </div>
-                    <h3 class="mt-6 text-xl text-white font-semibold leading-tight md:mt-10">Wybierz styl!</h3>
-                    <p class="mt-4 text-base text-white md:text-lg">
+                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">3. Wybierz styl!</h3>
+                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         Przygotowaliśmy ich dla Ciebie aż 30! Od klasycznych, skandynawskich czy boho, po takie w stylu barbie,anime czy jaskini batmana!
                     </p>
                 </div>
