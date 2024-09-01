@@ -1,7 +1,7 @@
 <template>
     <HeroMain/>
-    <section class="flex items-center flex-col justify-between">
-    <section class="mx-auto container max-w-6xl">
+    <section class="flex items-center flex-col justify-between pt-0">
+    <section class="mx-auto container max-w-6xl lg:scroll-pt-24 pt-14 lg:pb-14">
     <div class="mx-auto px-4 lg:flex">
         <div class="sm:text-center lg:text-left lg:w-1/2">
             <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none">AI Room Design -  <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">przeprojektuj</span> swój dom za pomocą AI!</h2>
@@ -9,14 +9,21 @@
             <p class="text-xl lg:text-2xl mt-6 font-light">Bez względu na to, czy marzysz o elegancji lat 20-tych, rustykalnym uroku czy może odważnym stylu Barbie – nasz AI Room Generator <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">przemebluje Twoją przestrzeń </span>nie do poznania!</p>
         </div>
         <div class="lg:w-1/2">
-          <img src="/public/promo-img.webp"/>
+          <NuxtImg src="/promo-img.webp"/>
         </div>
     </div>
 </section>
      <HowItWorks />
-      <PortfolioExamples />
+     <PortfolioExamples />
+     <BgCta />
+     <AboutFeatures/>
+     <MosaicSection/>
+     <ComparisonSection/>
       <div class="w-full">
         <AppTestimonials />
+      </div>
+      <div class="w-full">
+        <PricingSection/>
       </div>
       <div class="w-full">
         <FaqList />
