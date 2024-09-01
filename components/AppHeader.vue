@@ -6,9 +6,9 @@
       </NuxtLink>
       <div v-if="!isMobile">
         <NuxtLink v-if="!user" to="/login" class="text-sm font-semibold text-aquaBlue-500">
-          Logowanie
+          Logowanie / Rejestracja
         </NuxtLink>
-        <NuxtLink v-if="user" to="/design" class="text-sm mr-4">
+        <NuxtLink v-if="user" to="/design" class="focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-2 text-white mr-4  rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
           Twórz
         </NuxtLink>
         <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
