@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <UModal v-model="isLightbox" :transition="false" :ui="{ container: 'items-center justify-center', width: 'w-full h-full' }">
+    <UModal v-model="isLightbox" :transition="false" :ui="{ container: 'items-center justify-center',width: 'min-w-[75vw] lg:min-w-[50vw]' }">
   <div class="flex items-center justify-center w-full h-full">
     <ComparisonSlider :images="[originalImage, modalImg.src]" :is-home="false" class="w-full h-full" />
     <UIcon @click="downloadImage(modalImg.src)" width="56" height="56" class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline" />
