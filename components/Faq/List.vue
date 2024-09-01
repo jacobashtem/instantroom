@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white">
-      <section class="max-w-6xl mx-auto py-10 sm:py-20">
+      <section class="max-w-6xl mx-auto pb-24">
         <div class="text-center lg:text-left flex items-center justify-center flex-col gap-y-2 py-5">
           <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none">
             <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Najczęściej</span> zadawane pytania

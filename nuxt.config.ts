@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     },
   },
   css: ["/layouts/global.css"],
+  colorMode: {
+    preference: 'light'
+  },
   modules: [
     '@nuxt/image-edge',
     '@nuxt/image',

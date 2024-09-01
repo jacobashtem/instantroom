@@ -1,9 +1,9 @@
 <template>
-<section id="works" class="w-[100vw] relative bg-aquaBlue-500 py-10 sm:py-16 lg:py-24">
+<section id="works" class="w-[100vw] relative bg-aquaBlue-500 py-10 sm:py-16 pt-14 pb-24 lg:pt-24 lg:pb-32">
     <div class="px-4 mx-autol sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">Jak działa nasz <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">  AI Room</span> Generator?</h2>
-            <p class="text-base font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
+            <p class="text-xl lg:text-2xl mt-6 font-light  tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl">
                 Instant Room to pierwsze polskie narzędzie AI, które pomoże Ci w przeprojektowaniu domu lub mieszkania według Twojej wizji.
             </p>
         </div>
@@ -18,8 +18,8 @@
                             <UIcon class="w-24 h-24" name="bi:camera-fill" dynamic>1</UIcon>
                         </span>
                     </div>
-                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">1. Wgraj zdjęcie...</h3>
-                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
+                    <h3 class="text-xl lg:text-2xl mt-6 font-light mt-6 font-semibold leading-tight  tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl  md:mt-10">1. Wgraj zdjęcie...</h3>
+                    <p class="mt-4  text-lg  font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         ...swojego pomieszczenia lub skorzystaj z naszej Biblioteki
                     </p>
                 </div>
@@ -30,9 +30,9 @@
                             <UIcon class="w-24 h-24" dynamic name="fluent:conference-room-20-filled"></UIcon>
                         </span>
                     </div>
-                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">
+                    <h3 class="text-xl lg:text-2xl mt-6  mt-6 font-semibold leading-tight   tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl  md:mt-10">
                         2. Wybierz rodzaj pokoju...</h3>
-                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
+                    <p class="mt-4  text-lg  font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         ...salon, jadalnia, pokój dziecięcy, taras, łazienka, kuchnia, sypialnia, biuro – <span class="bg-sunsetOrange-500 font-semibold text-white leading-6 px-3">wybór należy do Ciebie!</span>
                     </p>
                 </div>
@@ -43,8 +43,8 @@
                             <UIcon class="w-20 h-20" name="fa6-solid:broom" dynamic></UIcon>
                         </span>
                     </div>
-                    <h3 class="mt-6 font-semibold leading-tight text-base  tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl  md:mt-10">3. Wybierz styl!</h3>
-                    <p class="mt-4  md:text-lg text-base font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
+                    <h3 class="text-xl lg:text-2xl mt-6 mt-6 font-semibold leading-tight tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl  md:mt-10">3. Wybierz styl!</h3>
+                    <p class="mt-4  text-lg  font-light tracking-tight text-white sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">
                         Przygotowaliśmy ich dla Ciebie aż 30! Od klasycznych, skandynawskich czy boho, po takie w stylu barbie,anime czy jaskini batmana!
                     </p>
                 </div>

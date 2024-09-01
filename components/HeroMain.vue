@@ -1,6 +1,6 @@
 <template>
-  <div class="h-[700px] bg-aquaBlue-500 mb-40 sm:mb-80 lg:mb-24 md:items-center flex pt-32 xs:pt-32 sm:pt-80 lg:pt-0">
-    <div class="mx-auto pt-16 px-3 flex justify-between items-center my-3 container max-w-6xl">
+  <div class="pt-14 pb-24 bg-aquaBlue-500 lg:mb-16 md:items-center flex">
+    <div class="mx-auto pt-24  px-3 flex justify-between items-center my-3 container max-w-6xl">
         <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8 max-w-6xl mx-auto">
             <div class="sm:text-center md:mx-auto md:max-w-2xl col-span-12 lg:col-span-6 lg:flex lg:items-center lg:text-left">
                 <div class="space-y-8">
