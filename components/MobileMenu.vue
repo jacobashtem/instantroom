@@ -17,7 +17,7 @@
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="!user" to="/login" class="font-semibold text-white">
                             <UIcon name="mdi:user" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                            Logowanie
+                            Logowanie / Rejestracja
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
