@@ -12,7 +12,13 @@
                 <p class="text-6xl xs:text-8xl font-bold bulgariamoderna flex flex-col pt-8 pb-0 text-white">
                     Instant<span class="text-3xl">Room!</span>
                 </p>
-                <div data-v-3024d910="" class="pt-8 mt-8 border-t flex right-0"></div>
+                <div data-v-3024d910="" class="pt-8 mt-8 border-t flex right-0 relative">
+                    <div class="flex justify-between md:justify-between w-full absolute -top-5">
+                        <NuxtLink class="hover:opacity-25 transition-all" to="https://www.instagram.com/instantroom.pl/" external target="_blank"><UIcon class="w-10 h-10" name="skill-icons:instagram" dynamic /></NuxtLink>
+                        <NuxtLink class="hover:opacity-25 transition-all" to="https://www.facebook.com/instantroompl" external target="_blank"><UIcon class="w-10 h-10" dynamic name="logos:facebook" /></NuxtLink>
+                        <NuxtLink class="hover:opacity-25 transition-all" to="https://pl.pinterest.com/instantroompl/" external target="_blank"><UIcon class="w-10 h-10 bg-white rounded-full" name="logos:pinterest" dynamic /></NuxtLink>
+                    </div>
+                </div>
                 <ul class="text-xl mb-4 z-30">
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="!user" to="/login" class="font-semibold text-white">

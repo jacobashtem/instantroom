@@ -1,12 +1,12 @@
 <template>
 <div v-if="isGenerating" class="text-base mb-2 text-coolGray-500 animate-pulse">
         <p>{{ formattedTime }}</p>
-        <p v-if="elapsedTime >= 60 && elapsedTime < 120">Proces trwa już ponad minutę! To może jeszcze chwilę potrwac.</p>
+        <!-- <p v-if="elapsedTime >= 60 && elapsedTime < 120">Proces trwa już ponad minutę! To może jeszcze chwilę potrwac.</p>
         <p v-if="elapsedTime >= 120 && elapsedTime < 180">Proces trwa już ponad dwie minuty! Jeszcze tylko chwilka...</p>
         <p v-if="elapsedTime >= 300">Proces trwa już zbyt długo! Nie zapłacisz za tą wizualizację. </br />
             Nasze silniki dostają zadyszki - spróbuj ponownie za chwilę!<br />
             Najprawdopodobniej, swoją darmową wizualizację zobaczysz za chwilę w zakładce 'Ostatnie wizualizacje.'
-        </p>
+        </p> -->
     </div>
 </template>
 

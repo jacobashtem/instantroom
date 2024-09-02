@@ -49,7 +49,7 @@
               Zapomniałem hasła
             </p>
           </UForm>
-          <div class="text-lg text-sunsetOrange-500 font-semibold" v-else-if="success && item.key === 'Rejestracja'">
+          <div class="text-md text-green-600 font-semibold" v-else-if="success && item.key === 'Rejestracja'">
             Dokonano rejestracji. Za chwilę otrzymasz mail z linkiem umożliwiającym potwierdzenie rejestracji.
           </div>
         </div>
