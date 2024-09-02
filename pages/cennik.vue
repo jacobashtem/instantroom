@@ -20,7 +20,6 @@
                 </div>
             </div>
             <div class="flex flex-wrap items-center justify-center w-full text-center">
-                <!-- basic plan -->
                 <div class="w-full p-4 md:w-1/2 lg:w-1/3">
                     <div class="flex flex-col rounded-xl bg-white  text-black pb-4 shadow-2xl">
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
@@ -43,7 +42,7 @@
                             </div>
                         </div>
                         <!-- <NuxtLink to=""> -->
-                            <UButton @click="navigate(`https://buy.stripe.com/test_00gaGPgs34Du65ycMM?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                            <UButton @click="navigate(`https://buy.stripe.com/aEUbKc9Fi07TeA0aEH?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                                 <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                             </UButton>
                             
@@ -72,7 +71,7 @@
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton @click="navigate(`https://buy.stripe.com/test_4gwbKTgs36LC65y145?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton @click="navigate(`https://buy.stripe.com/00g4hKeZC07TfE43ce?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                         </UButton>                           
                     </div>
@@ -81,7 +80,7 @@
                 <div class="w-full p-4 md:w-1/2 lg:w-1/3">
                     <div class="flex flex-col rounded-xl bg-white  text-black pb-4 shadow-2xl">
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
-                            <h3>Pakiet podstawowy</h3>
+                            <h3>Pakiet lux</h3>
                             <p class="text-5xl font-bold pb-0">
                                 79,90<span class="text-2xl">zł</span>
                             </p>
@@ -99,7 +98,7 @@
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton @click="navigate(`https://buy.stripe.com/test_28o8yH7Vx1ribpS146?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton @click="navigate(`https://buy.stripe.com/bIY15y7xa3k563u145?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                         </UButton>
                     </div>

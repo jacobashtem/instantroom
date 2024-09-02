@@ -41,7 +41,7 @@
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                            <UButton v-if="user" @click="navigate(`https://buy.stripe.com/test_00gaGPgs34Du65ycMM?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                            <UButton v-if="user" @click="navigate(`https://buy.stripe.com/aEUbKc9Fi07TeA0aEH?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                                 <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                             </UButton>
                             <NuxtLink v-else to='/login' variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
@@ -70,7 +70,7 @@
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton v-if="user" @click="navigate(`https://buy.stripe.com/test_4gwbKTgs36LC65y145?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton v-if="user" @click="navigate(`https://buy.stripe.com/00g4hKeZC07TfE43ce?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                         </UButton>
                         <NuxtLink v-else to='/login' variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
@@ -100,7 +100,7 @@
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
                             </div>
                         </div>
-                        <UButton v-if="user" @click="navigate(`https://buy.stripe.com/test_28o8yH7Vx1ribpS146?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
+                        <UButton v-if="user" @click="navigate(`https://buy.stripe.com/bIY15y7xa3k563u145?client_reference_id=${user.id}`)" variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
                             <UIcon width="24" height="24" name="mdi:cart-outline" dynamic /> Kup pakiet
                         </UButton>
                         <NuxtLink v-else to='/login' variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4 flex justify-center mx-8">
@@ -113,4 +113,7 @@
 </template>
 <script setup>
 const user = useSupabaseUser();
+const navigate = (url) => {
+        window.location.href = url;
+    };
 </script>
