@@ -7,7 +7,7 @@
                     <NuxtLink class="hover:text-coolGray-200 transition-all" to="polityka-prywatnosci">Polityka prywatności</NuxtLink>
                     <NuxtLink class="hover:text-coolGray-200 transition-all" to="obowiazek-informacyjny">RODO</NuxtLink>
                 </div>
-                <p>Created by Jakub Asztemborski © 2024</p>
+                <p>Created by instantroom.pl © 2024</p>
             </div>
             <div>Masz jakieś pytania lub sugestie?<br/> Skontaktuj się z nami: <a class="font-semibold" href="mailto:team@instantroom.pl">team@instantroom.pl</a></div>
         </div>
