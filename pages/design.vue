@@ -194,36 +194,57 @@ const fetchPredictionStatus = async (id, theme) => {
     generatedImages.value.push(placeholder);
     const placeholderIndex = generatedImages.value.length - 1;
 
-    while (true) {
-        loading.value = true;
-        await sleep(1000);
-        const statusResponse = await fetch(`/api/predictions/${id}`);
-        const statusData = await statusResponse.json();
-        currentStatus.value = statusData.status;
-        if (statusResponse.status !== 200) {
-            error.value = statusData.detail;
-            generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed' };
-            setImageCookie('generatedImages', prediction.value.output);
-            loading.value = false;
-            break;
-        }
+    let retries = 20;
+    const waitTime = 2000;
 
-        prediction.value = statusData;
-        const progress = extractLastPercentage(statusData.logs);
-        generatedImages.value[placeholderIndex].progress = progress;
-
-        if (['succeeded', 'failed'].includes(statusData.status)) {
-            imgSrc.value = prediction.value.output;
-            loading.value = false;
-            if (statusData.status === 'succeeded') {
-                generatedImages.value[placeholderIndex] = { src: prediction.value.output, theme, status: 'succeeded', progress: '100%' };
-                setImageCookie(prediction.value.output);
-                decrementToken();
-                firstGenerationFinished.value = true;
-            } else {
-                generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed', progress: progress };
+    while (retries > 0) {
+        try {
+            loading.value = true;
+            await sleep(1000);    
+            const statusResponse = await fetch(`/api/predictions/${id}`);
+            const contentType = statusResponse.headers.get('content-type');
+            if (contentType && contentType.includes('text/html')) {
+                throw new Error('Server returned an HTML response instead of JSON');
             }
-            break;
+
+            const statusData = await statusResponse.json();
+            currentStatus.value = statusData.status;
+            if (statusResponse.status !== 200) {
+                error.value = statusData.detail;
+                generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed' };
+                setImageCookie('generatedImages', prediction.value.output);
+                loading.value = false;
+                break;
+            }
+
+            prediction.value = statusData;
+            const progress = extractLastPercentage(statusData.logs);
+            generatedImages.value[placeholderIndex].progress = progress;
+
+            if (['succeeded', 'failed'].includes(statusData.status)) {
+                imgSrc.value = prediction.value.output;
+                loading.value = false;
+                if (statusData.status === 'succeeded') {
+                    generatedImages.value[placeholderIndex] = { src: prediction.value.output, theme, status: 'succeeded', progress: '100%' };
+                    setImageCookie(prediction.value.output);
+                    decrementToken();
+                    firstGenerationFinished.value = true;
+                } else {
+                    generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed', progress: progress };
+                }
+                break;
+            }
+        } catch (error) {
+            console.warn(`Błąd w fetchPredictionStatus: ${error.message}. Pozostało prób: ${retries - 1}`);
+            retries--;
+
+            if (retries > 0) {
+                await sleep(waitTime);
+            } else {
+                generatedImages.value[placeholderIndex] = { ...placeholder, status: 'failed' };
+                loading.value = false;
+                console.error('Próby ponowienia się nie powiodły, przerywamy.');
+            }
         }
     }
 };
