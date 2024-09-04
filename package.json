@@ -19,6 +19,8 @@
     "@tailwindcss/typography": "^0.5.10",
     "@unlok-co/nuxt-stripe": "^3.0.0",
     "@vueuse/core": "^10.10.0",
+    "browser-image-compression": "^2.0.2",
+    "heic2any": "^0.0.4",
     "nuxt": "^3.11.2",
     "nuxt-scheduler": "^0.1.9",
     "replicate": "^0.29.4",
