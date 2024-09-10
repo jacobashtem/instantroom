@@ -2,13 +2,14 @@ export const useRedirectBasedOnAuth = (authenticatedUrl = '/', unauthenticatedUr
   const user = useSupabaseUser();
   const router = useRouter();
 
-  watch(user, (newUser) => {
+  watch(() => user.value, (newUser) => {
     const currentRoute = router.currentRoute.value.path;
 
     if (newUser && currentRoute !== authenticatedUrl) {
-      navigateTo(authenticatedUrl);
-    } else if (!newUser && currentRoute !== unauthenticatedUrl) {
-      navigateTo(unauthenticatedUrl);
+      router.push(authenticatedUrl);
+    }
+    else if (!newUser && currentRoute !== unauthenticatedUrl) {
+      router.push(unauthenticatedUrl);
     }
   }, { immediate: true });
 

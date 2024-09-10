@@ -8,16 +8,24 @@
             Bez kruczków. Bez podawania danych płatniczych.
         </p>
         <div class="mt-10">
-            <NuxtLink :to=" user?.id ? '/design': '/login'">
-                            <UButton variant="solid" class="mt-4 finline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-600">
-                            <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
-                            </UButton>
-                        </NuxtLink>
+            <NuxtLink v-if="isLoggedIn" to="/design">
+                <UButton variant="solid"  class="mt-4 finline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-600">
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                </UButton>
+            </NuxtLink>
+            <NuxtLink v-else to="/login">
+                <UButton variant="solid"  class="mt-4 finline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-600">
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                </UButton>
+            </NuxtLink>
         </div>
     </div>
 </div>
 </template>
 
 <script setup>
-const user = useSupabaseUser();
+const { isLoggedIn, getUser } = useLoggedIn();
+onMounted(async () => {
+    await getUser();
+})
 </script>
