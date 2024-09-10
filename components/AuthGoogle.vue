@@ -30,7 +30,7 @@ const pending = ref(false);
 const signInWithGoogle = async (response) => {
     pending.value = true;
     try {
-        const redirectTo = window.location.origin + '/confirm'; // Get current domain
+        const redirectTo = window.location.origin + '/confirm';
         await supabase.auth.signInWithOAuth({
             provider: "google",
         });

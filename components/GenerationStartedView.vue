@@ -39,12 +39,12 @@
             Wizualizowanie <UIcon class="w-10 h-10" name="pepicons-print:paint-pallet-off" dynamic></UIcon>
           </span> - rozpoczyna się zaraz po rozgrzewce i potrwa już tylko kilkanaście sekund.
         </p>
-        <p class="text-base text-coolGray-500" v-else>
+        <p v-else-if="generationFailed" class="text-base text-coolGray-500" >
           <span class="text-sunsetOrange-600">
             Przerwano <UIcon class="w-10 h-10" name="fluent:paint-brush-subtract-32-filled" dynamic></UIcon>
           </span> generowanie wizualizacji. Spokojnie, nie pobierzemy tokenów! Spróbuj ponownie za chwilę.
         </p>
-        <UButton @click="emit('start-new-generation')" variant="solid"
+        <UButton v-if="generationFailed" @click="emit('start-new-generation')" variant="solid"
           class="bg-coolGray-500 font-semibold mt-4 disabled:bg-coolGray-300 rounded-lg hover:bg-coolGray-700 text-lg  p-4">
           <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> Zacznij od nowa
         </UButton>
@@ -68,7 +68,8 @@ const props = defineProps({
 });
 
 const hasProcessingStarted = ref(false);
-const generationFailed = ref(true);
+const generationFailed = ref(false);
+const emit = defineEmits(['startNewGeneration'])
 
 watch(() => props.currentStatus, (newStatus) => {
   if (newStatus === 'processing') {

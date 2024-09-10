@@ -1,28 +1,89 @@
+<script setup>
+import { useMediaQuery } from "@vueuse/core";
+import { useRouter } from 'vue-router';
+const isMobile = useMediaQuery("(max-width: 640px)");
+
+const router = useRouter();
+const { isLoggedIn, getUser, clearUser } = useLoggedIn();
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+const { tokens, getTokens, updateTokens } = useUserTokens(); // Przywrócone zarządzanie tokenami
+
+
+onMounted(async () => {
+  await getUser(); 
+  await getTokens();
+});
+
+const logout = async () => {
+  await supabase.auth.signOut();
+  clearUser();
+  router.push('/login');
+};
+
+const items = ref([
+  [
+    {
+      label: user.value?.email || 'Nieznany użytkownik', 
+      slot: 'account',
+      disabled: true,
+    },
+  ],
+  [
+    {
+      label: `Ilość tokenów: ${tokens.value}`,
+      icon: 'i-heroicons-cog-8-tooth-20-solid',
+      click: async () => router.push('/cennik'),
+    },
+    {
+      label: `Ustawienia profilu`,
+      icon: 'i-heroicons-shopping-cart-solid',
+      click: async () => router.push('/settings/profile'),
+    },
+    {
+      label: `Wyloguj`,
+      icon: 'i-heroicons-arrow-left-on-rectangle',
+      click: async () => {
+        await logout();
+      },
+    },
+  ],
+]);
+
+// Aktualizacja ilości tokenów
+watch(tokens, (newTokens) => {
+  items.value[1][0].label = `Ilość tokenów: ${newTokens}`;
+});
+</script>
+
 <template>
   <div class="fixed top-0 bg-white w-full z-30 shadow-2xl">
     <header class="px-4 flex justify-between items-center my-3 mx-auto container max-w-6xl">
       <NuxtLink to="/" class="text-xl font-bold">
-        <img class="w-52" src="/public/logo.png">
+        <img class="w-52" src="/public/logo.png" />
       </NuxtLink>
       <div v-if="!isMobile">
-        <NuxtLink v-if="!user" to="/login" class="text-sm font-semibold text-aquaBlue-500">
+        <!-- Logowanie -->
+        <NuxtLink v-if="!isLoggedIn" to="/login" class="text-sm font-semibold text-aquaBlue-500">
           Logowanie / Rejestracja
         </NuxtLink>
-        <NuxtLink v-if="user" to="/design" class="focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-2 text-white mr-4  rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
+
+        <!-- Tworzenie projektów -->
+        <NuxtLink
+          v-if="isLoggedIn"
+          to="/design"
+          class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-2 text-white mr-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4"
+        >
           Twórz
         </NuxtLink>
-        <NuxtLink v-if="user" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
-        <NuxtLink v-if="user" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
-        <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="user">
-          <UAvatar :src="url" alt="Avatar" />
+        <NuxtLink v-if="isLoggedIn" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
+        <NuxtLink v-if="isLoggedIn" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
+        <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="isLoggedIn">
+          <UAvatar icon="i-heroicons-photo" alt="Avatar" />
           <template #account="{ item }">
             <div class="text-left">
-              <p>
-                Zalogowany jako
-              </p>
-              <p class="font-medium text-gray-900 dark:text-white">
-                {{ item.label }}
-              </p>
+              <p>Zalogowany jako</p>
+              <p class="font-medium text-gray-900 dark:text-white">{{ item.label }}</p>
             </div>
           </template>
           <template #item="{ item }">
@@ -31,53 +92,7 @@
           </template>
         </UDropdown>
       </div>
-      <MobileMenu :menu-items="items" v-if="isMobile"  />
+      <MobileMenu :menu-items="items" v-if="isMobile" />
     </header>
   </div>
 </template>
-
-<script setup>
-import { useMediaQuery } from "@vueuse/core";
-const isMobile = useMediaQuery("(max-width: 640px)");
-const supabase = useSupabaseClient()
-const user = useSupabaseUser();
-const { tokens, getTokens, updateTokens } = useUserTokens()
-const route = useRoute()
-
-const items = ref([
-  [{
-    label: user.value?.email,
-    slot: 'account',
-    disabled: true
-  }], [{
-    label: `Ilość tokenów: ${tokens.value}`,
-    icon: 'i-heroicons-cog-8-tooth-20-solid',
-    click: async () => navigateTo('/cennik'),
-    url: '/cennik'
-  },
-  {
-    label: `Ustawienia profilu`,
-    icon: 'i-heroicons-shopping-cart-solid',
-    click: async () => navigateTo('/settings/profile'),
-    url: '/settings/profile'
-  },
-  
-  {
-    label: 'Wyloguj',
-    icon: 'i-heroicons-arrow-left-on-rectangle',
-    click: async () => {
-      await supabase.auth.signOut()
-      const { data: { user: userData } } = await supabase.auth.getUser()
-      useRedirectBasedOnAuth('/') 
-    }
-  }]
-])
-
-watch(tokens, (newTokens) => {
-  items.value[1][0].label = `Ilość tokenów: ${newTokens}`
-})
-
-onMounted(() => {
-
-})
-</script>
