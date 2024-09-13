@@ -32,12 +32,12 @@ const items = ref([
   [
     {
       label: `Ilość tokenów: ${tokens.value}`,
-      icon: 'i-heroicons-cog-8-tooth-20-solid',
+      icon: 'i-heroicons-swatch-solid',
       click: async () => router.push('/cennik'),
     },
     {
       label: `Ustawienia profilu`,
-      icon: 'i-heroicons-shopping-cart-solid',
+      icon: 'i-heroicons-cog-8-tooth-20-solid',
       click: async () => router.push('/settings/profile'),
     },
     {
@@ -60,7 +60,7 @@ watch(tokens, (newTokens) => {
   <div class="fixed top-0 bg-white w-full z-30 shadow-2xl">
     <header class="px-4 flex justify-between items-center my-3 mx-auto container max-w-6xl">
       <NuxtLink to="/" class="text-xl font-bold">
-        <img class="w-52" src="/public/logo.png" />
+        <img class="w-10" src="/public/logo.webp" />
       </NuxtLink>
       <div v-if="!isMobile">
         <!-- Logowanie -->
@@ -79,7 +79,7 @@ watch(tokens, (newTokens) => {
         <NuxtLink v-if="isLoggedIn" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
         <NuxtLink v-if="isLoggedIn" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="isLoggedIn">
-          <UAvatar icon="i-heroicons-photo" alt="Avatar" />
+          <UAvatar icon="i-heroicons-user" alt="Avatar" />
           <template #account="{ item }">
             <div class="text-left">
               <p>Zalogowany jako</p>
@@ -88,7 +88,7 @@ watch(tokens, (newTokens) => {
           </template>
           <template #item="{ item }">
             <span class="truncate">{{ item.label }}</span>
-            <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" />
+            <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" dynamic/>
           </template>
         </UDropdown>
       </div>
