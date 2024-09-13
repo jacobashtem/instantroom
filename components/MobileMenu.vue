@@ -39,7 +39,7 @@
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="user" to="/cennik" class=" text-white mr-4">
-                            <UIcon name="material-symbols:money" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
+                            <UIcon name="i-heroicons-shopping-cart-solid" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
                                 Cennik
                         </NuxtLink>
                     </li>
