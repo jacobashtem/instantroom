@@ -6,7 +6,7 @@
         @click="isModal = true"
         class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center"
       >
-        <UIcon class="w-8 h-8 mr-3" name="solar:gallery-wide-broken" dynamic />
+        <UIcon class="w-5 h-5 mr-3" name="subway:upload-1" dynamic />
         Wgraj zdjęcie!
       </UButton>
       <div v-else>
@@ -16,6 +16,14 @@
           width="36"
           height="36"
           name="ic:round-change-circle"
+          dynamic
+        />
+        <UIcon
+          @click="isChosenImgSrc = false;"
+          class="hover:scale-110 transition-all cursor-pointer absolute top-12 right-5 text-white"
+          width="30"
+          height="30"
+          name="zondicons:minus-solid"
           dynamic
         />
       </div>
@@ -63,12 +71,14 @@
   })
   const isModal = useState("modal");
   const isChosenImgSrc = useState("chosenImgSrc");
+  const chosenImgSource = useState('chosenImgSource');
   const userUploadedPhotos = useState("userUploadedPhotos");
-  
   const chosenImgHandler = (event) => {
     isChosenImgSrc.value = event.target.currentSrc;
+    chosenImgSource.value = 'uploaded';
     isModal.value = !isModal.value;
   }
+
 
   </script>
   
