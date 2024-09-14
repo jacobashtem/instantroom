@@ -6,39 +6,44 @@
                     <h2 class="text-3xl font-semibold text-center md:text-left">
                         Znajdź <span class="hidden md:inline-block">swoją</span> <span class="text-sunsetOrange-500">inspirację.</span>
                     </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-2">
+                    <div class="grid grid-cols-1 items-center gap-2">
                         <div class="flex mt-6 items-center justify-center md:justify-start">
-                            <template v-if="!isChosenImgSrc">
-                                <p class="mr-6 hidden md:inline-block text-2xl font-semibold">Po pierwsze: </p>
-                                <UploadedGallery />
-                            </template>
+                            <div v-if="!isChosenImgSrc">
+                                <div class="flex  w-full justify-center flex-wrap gap-1">
+                                    <p class="mr-6 hidden md:inline-block text-2xl font-semibold">Po pierwsze: </p>
+                                        <UploadedGallery /> <span class="flex items-center mx-4">lub</span> <ExampleGallery />
+                                </div>
+                            </div>
                             <div class="col-span-4 flex flex-col" v-else>
                                 <h3 class="text-2xl font-semibold mb-2 text-center md:text-left">Wybrane <span class="text-sunsetOrange-500">zdjęcie: </span></h3>
                                 <div class="relative">
                                     <img class="h-40 w-80 object-cover mb-2 brightness-75" :src="isChosenImgSrc" alt="wybrane zdjęcie">
-                                    <UploadedGallery changeImgView />
+                                    <UploadedGallery v-if="chosenImgSource === 'uploaded'" changeImgView />
+                                    <ExampleGallery v-if="chosenImgSource === 'example'" changeImgView />
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex items-center md:mt-6 justify-center md:justify-start">
-                            <p class="text-2xl font-semibold mr-4">Odmień <span class="hidden md:inline-block">w kilka <span class="text-sunsetOrange-500">sekund</span></span></p>
-                            <UFormGroup class="mt-6 mb-4 mr-4 ring-0">
-                                <USelect option-attribute="label" size="xl" selected padded class="text-center font-semibold text-sunsetOrange-500" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
-                            </UFormGroup>
                         </div>
                     </div>
                 </div>
                 <UCarousel arrows  v-slot="{ item }" :items="themes" :prev-button="{ class: 'z-20' }" :next-button="{ class: 'z-20' }" :ui="{ item: 'snap-start' }">
-                    <div class="relative select-none transition-all">
+                    <div class="relative select-none transition-all border">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <p class="z-10 relative py-2 px-6 rounded-xl text-white bg-aquaBlue-500/60 font-light text-2xl">{{ item }}</p>
                         </div>
-                        <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'" :src="`/themes/${item}.webp`" width="320" draggable="false">
+                        <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'" :src="`/themes/${item}.webp`" width="280" class="h-60 object-cover" draggable="false">
                         <UIcon v-if="!isSelected(item)" @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" width="36" height="36" name="subway:add" dynamic></UIcon>
                         <UIcon v-else @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500" width="36" height="36" name="zondicons:minus-solid" dynamic></UIcon>
                     </div>
                 </UCarousel>
-                <div class="shadow-2xl rounded-2xl mt-12 py-8 px-4 flex-col items-left grid grid-cols-1 xs:grid-cols-12 gap-4">
+                <div class="flex items-center mt-6 justify-center md:justify-start">
+                    <p class="text-2xl font-semibold mr-4"><span class="md:inline-block hidden">Po drugie: </span>
+                        <span class="text-sunsetOrange-500 capitalize md:normal-case"> odmień</span> 
+                        <span class="hidden md:inline-block"></span></p>
+                    <UFormGroup class="ring-0">
+                        <USelect option-attribute="label" size="xl" selected padded class="text-center font-semibold text-sunsetOrange-500" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
+                    </UFormGroup>
+                </div>
+                <div class="shadow-2xl rounded-2xl mt-9 py-8 px-4 flex-col items-left grid grid-cols-1 xs:grid-cols-12 gap-4">
                     <div class="col-span-4">
                         <h3 class="text-left text-2xl font-semibold mb-2">
                             Wybrane <span class="text-sunsetOrange-500">motywy: </span>
@@ -111,6 +116,7 @@ const selectedThemes = ref([]);
 const selectedRoomType = ref('');
 const generatedImages = ref([]);
 const isChosenImgSrc = useState("chosenImgSrc");
+const chosenImgSource = useState('chosenImgSource');
 const userUploadedPhotos = useState("userUploadedPhotos");
 const isSpendTokensModal = useState("spendTokensModal");
 const notEnoughTokensAlert = ref(false);
