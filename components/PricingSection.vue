@@ -113,6 +113,7 @@
 </template>
 <script setup>
 const { isLoggedIn } = useLoggedIn();
+const user = useSupabaseUser();
 const navigate = (url) => {
         window.location.href = url;
     };

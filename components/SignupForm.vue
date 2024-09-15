@@ -31,7 +31,7 @@
             </UFormGroup>
             <UFormGroup name="password" class="mb-4" :required="true"
               v-if="!showResetPassword"
-              :help="item.key === 'Rejestracja' ? 'Po kliknięciu w button, otrzymasz wiadomość e-mail z linkiem potwierdzającym': 'Po podaniu swoich danych logowania, zostaniesz zalogowany do serwisu.'">
+              :help="item.key === 'Rejestracja' ? 'Po kliknięciu w przycisk, otrzymasz wiadomość e-mail z linkiem potwierdzającym': 'Po podaniu swoich danych logowania, zostaniesz zalogowany do serwisu.'">
               <UInput v-model="state.password"
                 :inputClass="'focus:ring-aquaBlue-500 mb-4 w-full px-8 py-4 rounded-lg font-medium text-sm w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white'"
                 type="password" placeholder="Hasło" required />
