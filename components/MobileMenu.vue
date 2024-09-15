@@ -46,7 +46,7 @@
                     <li @click="item.label !== 'Wyloguj'? toggleMenu() : logOut()" class="flex items-center py-3 text-white" v-for="item in menuItems[1]">
                         <NuxtLink v-if="user" :to="item.url" class="flex text-white mr-4">
                             <UIcon :name="item.icon" class="mr-4 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" />
-                            {{ item.label }}
+                          {{ item.label }}
                         </NuxtLink>
                     </li>
                 </ul>

@@ -31,13 +31,15 @@ const items = ref([
   ],
   [
     {
-      label: `Ilość tokenów: ${tokens.value}`,
+      label: `Liczba tokenów: ${tokens.value}`,
       icon: 'i-heroicons-swatch-solid',
+      url: '/cennik',
       click: async () => router.push('/cennik'),
     },
     {
       label: `Ustawienia profilu`,
       icon: 'i-heroicons-cog-8-tooth-20-solid',
+      url: '/settings/profile',
       click: async () => router.push('/settings/profile'),
     },
     {
@@ -49,10 +51,8 @@ const items = ref([
     },
   ],
 ]);
-
-// Aktualizacja ilości tokenów
 watch(tokens, (newTokens) => {
-  items.value[1][0].label = `Ilość tokenów: ${newTokens}`;
+  items.value[1][0].label = `Liczba tokenów: ${newTokens}`;
 });
 </script>
 
