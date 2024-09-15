@@ -15,10 +15,10 @@
             <div class="mb-4 border-b text-center">
             <div
               class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-              lub zarejestruj się za pomocą e-mail
+              lub {{formTypeTxt === 'Logowanie' ? 'zaloguj się': 'zarejestruj się'}} za pomocą e-mail
             </div>
           </div>
-            <SignupForm />
+            <SignupForm @form-type="(formType) =>formTypeTxt = formType" />
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
   <script setup>
 const success = ref(false);
 const pending = ref(false);
-
+const formTypeTxt = ref('Logowanie');
 const { toastError } = useAppToast();
 const supabase = useSupabaseClient();
 useRedirectBasedOnAuth('/', '/login') 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UTabs :items="items">
+    <UTabs :items="items" @change="onChange">
       <template #item="{ item }">
         <div v-if="showResetPassword">
           <UForm :state="state" :schema="resetPasswordSchema" class="mx-auto max-w-xs" @submit="resetPassword">
@@ -62,15 +62,15 @@
 import { ref, computed, onMounted } from 'vue';
 import { z } from "zod";
 
-const items = [{
-  key: 'Rejestracja',
-  label: 'Rejestracja',
-  btnTxt: 'Zarejestruj się'
-}, {
+const items = [ {
   key: 'Logowanie',
   label: 'Logowanie',
   btnTxt: "Zaloguj się"
-}]
+},{
+  key: 'Rejestracja',
+  label: 'Rejestracja',
+  btnTxt: 'Zarejestruj się'
+},]
 
 const loading = ref(false);
 const success = ref(false);
@@ -234,4 +234,10 @@ onMounted(() => {
     }
   });
 });
+const emit = defineEmits(['formType'])
+const onChange = (index) => {
+  const item = items[index]
+
+  emit('formType', item.label);
+}
 </script>
