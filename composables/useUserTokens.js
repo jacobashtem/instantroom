@@ -1,55 +1,72 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser()
+  const user = useSupabaseUser();
   const tokens = ref(null);
   const showModal = ref(false);
 
   const getTokens = () => {
-    if (!user.value) return null;
+    if (!user.value) {
+      return;
+    }
     tokens.value = user.value.user_metadata?.tokens || 0;
   };
 
   const updateTokens = async (newTokens) => {
-    if (!user.value) return;
+    if (!user.value) {
+      return;
+    }
 
     const currentTokens = parseInt(tokens.value) || 0;
     const updatedTokens = currentTokens + parseInt(newTokens);
 
-    const { error } = await supabase.auth.updateUser({
-      data: {
-        tokens: updatedTokens,
-      },
-    });
+    try {
+      const { data, error } = await supabase.auth.updateUser({
+        data: {
+          tokens: updatedTokens,
+        },
+      });
 
-    if (error) {
-      console.error('Error updating tokens:', error);
-      return;
+      if (error) {
+        console.error('Error updating tokens:', error);
+        return;
+      }
+
+      tokens.value = updatedTokens;
+    } catch (err) {
+      console.error('Unexpected error updating tokens:', err);
     }
-
-    tokens.value = updatedTokens;
   };
 
   const decrementToken = async () => {
-    if (!user.value || tokens.value <= 0) return;
-
-    const updatedTokens = parseInt(tokens.value) - 1;
-
-    const { error } = await supabase.auth.updateUser({
-      data: {
-        tokens: updatedTokens,
-      },
-    });
-
-    if (error) {
-      console.error('Error decrementing token:', error);
+    if (!user.value || tokens.value <= 0) {
       return;
     }
 
-    tokens.value = updatedTokens;
+    const updatedTokens = parseInt(tokens.value) - 1;
+
+    try {
+      const { data, error } = await supabase.auth.updateUser({
+        data: {
+          tokens: updatedTokens,
+        },
+      });
+
+      if (error) {
+        console.error('Error decrementing token:', error);
+        return;
+      }
+
+      tokens.value = updatedTokens;
+    } catch (err) {
+      console.error('Unexpected error decrementing token:', err);
+    }
   };
 
   const checkAndShowModal = () => {
-    if (!user.value) return;
+    if (!user.value) {
+      console.log('checkAndShowModal: No user');
+      return;
+    }
 
     const userMetadata = user.value.user_metadata || {};
     if (userMetadata.freeTokensGranted && !userMetadata.modalShown) {
@@ -58,31 +75,43 @@ export const useUserTokens = () => {
   };
 
   const closeFreeTokensGrantedModal = async () => {
-    if (!user.value) return;
-
-    const { error } = await supabase.auth.updateUser({
-      data: {
-        modalShown: true, 
-      },
-    });
-
-    if (error) {
-      console.error('Error updating modal shown status:', error);
+    if (!user.value) {
       return;
     }
 
-    showModal.value = false;
+    const userMetadata = user.value.user_metadata || {};
+
+    try {
+      const { data, error } = await supabase.auth.updateUser({
+        data: {
+          modalShown: true,
+        },
+      });
+
+      if (error) {
+        console.error('Error updating modal shown status:', error);
+        return;
+      }
+
+      showModal.value = false;
+    } catch (err) {
+      console.error('Unexpected error updating modalShown:', err);
+    }
   };
 
-  watch(user, () => {
-    if (user.value) {
-      getTokens();
-      checkAndShowModal();
-    } else {
-      tokens.value = null;
-      showModal.value = false;
-    }
-  }, { immediate: true });
+  watch(
+    user,
+    () => {
+      if (user.value) {
+        getTokens();
+        checkAndShowModal();
+      } else {
+        tokens.value = null;
+        showModal.value = false;
+      }
+    },
+    { immediate: true }
+  );
 
   return { tokens, showModal, getTokens, updateTokens, decrementToken, closeFreeTokensGrantedModal };
 };
