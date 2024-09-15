@@ -31,7 +31,7 @@ const items = ref([
   ],
   [
     {
-      label: `Ilość tokenów: ${tokens.value}`,
+      label: `Liczba tokenów: ${tokens.value}`,
       icon: 'i-heroicons-swatch-solid',
       url: '/cennik',
       click: async () => router.push('/cennik'),
@@ -52,7 +52,7 @@ const items = ref([
   ],
 ]);
 watch(tokens, (newTokens) => {
-  items.value[1][0].label = `Ilość tokenów: ${newTokens}`;
+  items.value[1][0].label = `Liczba tokenów: ${newTokens}`;
 });
 </script>
 
