@@ -124,7 +124,7 @@ const loading = ref(false);
 const prediction = ref(null);
 const error = ref(null);
 const imgSrc = ref('');
-const currentStatus = ref('');
+const currentStatus = ref('Rozgrzewka');
 const tokensToSpend = computed(() => selectedThemes.value.length);
 
 const supabase = useSupabaseClient();

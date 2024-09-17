@@ -75,60 +75,126 @@ const saveImage = async () => {
     try {
         converting.value = true;
         let processedFile = file;
-        if (file.name.toLowerCase().endsWith('.heic')) {
+        const originalExtension = file.name.split('.').pop().toLowerCase();
+        const extensionToMimeType = {
+            jpg: 'image/jpeg',
+            jpeg: 'image/jpeg',
+            png: 'image/png',
+            webp: 'image/webp',
+            heic: 'image/heic',
+        };
+
+        const originalMimeType = file.type;
+        const expectedMimeType = extensionToMimeType[originalExtension];
+
+        if (!expectedMimeType) {
+            toastError({ title: 'Nieobsługiwany format pliku.' });
+            converting.value = false;
+            return;
+        }
+
+        if (originalMimeType !== expectedMimeType) {
+            console.warn('Typ MIME nie zgadza się z rozszerzeniem. Używamy oczekiwanego typu MIME.');
+        }
+
+        // Ustawienie docelowego formatu i rozszerzenia
+        let targetFormat;
+        let targetExtension;
+
+        if (originalExtension === 'png') {
+            // Dla PNG konwertujemy do JPEG, aby usunąć kanał alfa
+            targetFormat = 'image/jpeg';
+            targetExtension = 'jpg';
+        } else {
+            // Dla pozostałych formatów konwertujemy do WebP
+            targetFormat = 'image/webp';
+            targetExtension = 'webp';
+        }
+
+        // Obsługa plików HEIC
+        if (originalExtension === 'heic') {
             console.log('Plik w formacie HEIC, rozpoczynamy konwersję do WebP');
-            
             try {
                 const heic2any = await import('heic2any');
                 const convertedBlob = await heic2any.default({
                     blob: file,
-                    toType: 'image/webp',
+                    toType: targetFormat,
                 });
-                console.log('Plik po konwersji z HEIC:', convertedBlob);
-                processedFile = new File([convertedBlob], `${Math.random()}.webp`, { type: 'image/webp' });
-                console.log('Plik po ustawieniu typu MIME:', processedFile);
+                processedFile = new File([convertedBlob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
             } catch (error) {
-                console.error('Błąd konwersji pliku HEIC:', error);
-                toastError({ title: 'Błąd konwersji pliku HEIC' });
-                converting.value = false;
-                return;
+                console.error('Błąd konwersji pliku HEIC, pozostawiamy oryginalny plik.');
+                processedFile = file; // Pozostawiamy oryginalny plik
             }
-        } else if (file.type !== 'image/webp') {
-            console.log('Plik w formacie innym niż WebP, rozpoczynamy konwersję do WebP');
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            await new Promise((resolve, reject) => {
-                img.onload = () => {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
-                    canvas.toBlob(
-                        (blob) => {
-                            processedFile = new File([blob], `${Math.random()}.webp`, { type: 'image/webp' });
-                            resolve();
-                        },
-                        'image/webp',
-                        0.8
-                    );
-                };
-                img.onerror = reject;
-                img.src = URL.createObjectURL(file);
-            });
-            console.log('Plik po konwersji z JPG/PNG do WebP:', processedFile);
         }
+        else if (originalMimeType !== targetFormat) {
+            // Konwersja do docelowego formatu za pomocą canvasa
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+
+                await new Promise((resolve, reject) => {
+                    img.onload = () => {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+                        canvas.toBlob(
+                            (blob) => {
+                                if (!blob) {
+                                    reject(new Error('Błąd podczas generowania bloba z canvasa.'));
+                                    return;
+                                }
+                                processedFile = new File([blob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
+                                resolve();
+                            },
+                            targetFormat,
+                            0.8 // Dostosuj jakość w razie potrzeby
+                        );
+                    };
+                    img.onerror = reject;
+                    img.src = URL.createObjectURL(file);
+                });
+
+                // Zwolnij URL obiektu
+                URL.revokeObjectURL(img.src);
+            } catch (error) {
+                console.error('Błąd przy przetwarzaniu pliku, pozostawiamy oryginalny plik.');
+                processedFile = file;
+            }
+        }
+
+        // Ustawienie mimeType na targetFormat po konwersji
+        let mimeType = processedFile.type;
+
+        // Kompresja pliku
         const options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1900,
             useWebWorker: true,
-            fileType: 'image/webp',
+            fileType: mimeType,
         };
 
-        const compressedFile = await imageCompression(processedFile, options);
-        console.log('Skompresowany plik:', compressedFile);
+        let compressedFile;
+        try {
+            compressedFile = await imageCompression(processedFile, options);
+            if (compressedFile.size > 1 * 1024 * 1024) {
+                console.warn('Plik po kompresji nadal przekracza 1 MB. Używamy oryginalnego pliku.');
+                compressedFile = processedFile;
+            }
+        } catch (error) {
+            console.error('Błąd podczas kompresji, używamy oryginalnego pliku.');
+            compressedFile = processedFile;
+        }
 
-        const fileName = `${Math.random()}.webp`;
-        converting.value = false; 
+        const fileName = `${Math.random()}.${compressedFile.name.split('.').pop()}`;
+
+        // Weryfikacja typu MIME po kompresji
+        if (compressedFile.type !== mimeType) {
+            console.warn('Typ MIME po kompresji nie zgadza się z oczekiwanym. Używamy oryginalnego pliku.');
+            compressedFile = processedFile;
+        }
+
+        converting.value = false;
         uploading.value = true;
 
         const { data, error } = await supabase.storage.from('rooms').upload(fileName, compressedFile);
@@ -146,7 +212,7 @@ const saveImage = async () => {
         isModal.value = false;
 
     } catch (error) {
-        console.log('Błąd:', error);
+        console.error('Błąd:', error);
         toastError({
             title: 'Wystąpił błąd podczas wgrywania zdjęcia',
             description: error.message,

@@ -75,7 +75,7 @@ watch(() => props.currentStatus, (newStatus) => {
   if (newStatus === 'processing') {
     hasProcessingStarted.value = true;
   }
-  if (newStatus === 'failed') {
+  if (!newStatus) {
     hasProcessingStarted.value = false;
     generationFailed.value = true;
   }
