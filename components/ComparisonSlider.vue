@@ -2,57 +2,61 @@
   <div class="w-full relative" @mouseup="handleMouseUp" @touchend="handleMouseUp">
     <div
       ref="sliderRef"
-      :class="isHome ? 'w-full aspect-[70/45] m-auto' : 'aspect-[70/45] w-full h-full'"
       class="relative overflow-hidden select-none shadow-2xl shadow-sunsetOrange-900"
       @mousemove="handleMove"
       @touchmove="handleMove"
       @mousedown="handleMouseDown"
       @touchstart="handleMouseDown"
+      :style="containerStyle"
     >
+      <!-- Podstawowe zdjęcie -->
       <img
         alt=""
         :src="images[0]"
-        class="w-full h-full absolute inset-0 object-cover"
+        class="w-full h-full absolute inset-0"
         draggable="false"
       />
 
+      <!-- Zdjęcie z nałożonym efektem -->
       <div
-        class="absolute top-0 left-0 right-0"
-        :class="isHome ? 'w-full aspect-[70/45] m-auto' : 'w-full h-full'"
+        class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden"
         :style="{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }"
       >
         <img
           alt=""
           :src="images[1]"
-          class="w-full h-full absolute inset-0 object-cover"
+          class="w-full h-full absolute inset-0"
           draggable="false"
         />
       </div>
 
+      <!-- Uchwyt suwaka -->
       <div
         class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
         :style="{ left: `calc(${sliderPosition}% - 1px)` }"
       >
-        <div class="bg-white absolute rounded-full h-3 w-3 -left-1 top-[calc(50%-5px)]" />
+        <div class="bg-white absolute rounded-full h-3 w-3 -left-1 top-1/2 transform -translate-y-1/2"></div>
       </div>
     </div>
   </div>
 </template>
+
 <script setup>
+import { ref, onMounted, watch } from 'vue';
+import { useMouse, useElementSize } from '@vueuse/core';
+
 const props = defineProps({
   images: {
     type: Array,
     required: true,
-    default: () => []
+    default: () => [],
   },
   isHome: {
     type: Boolean,
     required: false,
-    default: false
-  }
+    default: false,
+  },
 });
-
-import { useMouse, useElementSize } from '@vueuse/core';
 
 const sliderPosition = ref(50);
 const isDragging = ref(false);
@@ -60,6 +64,29 @@ const sliderRef = ref(null);
 
 const { x: mouseX, y: mouseY } = useMouse();
 const { width: sliderWidth } = useElementSize(sliderRef);
+
+const imageAspectRatio = ref(1);
+
+const containerStyle = ref({});
+
+const updateAspectRatio = () => {
+  const img = new Image();
+  img.onload = () => {
+    imageAspectRatio.value = img.width / img.height;
+    containerStyle.value = {
+      aspectRatio: `${img.width} / ${img.height}`,
+    };
+  };
+  img.src = props.images[0]; // Zakładamy, że oba obrazy mają te same proporcje
+};
+
+onMounted(() => {
+  updateAspectRatio();
+});
+
+watch(() => props.images, () => {
+  updateAspectRatio();
+});
 
 const handleMove = (event) => {
   if (!isDragging.value) return;
