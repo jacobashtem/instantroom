@@ -5,7 +5,7 @@
             <UFormGroup class="" name="room" >
                 <UInput class="hidden" placeholder="" type="file" ref="fileInput" @change="handleFileChange" />
             </UFormGroup>
-            <p class="text-coolGray-500 text-sm">Wgraj zdjęcie <br/><span class="text-xs">(max 1mb, jpg/jpeg/png/webp/heic/)</span></p>
+            <p class="text-coolGray-500 text-sm">Wgraj zdjęcie <br/><span class="text-xs">(jpg/jpeg/png/webp/heic)</span></p>
         </div>
     </div>
     <div v-show="converting" class="text-base mb-2 text-coolGray-500 animate-pulse">
@@ -29,6 +29,7 @@ const upladedImageSrc = ref('');
 const supabase = useSupabaseClient();
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
+const chosenImgSource = useState('chosenImgSource');
 const isModal = useState("modal");
 
 const { toastSuccess, toastError } = useAppToast();
@@ -98,22 +99,15 @@ const saveImage = async () => {
         }
 
         // Ustawienie docelowego formatu i rozszerzenia
-        let targetFormat;
-        let targetExtension;
+        let targetFormat = originalMimeType;
+        let targetExtension = originalExtension;
 
-        if (originalExtension === 'png') {
-            // Dla PNG konwertujemy do JPEG, aby usunąć kanał alfa
+        if (originalExtension === 'png' || originalExtension === 'heic') {
             targetFormat = 'image/jpeg';
             targetExtension = 'jpg';
-        } else {
-            // Dla pozostałych formatów konwertujemy do WebP
-            targetFormat = 'image/webp';
-            targetExtension = 'webp';
         }
 
-        // Obsługa plików HEIC
         if (originalExtension === 'heic') {
-            console.log('Plik w formacie HEIC, rozpoczynamy konwersję do WebP');
             try {
                 const heic2any = await import('heic2any');
                 const convertedBlob = await heic2any.default({
@@ -126,73 +120,67 @@ const saveImage = async () => {
                 processedFile = file; // Pozostawiamy oryginalny plik
             }
         }
-        else if (originalMimeType !== targetFormat) {
-            // Konwersja do docelowego formatu za pomocą canvasa
-            try {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                const img = new Image();
+        try {
+            const MAX_WIDTH = 1900; 
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
 
-                await new Promise((resolve, reject) => {
-                    img.onload = () => {
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        ctx.drawImage(img, 0, 0);
-                        canvas.toBlob(
-                            (blob) => {
-                                if (!blob) {
-                                    reject(new Error('Błąd podczas generowania bloba z canvasa.'));
-                                    return;
-                                }
-                                processedFile = new File([blob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
-                                resolve();
-                            },
-                            targetFormat,
-                            0.8 // Dostosuj jakość w razie potrzeby
-                        );
-                    };
-                    img.onerror = reject;
-                    img.src = URL.createObjectURL(file);
-                });
+            await new Promise((resolve, reject) => {
+                img.onload = () => {
+                    let width = img.width;
+                    let height = img.height;
 
-                // Zwolnij URL obiektu
-                URL.revokeObjectURL(img.src);
-            } catch (error) {
-                console.error('Błąd przy przetwarzaniu pliku, pozostawiamy oryginalny plik.');
-                processedFile = file;
-            }
+                    if (width > MAX_WIDTH) {
+                        const ratio = MAX_WIDTH / width;
+                        width = MAX_WIDTH;
+                        height = height * ratio;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+                    canvas.toBlob(
+                        (blob) => {
+                            if (!blob) {
+                                reject(new Error('Błąd podczas generowania bloba z canvasa.'));
+                                return;
+                            }
+                            processedFile = new File([blob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
+                            resolve();
+                        },
+                        targetFormat,
+                        0.7
+                    );
+                };
+                img.onerror = reject;
+                img.src = URL.createObjectURL(processedFile);
+            });
+
+            // Zwolnij URL obiektu
+            URL.revokeObjectURL(img.src);
+        } catch (error) {
+            console.error('Błąd przy przetwarzaniu pliku, pozostawiamy oryginalny plik.');
+            processedFile = file;
         }
 
-        // Ustawienie mimeType na targetFormat po konwersji
-        let mimeType = processedFile.type;
-
-        // Kompresja pliku
         const options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1900,
             useWebWorker: true,
-            fileType: mimeType,
+            fileType: targetFormat,
+            initialQuality: 0.7,
         };
 
         let compressedFile;
         try {
             compressedFile = await imageCompression(processedFile, options);
-            if (compressedFile.size > 1 * 1024 * 1024) {
-                console.warn('Plik po kompresji nadal przekracza 1 MB. Używamy oryginalnego pliku.');
-                compressedFile = processedFile;
-            }
         } catch (error) {
-            console.error('Błąd podczas kompresji, używamy oryginalnego pliku.');
+            console.error('Błąd podczas kompresji, używamy przetworzonego pliku.');
             compressedFile = processedFile;
         }
 
         const fileName = `${Math.random()}.${compressedFile.name.split('.').pop()}`;
-
-        // Weryfikacja typu MIME po kompresji
-        if (compressedFile.type !== mimeType) {
-            console.warn('Typ MIME po kompresji nie zgadza się z oczekiwanym. Używamy oryginalnego pliku.');
-            compressedFile = processedFile;
-        }
 
         converting.value = false;
         uploading.value = true;
@@ -207,10 +195,9 @@ const saveImage = async () => {
 
         toastSuccess({ title: 'Poprawnie wgrano zdjęcie.' });
         isChosenImgSrc.value = upladedImageSrc.value;
-
-        await saveProfile(upladedImageSrc.value);
+        chosenImgSource.value = 'uploaded';
         isModal.value = false;
-
+        await saveProfile(upladedImageSrc.value);
     } catch (error) {
         console.error('Błąd:', error);
         toastError({
