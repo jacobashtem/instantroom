@@ -39,8 +39,7 @@
 
             <div class="flex items-center col-span-12  lg:col-span-6 ">
                 <div class="w-full col-span-12 flex items-center mx-auto">
-                    <NuxtImg class="w-ful" src="/examples/before-image-2.webp"/>
-                    <!-- <ComparisonSlider :is-home="true" :images="images" /> -->
+                    <ComparisonSlider :is-home="true" :images="images" />
                 </div>
             </div>
 
