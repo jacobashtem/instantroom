@@ -42,29 +42,29 @@
                 <div class="flex items-center space-x-6 lg:space-x-8">
                   <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                      <NuxtImg src="/mosaic/mosaic-1.webp" class="h-full w-full object-cover object-center" />
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-1.webp" class="h-full w-full object-cover object-center" />
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-2.webp" alt="" class="h-full w-full object-cover object-center" />
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-3.webp" alt="" class="h-full w-full object-cover object-center" />
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-4.webp" alt="" class="h-full w-full object-cover object-center" />
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-5.webp" alt="" class="h-full w-full object-cover object-center" />
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-2.webp" alt="" class="h-full w-full object-cover object-center" />
                     </div>
                   </div>
                   <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-6.webp" alt="" class="h-full w-full object-cover object-center" />
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-3.webp" alt="" class="h-full w-full object-cover object-center" />
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <NuxtImg src="/mosaic/mosaic-7.webp" alt="" class="h-full w-full object-cover object-center" />
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-4.webp" alt="" class="h-full w-full object-cover object-center" />
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-5.webp" alt="" class="h-full w-full object-cover object-center" />
+                    </div>
+                  </div>
+                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-6.webp" alt="" class="h-full w-full object-cover object-center" />
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <NuxtImg loading="lazy" src="/mosaic/mosaic-7.webp" alt="" class="h-full w-full object-cover object-center" />
                     </div>
                   </div>
                 </div>

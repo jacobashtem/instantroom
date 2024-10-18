@@ -24,7 +24,7 @@
         <div v-for="(project, index) in visibleProjects" :key="index"
              class="group portfolio-item relative hover:shadow-lg shadow-md rounded-lg overflow-hidden"
              @click="openModal(project)">
-          <NuxtImg :src="project.image" :alt="generateTitleFromFilename(project.image)" class="w-full h-60 object-cover cursor-pointer" />
+          <NuxtImg loading="lazy" :src="project.image" :alt="generateTitleFromFilename(project.image)" class="w-full h-60 object-cover cursor-pointer" />
           <div class="p-4 flex flex-col items-center justify-between relative z-10">
             <h3 class="text-lg font-medium text-txt group-hover:text-gray-dark">
               {{ generateTitleFromFilename(project.image) }}

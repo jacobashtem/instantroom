@@ -13,7 +13,7 @@
       </div>
       <div class="flex flex-col justify-center">
         <div class="flex flex-wrap flex-col items-center justify-center">
-            <NuxtImg src="avatars/avatar1.webp" alt="avatar 1" class="h-20 w-20 rounded-full"/>
+            <NuxtImg loading="lazy" src="avatars/avatar1.webp" alt="avatar 1" class="h-20 w-20 rounded-full"/>
             <p class="pt-2 text-lg font-normal">Lena</p>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <p class="text-lg lg:text-xl mt-2 font-light mb-4">Łatwo się użytkuje, kilka klików i mam już pomysł na wymarzoną kuchnie w stylu glamour :)</p>
       </div>
       <div class="flex flex-col items-center">
-        <NuxtImg src="avatars/avatar2.webp" alt="avatar 2" class="h-20 w-20 rounded-full"/>
+        <NuxtImg loading="lazy" src="avatars/avatar2.webp" alt="avatar 2" class="h-20 w-20 rounded-full"/>
         <p class="pt-2 text-lg font-normal">Klaudia</p>
       </div>
     </div>
@@ -36,7 +36,7 @@
         <p class="text-lg lg:text-xl mt-2 font-light mb-4">Jeśli chcesz szybko i sprawnie wygenerować mnóstwo pomysłów na urządzenie swojego przyszłego królestwa, instantroom jest dla Ciebie. Nie rozczarujesz się!</p>
       </div>
       <div class="flex flex-col items-center">
-        <NuxtImg src="avatars/avatar3.webp" alt="avatar 3" class="h-20 w-20 rounded-full"/>
+        <NuxtImg loading="lazy" src="avatars/avatar3.webp" alt="avatar 3" class="h-20 w-20 rounded-full"/>
         <p class="pt-2 text-lg font-normal">Piotr Wysocki</p>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <p class="text-lg lg:text-xl mt-2 font-light mb-4">Generuje przepiękne pokoje w parę sekund. Mój ulubiony styl? Póki co skandynawski.</p>
       </div>
       <div class="flex flex-col items-center">
-        <NuxtImg src="avatars/avatar4.webp" alt="avatar 4" class="h-20 w-20 rounded-full"/>
+        <NuxtImg loading="lazy" src="avatars/avatar4.webp" alt="avatar 4" class="h-20 w-20 rounded-full"/>
         <p class="pt-2 text-lg font-normal">Nadia</p>
       </div>
     </div>
@@ -58,7 +58,7 @@
         <p class="text-lg lg:text-xl mt-2 font-light mb-4">Łatwiej mu zaproponować coś dla mnie, gdy zamiast masy niepowiązanych zdjęć z internetu, dostał ode mnie paczkę zdjęć z instantroom</p>
       </div>
       <div class="flex flex-col items-center">
-        <NuxtImg src="avatars/avatar-6.webp" alt="avatar 6" class="h-20 w-20 rounded-full"/>
+        <NuxtImg loading="lazy" src="avatars/avatar-6.webp" alt="avatar 6" class="h-20 w-20 rounded-full"/>
         <p class="pt-2 text-lg font-normal">Maciek</p>
       </div>
     </div>
@@ -70,7 +70,7 @@
           już wiem mniej więcej jak chciałabym odmienić swoje wnętrze.</p>
       </div>
       <div class="flex flex-col items-center">
-        <NuxtImg src="avatars/avatar-5.webp" alt="avatar 5" class="h-20 w-20 rounded-full"/>
+        <NuxtImg loading="lazy" src="avatars/avatar-5.webp" alt="avatar 5" class="h-20 w-20 rounded-full"/>
         <p class="pt-2 text-lg font-normal">Karolina</p>
       </div>
     </div>
