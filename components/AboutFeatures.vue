@@ -59,7 +59,7 @@
         </div>
       </div>
       <div aria-hidden="true" class="mt-10 lg:mt-0">
-        <NuxtImg width="600" height="600" src="/about-us-promo-img.webp" class="mx-auto lg:ml-8" style="color:transparent"/>
+        <NuxtImg loading="lazy" width="600" height="600" src="/about-us-promo-img.webp" class="mx-auto lg:ml-8" style="color:transparent"/>
       </div>
     </div>
   </div>

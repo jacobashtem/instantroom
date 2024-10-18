@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="lg:w-1/2">
-          <NuxtImg src="/promo-img.webp" />
+          <NuxtImg loading="lazy" src="/promo-img.webp" />
         </div>
       </div>
     </section>

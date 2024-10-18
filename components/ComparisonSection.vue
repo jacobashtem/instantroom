@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <NuxtImg class="h-72 w-full object-scale-down object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="/background-comparisonwebp.webp" alt=""/>
+        <NuxtImg loading="lazy" class="h-72 w-full object-scale-down object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="/background-comparisonwebp.webp" alt=""/>
     </div>
 </div>
 </template>
