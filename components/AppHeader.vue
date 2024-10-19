@@ -64,6 +64,9 @@ watch(tokens, (newTokens) => {
       </NuxtLink>
       <div v-if="!isMobile">
         <!-- Logowanie -->
+        <NuxtLink to="/blog" class="text-sm mr-4">
+          Blog
+        </NuxtLink>
         <NuxtLink v-if="!isLoggedIn" to="/login" class="text-sm font-semibold text-aquaBlue-500">
           Logowanie / Rejestracja
         </NuxtLink>

@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -18,8 +19,15 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
     'nuxt-scheduler',
-    "@unlok-co/nuxt-stripe"
+    "@unlok-co/nuxt-stripe",
+    '@nuxt/content',
+    'nuxt-disqus',
+    'nuxt-vitalizer',
+    'nuxt-swiper'
   ],
+  disqus: {
+    shortname: "instantroom",
+  },
   supabase: {
     redirectOptions: {
       login: '/login',
