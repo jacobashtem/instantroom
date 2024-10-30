@@ -1,6 +1,7 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
+  const gtm = useGtm()
   const tokens = ref(null);
   const showModal = ref(false);
 
@@ -67,9 +68,17 @@ export const useUserTokens = () => {
       console.log('checkAndShowModal: No user');
       return;
     }
-
     const userMetadata = user.value.user_metadata || {};
     if (userMetadata.freeTokensGranted && !userMetadata.modalShown) {
+      gtm.trackEvent({
+        event: 'sign_up',
+        category: 'sign_up',
+        action: 'sign_up',
+        method: user?.value.app_metadata.provider,
+        email: user?.value.email,
+        id: user?.value.id,
+        email_confirmed_at: user?.value.email_confirmed_at,
+      })
       showModal.value = true;
     }
   };
