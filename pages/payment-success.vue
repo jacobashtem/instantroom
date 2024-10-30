@@ -11,7 +11,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12">
           <div class="space-y-2 col-span- text-center lg:text-left col-span-4">
             <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
-              <span class="sm:text-6xl"></span> Konto zostało <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">zweryfikowane.</span>
+              <span class="sm:text-6xl"></span> Płatność została <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">zweryfikowana.</span>
               <br>
             </h1>
             <p class="text-base font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">Dodaliśmy {{ addedTokens }} tokenów do Twojego konta.</p>
