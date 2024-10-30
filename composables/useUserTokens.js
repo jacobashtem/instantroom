@@ -1,6 +1,7 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
+  const gtm = useGtm()
   const tokens = ref(null);
   const showModal = ref(false);
 
