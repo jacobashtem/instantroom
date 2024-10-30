@@ -27,7 +27,9 @@
     "nuxt-scheduler": "^0.1.9",
     "nuxt-swiper": "^1.2.2",
     "nuxt-vitalizer": "^0.10.0",
+    "remark-reading-time": "^2.0.1",
     "replicate": "^0.29.4",
+    "sitemap": "^8.0.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
     "zod": "^3.23.8"

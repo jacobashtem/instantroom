@@ -7,7 +7,7 @@
         <p :class="insideSlider ? 'text-center' :  ''" class="capitalize pl-0 text-sunsetOrange-500 bold font-semibold relative mt-0 mb-0">{{
           post.category }}</p>
         <h2 class="text-xl font-semibold text-black m-0 min-h-14">{{ post.title }}</h2>
-        <ArticleDate :class="insideSlider? 'flex justify-center' : ''" :date="post.date" />
+        <BlogArticleDate :class="insideSlider? 'flex justify-center' : ''" :date="post.date" />
         <p v-if="!insideSlider" class="text-black mt-2">{{ post.description }}</p>
       </div>
       <div v-if="!insideSlider"
