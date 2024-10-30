@@ -76,7 +76,7 @@ export const useUserTokens = () => {
         action: 'sign_up',
         method: user?.value.app_metadata.provider,
         email: user?.value.email,
-        id: user?.value.id,
+        user: user?.value.id,
         email_confirmed_at: user?.value.email_confirmed_at,
       })
       showModal.value = true;
