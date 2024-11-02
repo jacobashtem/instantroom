@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     preference: 'light'
   },
   modules: [
-    '@nuxt/content',
+    // '@nuxt/content',
     '@nuxt/image-edge',
     '@nuxt/image',
     '@nuxt/ui',
