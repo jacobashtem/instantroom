@@ -20,7 +20,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
-    'nuxt-scheduler',
     'nuxt-disqus',
     'nuxt-swiper',
     "@unlok-co/nuxt-stripe",
