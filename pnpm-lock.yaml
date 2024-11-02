@@ -41,9 +41,6 @@ dependencies:
   nuxt-disqus:
     specifier: ^1.1.1
     version: 1.1.1(typescript@5.4.5)
-  nuxt-scheduler:
-    specifier: ^0.1.9
-    version: 0.1.9
   nuxt-swiper:
     specifier: ^1.2.2
     version: 1.2.2
@@ -7673,17 +7670,6 @@ packages:
       - supports-color
       - vite
       - vue
-    dev: false
-
-  /nuxt-scheduler@0.1.9:
-    resolution: {integrity: sha512-2WOEBhhVCpDvt0SpxZGMGhtsMVT6PLRI0yRgVFvWLw6mu6NqAPfof6HW9kP7ENOEJ2p5DXIk6CajVBl6LN0Htg==}
-    dependencies:
-      '@nuxt/kit': 3.11.2
-      defu: 6.1.4
-      node-cron: 3.0.3
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
     dev: false
 
   /nuxt-site-config-kit@2.2.18(vue@3.4.27):
