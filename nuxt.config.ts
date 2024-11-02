@@ -15,8 +15,7 @@ export default defineNuxtConfig({
     '@zadigetvoltaire/nuxt-gtm',
     'nuxt-disqus',
     'nuxt-swiper',
-    "@unlok-co/nuxt-stripe",
-    '@nuxtjs/sitemap',
+    "@unlok-co/nuxt-stripe"
   ],
   disqus: {
   shortname: "instantroom",
