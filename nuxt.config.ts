@@ -9,11 +9,11 @@ export default defineNuxtConfig({
   image: {
     provider: 'netlify',
   },
-  modules: [// '@nuxt/content',
-  '@nuxt/image-edge', '@nuxt/image', '@nuxt/ui', '@nuxtjs/supabase', '@zadigetvoltaire/nuxt-gtm', 'nuxt-scheduler', // '@nuxt/content',
-  // 'nuxt-disqus',
-  // 'nuxt-swiper',
-  "@unlok-co/nuxt-stripe", '@nuxt/content'],
+  modules: [
+  '@nuxt/image-edge', '@nuxt/image', '@nuxt/ui', '@nuxtjs/supabase', '@zadigetvoltaire/nuxt-gtm', 'nuxt-scheduler',
+  'nuxt-disqus',
+  'nuxt-swiper',
+  "@unlok-co/nuxt-stripe"],
   disqus: {
   shortname: "instantroom",
 },
@@ -22,11 +22,11 @@ router: {
     scrollBehaviorType: "smooth",
   },
 },
-content: {
-  markdown: {
-    remarkPlugins: ["remark-reading-time"],
-  },
-},
+// content: {
+//   markdown: {
+//     remarkPlugins: ["remark-reading-time"],
+//   },
+// },
   // ssr: true,
   // routeRules: {
   //   '/blog': { isr: 3600 },
