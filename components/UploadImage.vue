@@ -107,19 +107,19 @@ const saveImage = async () => {
             targetExtension = 'jpg';
         }
 
-        if (originalExtension === 'heic') {
-            try {
-                const heic2any = await import('heic2any');
-                const convertedBlob = await heic2any.default({
-                    blob: file,
-                    toType: targetFormat,
-                });
-                processedFile = new File([convertedBlob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
-            } catch (error) {
-                console.error('Błąd konwersji pliku HEIC, pozostawiamy oryginalny plik.');
-                processedFile = file; // Pozostawiamy oryginalny plik
-            }
-        }
+        // if (originalExtension === 'heic') {
+        //     try {
+        //         const heic2any = await import('heic2any');
+        //         const convertedBlob = await heic2any.default({
+        //             blob: file,
+        //             toType: targetFormat,
+        //         });
+        //         processedFile = new File([convertedBlob], `${Math.random()}.${targetExtension}`, { type: targetFormat });
+        //     } catch (error) {
+        //         console.error('Błąd konwersji pliku HEIC, pozostawiamy oryginalny plik.');
+        //         processedFile = file; // Pozostawiamy oryginalny plik
+        //     }
+        // }
         try {
             const MAX_WIDTH = 1900; 
             const canvas = document.createElement('canvas');
