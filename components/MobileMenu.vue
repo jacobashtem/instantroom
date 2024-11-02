@@ -27,6 +27,12 @@
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
+                        <NuxtLink  to="/blog" class="font-semibold text-white">
+                            <UIcon name="material-symbols:article" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
+                            Blog
+                        </NuxtLink>
+                    </li>
+                    <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="user" to="/design" class="font-semibold text-white  mr-4">
                             <UIcon name="clarity:design-solid" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
                             Twórz
