@@ -27,9 +27,9 @@ export default defineNuxtConfig({
     // 'nuxt-swiper',
     "@unlok-co/nuxt-stripe"
   ],
-disqus: {
-  shortname: "instantroom",
-},
+// disqus: {
+//   shortname: "instantroom",
+// },
 // content: {
 //   markdown: {
 //     remarkPlugins: ["remark-reading-time"],
