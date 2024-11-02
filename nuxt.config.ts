@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  routeRules: {
+    '/blog': { isr: 3600 },
+    '/blog/**': { isr: true },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -18,8 +22,19 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
     'nuxt-scheduler',
+    '@nuxt/content',
+    'nuxt-disqus',
+    'nuxt-swiper',
     "@unlok-co/nuxt-stripe"
   ],
+disqus: {
+  shortname: "instantroom",
+},
+content: {
+  markdown: {
+    remarkPlugins: ["remark-reading-time"],
+  },
+},
   supabase: {
     redirectOptions: {
       login: '/login',
