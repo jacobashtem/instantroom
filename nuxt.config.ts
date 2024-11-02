@@ -1,22 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true, // lub false, w zależności od potrzeb
-  nitro: {
-    preset: 'netlify',
-  },
   devtools: {
     enabled: true,
     timeline: {
       enabled: true,
     },
   },
-  image: {
-    provider: 'netlify',
-  },
   modules: [
     "@nuxt/content",
     '@nuxt/image-edge',
-    // '@nuxt/image',
+    '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
@@ -38,11 +31,6 @@ content: {
     remarkPlugins: ["remark-reading-time"],
   },
 },
-  // ssr: true,
-  // routeRules: {
-  //   '/blog': { isr: 3600 },
-  //   '/blog/**': { isr: true },
-  // },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -53,12 +41,6 @@ content: {
   colorMode: {
     preference: 'light'
   },
-
-// content: {
-//   markdown: {
-//     remarkPlugins: ["remark-reading-time"],
-//   },
-// },
   supabase: {
     redirectOptions: {
       login: '/login',
