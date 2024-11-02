@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: true,
   // routeRules: {
   //   '/blog': { isr: 3600 },
   //   '/blog/**': { isr: true },
@@ -25,7 +26,8 @@ export default defineNuxtConfig({
     // '@nuxt/content',
     // 'nuxt-disqus',
     // 'nuxt-swiper',
-    "@unlok-co/nuxt-stripe"
+    "@unlok-co/nuxt-stripe",
+    '@nuxt/content',
   ],
 // disqus: {
 //   shortname: "instantroom",
