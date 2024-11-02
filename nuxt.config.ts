@@ -1,5 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true, // lub false, w zależności od potrzeb
+  nitro: {
+    preset: 'netlify',
+  },
   devtools: {
     enabled: true,
     timeline: {
@@ -12,7 +16,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
     '@nuxt/image-edge',
-    '@nuxt/image',
+    // '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
@@ -30,11 +34,11 @@ router: {
     scrollBehaviorType: "smooth",
   },
 },
-// content: {
-//   markdown: {
-//     remarkPlugins: ["remark-reading-time"],
-//   },
-// },
+content: {
+  markdown: {
+    remarkPlugins: ["remark-reading-time"],
+  },
+},
   // ssr: true,
   // routeRules: {
   //   '/blog': { isr: 3600 },
