@@ -22,9 +22,9 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
     'nuxt-scheduler',
-    '@nuxt/content',
-    'nuxt-disqus',
-    'nuxt-swiper',
+    // '@nuxt/content',
+    // 'nuxt-disqus',
+    // 'nuxt-swiper',
     "@unlok-co/nuxt-stripe"
   ],
 disqus: {
