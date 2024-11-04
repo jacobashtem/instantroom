@@ -25,7 +25,7 @@
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
                             <h3>Pakiet podstawowy</h3>
                             <p class="text-5xl font-bold pb-0">
-                                17,90<span class="text-2xl">zł</span>
+                                23,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="flex justify-center">
                             <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,6 zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,80 zł za wizualizację!</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
@@ -55,17 +55,17 @@
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
                             <h3>Pakiet rozszerzony</h3>
                             <p class="text-5xl font-bold pb-0">
-                                39,90<span class="text-2xl">zł</span>
+                                29,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
-                            80 tokenów
+                            100 tokenów
                         </span>
                             <p class="text-md uppercase"></p>
                         </div>
                         <div class="flex justify-center">
                             <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,5 zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,30 zł za wizualizację!</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
@@ -82,17 +82,17 @@
                         <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
                             <h3>Pakiet lux</h3>
                             <p class="text-5xl font-bold pb-0">
-                                79,90<span class="text-2xl">zł</span>
+                                89,90<span class="text-2xl">zł</span>
                             </p>
                             <span
                         class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
-                            200 tokenów
+                            450 tokenów
                         </span>
                             <p class="text-md uppercase"></p>
                         </div>
                         <div class="flex justify-center">
                             <div class="py-5 text-black rounded-b font-light text-xl flex flex-col items-start text-left px-8">
-                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,4zł za wizualizację!</p>
+                                <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>0,20 zł za wizualizację!</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Brak znaków wodnych</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Możesz wykorzystywać wizualizacje komercyjnie</p>
                                 <p><UIcon  width="24" height="24" class="text-aquaBlue-500 mr-4" dynamic name="mdi:tick-all"/>Twórz kilka wizualizacji jednocześnie!</p>
