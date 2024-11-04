@@ -2,7 +2,7 @@
     <div class="bg-sunsetOrange-500 py-12 w-full">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            5 pierwszych wizualizacjii jest za darmo.
+            3 pierwsze wizualizacje są za darmo.
         </h2>
         <p class="mt-6 text-xl text-white max-w-3xl">
             Bez kruczków. Bez podawania danych płatniczych.
