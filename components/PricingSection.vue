@@ -8,7 +8,7 @@
                     </span>
                     <h1 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">
                         <span class="sm:text-6xl">
-                        </span>Pierwszych 5 wizualizacji<span
+                        </span>Pierwsze 3 wizualizacje<span
                             class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800"> masz za darmo!</span>
                         <br>
                     </h1>

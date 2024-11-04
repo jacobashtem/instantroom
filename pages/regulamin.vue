@@ -84,7 +84,7 @@
                 <p><span>Rejestracja Użytkownika jest darmowa.</span></p>
             </li>
             <li>
-                <p><span>Pierwszych 5 generacji wizualizacji jest darmowych, natomiast kolejne generowanie wizualizacji jest
+                <p><span>Pierwsze 3 generacje wizualizacji są darmowe, natomiast kolejne generowanie wizualizacji jest
                         płatne. W zależności od wybranego pakietu i jego ceny, dostępna jest inna pula token&oacute;w, za
                         kt&oacute;re można tworzyć wizualizacje.</span></p>
             </li>
