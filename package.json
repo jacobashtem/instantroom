@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
+    "@nuxthq/studio": "^2.2.1",
     "@nuxtjs/supabase": "^1.2.2",
     "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "autoprefixer": "^10.4.19",

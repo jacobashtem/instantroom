@@ -52,7 +52,7 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Pierwszych 5 wizualizacji masz zupełnie za darmo!</h4>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">Pierwsze 3 wizualizacje masz zupełnie za darmo!</h4>
               <p class="mt-4 ext-lg font-light tracking-tight sm:mt-2 sm:text-xl text-lg xl:text-2xl"><span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Bez kruczków, bez płatności.</span>  Jeśli nasze narzędzie Ci się spodoba, oczywiście zachęcamy do wykupienia tokenów!</p>
             </div>
           </div>

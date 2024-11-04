@@ -44,9 +44,9 @@
     <div class="flex px-4 py-8">
       <h3 class="text-xl font-semibold text-center md:text-left">
         Właśnie przyznaliśmy Ci
-        <span class="text-sunsetOrange-500 text-xl">5 tokenów.</span><br />
+        <span class="text-sunsetOrange-500 text-xl">3 tokeny.</span><br />
         Możesz je zamienić na
-        <span class="text-sunsetOrange-500 text-xl">5 wizualizacji!</span>
+        <span class="text-sunsetOrange-500 text-xl">3 wizualizacje!</span>
       </h3>
     </div>
     <div class="mb-8 flex justify-between">

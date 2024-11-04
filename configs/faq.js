@@ -11,7 +11,7 @@ export const faqs = [
     },
     { 
       question: 'Ile to kosztuje?', 
-      answer: 'Aktualny cennik możesz sprawdzić na dedykowanej podstronie Cennik. Jednak po zarejestrowaniu otrzymasz 5 wizualizacji zupełnie za darmo! Przetestuj nasze narzędzie i zdecyduj, czy chcesz wykupić pakiet tokenów.' 
+      answer: 'Aktualny cennik możesz sprawdzić na dedykowanej podstronie Cennik. Jednak po zarejestrowaniu otrzymasz 3 wizualizacje zupełnie za darmo! Przetestuj nasze narzędzie i zdecyduj, czy chcesz wykupić pakiet tokenów.' 
     },
     { 
       question: 'Jakie zdjęcia wgrać, żeby uzyskać najlepszy efekt?', 
