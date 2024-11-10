@@ -11,7 +11,7 @@
         <p v-if="!insideSlider" class="text-black mt-2">{{ post.description }}</p>
       </div>
       <div v-if="!insideSlider"
-        class="px-4 py-2 bg-slate-800 text-white flex absolute bottom-4 right-4 rounded-2xl items-center hover:brightness-50 transition-all">
+        class="px-4 py-2 bg-sunsetOrange-500 text-white flex absolute bottom-4 right-4 rounded-2xl items-center hover:bg-sunsetOrange-700 transition-all">
         <UIcon class="mr-3" name="gridicons:arrow-right" dynamic> </UIcon>
         Czytaj więcej
       </div>

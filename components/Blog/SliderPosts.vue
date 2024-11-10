@@ -8,7 +8,7 @@
           <UIcon name="ic:twotone-keyboard-arrow-left" dynamic/>
         </div>
         <div
-          class="hover:bg-white mt-0 hover:transition-all hover:text-black w-full swiper-button-prev-custom text-center text-white text-3xl flex justify-center"
+          class="hover:bg-white mt-0 hover:transition-all hover:text-black w-full swiper-button-next-custom text-center text-white text-3xl flex justify-center"
         >
           <UIcon name="ic:twotone-keyboard-arrow-right" dynamic />
         </div>

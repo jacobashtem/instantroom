@@ -59,7 +59,7 @@
       </ContentDoc>
       <!-- <PostCard v-for="post in randomPosts" :key="post._id" :post="post" /> -->
       <section class="xs:container xs:mx-auto px-4 xs:px-8 pb-8">
-        <!-- <DisqusComments :identifier="currentPath" /> -->
+        <DisqusComments :identifier="currentPath" />
       </section>
     </div>
   </template>
