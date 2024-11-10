@@ -10,7 +10,7 @@
       <NuxtLink
         v-else
         class="no-underline w-5 px-4 flex justify-center hover:text-white"
-        :to="page !== 1 ? `?page=${page}` : './'"
+        :to="page !== 1 ? `?page=${page}` : '/blog'"
         :class="{ 'active': page === currentPage }"
       >
         {{ page }}
