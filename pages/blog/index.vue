@@ -2,8 +2,8 @@
     <article class="prose dark:prose-invert max-w-none mt-0">
         <BlogFeaturedPost v-if="firstPost && firstPost._path" :first-post="firstPost" />
         <BlogSliderPosts v-if="sliderPosts.length > 0" :slider-posts="sliderPosts" />
-        <!-- <BlogOtherPosts v-if="otherPosts.length > 0" :other-posts="otherPosts" /> -->
-        <!-- <BlogPagination :totalPages="totalPages" :pagesToShow="pagesToShow" :currentPage="currentPage" /> -->
+        <BlogOtherPost v-if="otherPosts.length > 0" :other-posts="otherPosts" />
+        <BlogPagination :totalPages="totalPages" :pagesToShow="pagesToShow" :currentPage="currentPage"/>
     </article>
 </template>
 
@@ -38,17 +38,17 @@ const { data } = await useAsyncData('blog', () => queryContent().sort({ date: -1
 
 
 onMounted(async () => {
-    // const skip = (currentPage.value - 1) * postsPerPage;
-    // await fetchPosts(skip, postsPerPage);
-    // console.log("Dane załadowane na stronie:", posts.value);
+    const skip = (currentPage.value - 1) * postsPerPage;
+    await fetchPosts(skip, postsPerPage);
+    console.log("Dane załadowane na stronie:", posts.value);
 });
 
 onBeforeRouteUpdate(async (to) => {
-    // const newPage = parseInt(to.query.page) || 1;
-    // currentPage.value = newPage;
-    // const skip = (currentPage.value - 1) * postsPerPage;
-    // await fetchPosts(skip, postsPerPage);
-    // console.log("Dane załadowane po zmianie trasy:", posts.value);
+    const newPage = parseInt(to.query.page) || 1;
+    currentPage.value = newPage;
+    const skip = (currentPage.value - 1) * postsPerPage;
+    await fetchPosts(skip, postsPerPage);
+    console.log("Dane załadowane po zmianie trasy:", posts.value);
 });
 
 </script>
