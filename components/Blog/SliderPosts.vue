@@ -1,7 +1,7 @@
 <template>
     <section class="md:container md:mx-auto -mt-96 md:-mt-48 relative px-4 xs:px-8">
       <h2 class="text-white">Najnowsze wpisy</h2>
-      <div class="flex max-w-16 h-8 items-center border-white border mb-4 cursor-pointer">
+      <div v-show="sliderPosts.length > 4" class="flex max-w-16 h-8 items-center border-white border mb-4 cursor-pointer">
         <div
           class="hover:bg-white mt-0 hover:transition-all hover:text-black w-full swiper-button-prev-custom text-center text-white text-3xl flex justify-center"
         >
