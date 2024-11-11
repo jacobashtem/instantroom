@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
       image: image,
       prompt: finalPrompt,
       guidance_scale: 15,
-      negative_prompt: "curtains, lowres, watermark, banner, logo, watermark, contactinfo, text, deformed, blurry, blur, out of focus, out of frame, surreal, extra, ugly, upholstered walls, fabric walls, plush walls, mirror, mirrored, functional, realistic",
+      negative_prompt: "curtains,round floor cushion, lowres, watermark, banner, logo, watermark, contactinfo, text, deformed, blurry, blur, out of focus, out of frame, surreal, extra, ugly, upholstered walls, fabric walls, plush walls, mirror, mirrored, functional, realistic",
       prompt_strength: 0.8,
       num_inference_steps: 50
     }
