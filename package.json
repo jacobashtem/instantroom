@@ -23,6 +23,7 @@
     "browser-image-compression": "^2.0.2",
     "nuxt": "^3.11.2",
     "nuxt-disqus": "^1.1.1",
+    "nuxt-schema-org": "^3.4.2",
     "nuxt-swiper": "^1.2.2",
     "remark-reading-time": "^2.0.1",
     "replicate": "^0.29.4",
