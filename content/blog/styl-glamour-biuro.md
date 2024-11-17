@@ -135,8 +135,7 @@ Odpowiednie oświetlenie jest kluczowe dla komfortu pracy i podkreślenia stylu 
 
 ## Wykorzystaj Instant Room do planowania swojego biura
 
-![Biuro w stylu glamour wygenerowane przez Instant Room](/blog/styl-glamour-biuro-instantroom.png)
-
+![Biuro w stylu glamour wygenerowane przez Instant Room](/blog/glamour-instant-room.png)
 Jeśli chcesz zobaczyć, jak mogłoby wyglądać Twoje **biuro w stylu glamour**, warto skorzystać z narzędzia [instantroom.pl](https://instantroom.pl). To pre-remontowy pomocnik, który pozwala na wizualizację Twojego pomieszczenia w wybranym stylu. Wystarczy wgrać zdjęcie swojego biura i wybrać styl glamour, a w kilka sekund otrzymasz spersonalizowane wizualizacje. Dzięki temu możesz eksperymentować z różnymi układami mebli, kolorami i dodatkami, co ułatwi podjęcie decyzji przed remontem. Wizualizacje są dostępne w przystępnej cenie od 40 do 60 groszy za sztukę, co pozwala na swobodne testowanie różnych koncepcji bez dużych wydatków.
 
 ## Podsumowanie

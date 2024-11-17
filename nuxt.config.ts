@@ -21,6 +21,13 @@ export default defineNuxtConfig({
   disqus: {
   shortname: "instantroom",
 },
+schemaOrg: {
+  identity: {
+    type: 'Organization',
+    name: 'instantroom',
+    logo: '/logo.png',
+  }
+},
 router: {
   options: {
     scrollBehaviorType: "smooth",
