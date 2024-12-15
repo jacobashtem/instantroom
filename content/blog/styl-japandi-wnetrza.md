@@ -3,7 +3,7 @@ title: Styl Japandi – Harmonijne Połączenie Japońskiej Elegancji i Skandyna
 description: Poznaj styl Japandi – wyjątkowe połączenie japońskiej filozofii zen i skandynawskiego designu. Odkryj kluczowe cechy, praktyczne porady oraz inspiracje, które pomogą Ci stworzyć wnętrze pełne harmonii i funkcjonalności.
 author: Jacob Ash
 reading: 9
-date: 2024-12-23 12:00
+date: 2024-11-23 12:00
 category: Inspiracje
 tags:
   - styl japandi
