@@ -27,17 +27,18 @@ export default defineEventHandler(async (event) => {
         if (subscriptionId) {
           await stripe.subscriptions.update(subscriptionId, {
             metadata: {
-              userId, tokens
+              userId: userId,
+              tokens: tokens,
             },
           });
         }
       
         const { error } = await supabase.auth.admin.updateUserById(userId, {
           user_metadata: {
-            subscriptionId,
+            subscriptionId: session.subscription,
             isSubscriptionActive: true,
-            subscriptionEnd,
-            tokens: session.metadata.tokens || 0
+            subscriptionEnd: session.current_period_end,
+            tokens: tokens
           },
         });
       
@@ -65,7 +66,7 @@ export default defineEventHandler(async (event) => {
           user_metadata: {
             isSubscriptionActive: true,
             subscriptionEnd: invoice.lines?.data?.[0]?.period?.end || null,
-            tokens: tokens || 0,
+            tokens: tokens,
           },
         });
 
@@ -114,6 +115,7 @@ export default defineEventHandler(async (event) => {
         const updates = {
           isSubscriptionActive: !subscription.cancel_at_period_end,
           subscriptionEnd: subscription.current_period_end,
+          tokens: subscription.metadata?.tokens
         };
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
