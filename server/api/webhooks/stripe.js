@@ -24,12 +24,22 @@ export default defineEventHandler(async (event) => {
 
         const userId = session.client_reference_id;
 
+        // Zaktualizuj metadane subskrypcji w Stripe
+        const subscriptionId = session.subscription;
+        if (subscriptionId) {
+          await stripe.subscriptions.update(subscriptionId, {
+            metadata: {
+              userId, // Zapisz userId w metadanych subskrypcji
+            },
+          });
+        }
+
         const { error } = await supabase.auth.admin.updateUserById(userId, {
           user_metadata: {
             subscriptionId: session.subscription,
             isSubscriptionActive: true,
-            subscriptionEnd: session.period_end,
-            tokens: session.subscription_details.metadata.tokens,
+            subscriptionEnd: session.current_period_end,
+            tokens: session.metadata?.tokens || 0,
           },
         });
 
@@ -46,17 +56,17 @@ export default defineEventHandler(async (event) => {
         const invoice = webhookEvent.data.object;
         console.log('Zdarzenie: invoice.payment_succeeded', invoice);
 
-        const userId = await findUserBySubscription(invoice.subscription, supabase);
+        const userId = invoice.metadata?.userId; // Odczyt userId z metadanych
         if (!userId) {
-          console.error('Nie znaleziono użytkownika dla subskrypcji:', invoice.subscription);
-          return { success: false, message: 'Nie znaleziono użytkownika.' };
+          console.error('Nie znaleziono userId w metadanych faktury:', invoice.id);
+          return { success: false, message: 'Nie znaleziono userId.' };
         }
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
           user_metadata: {
             isSubscriptionActive: true,
             subscriptionEnd: invoice.lines?.data?.[0]?.period?.end || null,
-            tokens: invoice.subscription_details.metadata.tokens,
+            tokens: invoice.metadata?.tokens || 0,
           },
         });
 
@@ -73,10 +83,10 @@ export default defineEventHandler(async (event) => {
         const invoice = webhookEvent.data.object;
         console.log('Zdarzenie: invoice.payment_failed', invoice);
 
-        const userId = await findUserBySubscription(invoice.subscription, supabase);
+        const userId = invoice.metadata?.userId; // Odczyt userId z metadanych
         if (!userId) {
-          console.error('Nie znaleziono użytkownika dla subskrypcji:', invoice.subscription);
-          return { success: false, message: 'Nie znaleziono użytkownika.' };
+          console.error('Nie znaleziono userId w metadanych faktury:', invoice.id);
+          return { success: false, message: 'Nie znaleziono userId.' };
         }
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
@@ -96,15 +106,15 @@ export default defineEventHandler(async (event) => {
         const subscription = webhookEvent.data.object;
         console.log('Zdarzenie: customer.subscription.updated', subscription);
 
-        const userId = await findUserBySubscription(subscription.id, supabase);
+        const userId = subscription.metadata?.userId; // Odczyt userId z metadanych
         if (!userId) {
-          console.error('Nie znaleziono użytkownika dla subskrypcji:', subscription.id);
-          return { success: false, message: 'Nie znaleziono użytkownika.' };
+          console.error('Nie znaleziono userId w metadanych subskrypcji:', subscription.id);
+          return { success: false, message: 'Nie znaleziono userId.' };
         }
 
         const updates = {
-          isSubscriptionActive: !subscription.cancel_at_period_end, // Aktywna do końca okresu
-          subscriptionEnd: subscription.current_period_end, // Data końca okresu
+          isSubscriptionActive: !subscription.cancel_at_period_end,
+          subscriptionEnd: subscription.current_period_end,
         };
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
@@ -124,10 +134,10 @@ export default defineEventHandler(async (event) => {
         const subscription = webhookEvent.data.object;
         console.log('Zdarzenie: customer.subscription.deleted', subscription);
 
-        const userId = await findUserBySubscription(subscription.id, supabase);
+        const userId = subscription.metadata?.userId; // Odczyt userId z metadanych
         if (!userId) {
-          console.error('Nie znaleziono użytkownika dla subskrypcji:', subscription.id);
-          return { success: false, message: 'Nie znaleziono użytkownika.' };
+          console.error('Nie znaleziono userId w metadanych subskrypcji:', subscription.id);
+          return { success: false, message: 'Nie znaleziono userId.' };
         }
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
@@ -151,26 +161,9 @@ export default defineEventHandler(async (event) => {
         console.log(`Nieobsługiwany typ zdarzenia: ${webhookEvent.type}`);
     }
 
-    // Zwracanie odpowiedzi na webhook
     return { success: true };
   } catch (err) {
     console.error('Błąd podczas przetwarzania webhooka:', err.message);
     return { success: false, message: `Webhook Error: ${err.message}` };
   }
 });
-
-// Pomocnicza funkcja do znalezienia użytkownika po ID subskrypcji
-async function findUserBySubscription(subscriptionId, supabase) {
-  const { data, error } = await supabase
-    .from('auth.users')
-    .select('id')
-    .eq('subscription_id', subscriptionId)
-    .single();
-
-  if (error || !data) {
-    console.error(`Błąd wyszukiwania użytkownika dla subskrypcji ${subscriptionId}:`, error?.message);
-    throw new Error('Nie znaleziono użytkownika.');
-  }
-
-  return data.id;
-}
