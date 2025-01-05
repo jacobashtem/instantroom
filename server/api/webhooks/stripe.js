@@ -20,43 +20,42 @@ export default defineEventHandler(async (event) => {
     switch (webhookEvent.type) {
       case 'checkout.session.completed': {
         const session = webhookEvent.data.object;
-        console.log('Zdarzenie: checkout.session.completed', session);
-
+      
         const userId = session.client_reference_id;
-
-        // Zaktualizuj metadane subskrypcji w Stripe
+        const tokens = session.metadata.tokens;      
         const subscriptionId = session.subscription;
         if (subscriptionId) {
           await stripe.subscriptions.update(subscriptionId, {
             metadata: {
-              userId, // Zapisz userId w metadanych subskrypcji
+              userId, tokens
             },
           });
         }
-
+      
         const { error } = await supabase.auth.admin.updateUserById(userId, {
           user_metadata: {
-            subscriptionId: session.subscription,
+            subscriptionId,
             isSubscriptionActive: true,
-            subscriptionEnd: session.current_period_end,
-            tokens: session.metadata?.tokens || 0,
+            subscriptionEnd,
+            tokens: session.metadata.tokens || 0
           },
         });
-
+      
         if (error) {
-          console.error('Błąd aktualizacji subskrypcji użytkownika:', error.message);
-          return { success: false, message: 'Nie udało się zaktualizować subskrypcji.' };
+          console.error('Błąd podczas aktualizacji subskrypcji użytkownika:', error.message);
+          return { success: false, message: 'Nie udało się zaktualizować subskrypcji użytkownika.' };
         }
-
-        console.log('Subskrypcja zaktualizowana dla użytkownika:', userId);
+      
+        console.log('Dane subskrypcji zapisane w bazie dla użytkownika:', userId);
         break;
       }
-
+      
       case 'invoice.payment_succeeded': {
         const invoice = webhookEvent.data.object;
         console.log('Zdarzenie: invoice.payment_succeeded', invoice);
 
-        const userId = invoice.metadata?.userId; // Odczyt userId z metadanych
+        const userId = invoice.metadata?.userId;
+        const tokens = invoice.metadata?.tokens;
         if (!userId) {
           console.error('Nie znaleziono userId w metadanych faktury:', invoice.id);
           return { success: false, message: 'Nie znaleziono userId.' };
@@ -66,7 +65,7 @@ export default defineEventHandler(async (event) => {
           user_metadata: {
             isSubscriptionActive: true,
             subscriptionEnd: invoice.lines?.data?.[0]?.period?.end || null,
-            tokens: invoice.metadata?.tokens || 0,
+            tokens: tokens || 0,
           },
         });
 
