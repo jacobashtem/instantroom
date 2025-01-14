@@ -1,20 +1,6 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
-  const userData = ref(null)
-  const error = ref(null)
-
- supabase.auth.refreshSession()
-    .then(({ data, error: supabaseError }) => {
-      if (supabaseError) {
-        error.value = supabaseError
-      } else {
-        userData.value = data.user
-      }
-    })
-    .catch((err) => {
-      error.value = err
-    })
-    const user = userData;
+  const user = useSupabaseUser();
   const gtm = useGtm()
   const tokens = ref(null);
   const showModal = ref(false);
