@@ -32,10 +32,8 @@
   const route = useRoute();
   const router = useRouter();
   const user = useSupabaseUser();
-  console.log('useros', user);
-  const { tokens, getTokens, updateTokens } = useUserTokens();
+  const { tokens } = useUserTokens();
   const tokensFromSession = ref('');
-//   const addedTokens = ref('');
   const loading = ref(true);
   const gtm = useGtm()
   onBeforeMount(() => {
@@ -43,7 +41,7 @@
     if (!sessionId) {
       router.replace({ path: '/' });
     } else {
-      router.replace({ path: '/payment-success' });
+      router.replace({ path: '/subscription-success' });
     }
   });
   
