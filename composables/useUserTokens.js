@@ -1,15 +1,33 @@
 export const useUserTokens = () => {
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
+  const userData = ref(null)
+  const error = ref(null)
+
+ supabase.auth.refreshSession()
+    .then(({ data, error: supabaseError }) => {
+      if (supabaseError) {
+        error.value = supabaseError
+      } else {
+        userData.value = data.user
+      }
+    })
+    .catch((err) => {
+      error.value = err
+    })
+    const user = userData;
   const gtm = useGtm()
   const tokens = ref(null);
   const showModal = ref(false);
+  const isSubscriptionActive = ref(false); // Dodane: Status subskrypcji
+  const subscriptionEnd = ref(null); // Dodane: Data końca subskrypcji
 
   const getTokens = () => {
     if (!user.value) {
       return;
     }
     tokens.value = user.value.user_metadata?.tokens || 0;
+    isSubscriptionActive.value = user.value.user_metadata?.isSubscriptionActive || false;
+    subscriptionEnd.value = user.value.user_metadata?.subscriptionEnd || null;
   };
 
   const updateTokens = async (newTokens) => {
@@ -117,10 +135,13 @@ export const useUserTokens = () => {
       } else {
         tokens.value = null;
         showModal.value = false;
+        isSubscriptionActive;
+        isSubscriptionActive.value = false; // Reset statusu subskrypcji
+        subscriptionEnd.value = null; // Reset daty końca subskrypcji
       }
     },
     { immediate: true }
   );
 
-  return { tokens, showModal, getTokens, updateTokens, decrementToken, closeFreeTokensGrantedModal };
+  return { tokens, showModal, getTokens, isSubscriptionActive, subscriptionEnd, updateTokens, decrementToken, closeFreeTokensGrantedModal };
 };
