@@ -7,7 +7,7 @@ const router = useRouter();
 const { isLoggedIn, getUser, clearUser } = useLoggedIn();
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-const { tokens, getTokens, updateTokens } = useUserTokens(); // Przywrócone zarządzanie tokenami
+const { tokens,getTokens, isSubscriptionActive, subscriptionEnd } = useUserTokens(); // Przywrócone zarządzanie tokenami
 
 
 onMounted(async () => {
@@ -36,6 +36,12 @@ const items = ref([
       url: '/cennik',
       click: async () => router.push('/cennik'),
     },
+    // {
+    //   label: `Subskrypcja: ${isSubscriptionActive.value ? 'Aktywna' : 'Nieaktywna'}  subsEnd:  ${subscriptionEnd.value} subsActive : ${isSubscriptionActive.value} `,
+    //   icon: 'i-heroicons-swatch-solid',
+    //   url: '/cennik',
+    //   click: async () => router.push('/cennik'),
+    // },
     {
       label: `Ustawienia profilu`,
       icon: 'i-heroicons-cog-8-tooth-20-solid',
@@ -62,7 +68,7 @@ watch(tokens, (newTokens) => {
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-10" src="/public/logo.webp" />
       </NuxtLink>
-      <div v-if="!isMobile">
+      <div class="flex items-center" v-if="!isMobile">
         <!-- Logowanie -->
         <NuxtLink to="/blog" 
           :class="{'text-aquaBlue-500 font-semibold': !isLoggedIn}"
@@ -84,7 +90,12 @@ watch(tokens, (newTokens) => {
         <NuxtLink v-if="isLoggedIn" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
         <NuxtLink v-if="isLoggedIn" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="isLoggedIn">
-          <UAvatar icon="i-heroicons-user" alt="Avatar" />
+          <!-- {{ isSubscriptionActive }} -->
+          <UAvatar class="w-8 h-8" v-if="!isSubscriptionActive" icon="i-heroicons-user" alt="Avatar" />
+          <div class="w-8 h-8" v-else>
+            <UIcon name="pepicons-pencil:crown-circle-filled" width="32" height="32"  style="color: #FFA646" dynamic></UIcon>
+          </div>
+
           <template #account="{ item }">
             <div class="text-left">
               <p>Zalogowany jako</p>

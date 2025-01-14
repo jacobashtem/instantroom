@@ -113,9 +113,8 @@ export default defineEventHandler(async (event) => {
         }
 
         const updates = {
-          isSubscriptionActive: !subscription.cancel_at_period_end,
+          cancelled: subscription.canceled_at,
           subscriptionEnd: subscription.current_period_end,
-          tokens: subscription.metadata?.tokens
         };
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {
@@ -145,7 +144,9 @@ export default defineEventHandler(async (event) => {
           user_metadata: {
             subscriptionId: null,
             isSubscriptionActive: false,
-            tokens: 0,
+            subscriptionEnd: null,
+            cancelled: false,
+            tokens: 0
           },
         });
 
