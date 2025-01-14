@@ -12,7 +12,7 @@ const { tokens,getTokens, isSubscriptionActive, subscriptionEnd } = useUserToken
 
 onMounted(async () => {
   await getUser(); 
-  await getTokens();
+  getTokens();
 });
 
 const logout = async () => {
