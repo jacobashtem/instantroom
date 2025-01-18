@@ -55,8 +55,8 @@ export default defineEventHandler(async (event) => {
         const invoice = webhookEvent.data.object;
         console.log('Zdarzenie: invoice.payment_succeeded', invoice);
 
-        const userId = invoice.metadata?.userId;
-        const tokens = invoice.metadata?.tokens;
+        const userId = invoice.lines?.data?.[0]?.metadata?.userId;
+        const tokens = invoice.lines?.data?.[0]?.metadata?.tokens;
         if (!userId) {
           console.error('Nie znaleziono userId w metadanych faktury:', invoice.id);
           return { success: false, message: 'Nie znaleziono userId.' };
