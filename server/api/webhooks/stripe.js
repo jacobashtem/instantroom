@@ -113,8 +113,8 @@ export default defineEventHandler(async (event) => {
         }
 
         const updates = {
-          cancelled: subscription.canceled_at,
-          subscriptionEnd: subscription.current_period_end,
+          cancelled: subscription.cancel_at ?? null,
+          subscriptionEnd: subscription.current_period_end ?? null,
         };
 
         const { error } = await supabase.auth.admin.updateUserById(userId, {

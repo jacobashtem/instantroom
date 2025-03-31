@@ -7,8 +7,7 @@ const router = useRouter();
 const { isLoggedIn, getUser, clearUser } = useLoggedIn();
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-const { tokens,getTokens, isSubscriptionActive, subscriptionEnd } = useUserTokens(); // Przywrócone zarządzanie tokenami
-
+const { tokens, getTokens, isSubscriptionActive, subscriptionEnd } = useUserTokens();
 
 onMounted(async () => {
   await getUser(); 
@@ -36,12 +35,6 @@ const items = ref([
       url: '/cennik',
       click: async () => router.push('/cennik'),
     },
-    // {
-    //   label: `Subskrypcja: ${isSubscriptionActive.value ? 'Aktywna' : 'Nieaktywna'}  subsEnd:  ${subscriptionEnd.value} subsActive : ${isSubscriptionActive.value} `,
-    //   icon: 'i-heroicons-swatch-solid',
-    //   url: '/cennik',
-    //   click: async () => router.push('/cennik'),
-    // },
     {
       label: `Ustawienia profilu`,
       icon: 'i-heroicons-cog-8-tooth-20-solid',
@@ -57,9 +50,55 @@ const items = ref([
     },
   ],
 ]);
+
 watch(tokens, (newTokens) => {
   items.value[1][0].label = `Liczba tokenów: ${newTokens}`;
 });
+
+const formattedSubscriptionEnd = computed(() => {
+  if (!subscriptionEnd.value) return null;
+  const timestamp = Number(subscriptionEnd.value) * 1000;
+  return new Date(timestamp).toLocaleDateString('pl-PL', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+});
+
+
+const cancelling = ref(false)
+const cancelPlannedManually = ref(false)
+
+const isCancellationPlanned = computed(() => {
+  return !!user.value?.user_metadata?.cancelled
+})
+
+// Jeśli backend już ustawi `cancelled`, resetujemy lokalny tymczasowy stan
+watchEffect(() => {
+  if (user.value?.user_metadata?.cancelled) {
+    cancelPlannedManually.value = false
+  }
+})
+
+const cancelSubscription = async () => {
+  if (!user.value?.id) return
+
+  cancelling.value = true
+
+  const { data, error } = await useFetch('/api/cancel-subscription', {
+    method: 'POST',
+    body: { userId: user.value.id },
+  })
+
+  if (!error.value && data.value?.success) {
+    console.log('✅ Subskrypcja zaplanowana – aktualizuję lokalne dane użytkownika')
+    cancelPlannedManually.value = true
+    await getUser()
+  }
+
+  cancelling.value = false
+}
+
 </script>
 
 <template>
@@ -69,17 +108,12 @@ watch(tokens, (newTokens) => {
         <img class="w-10" src="/public/logo.webp" />
       </NuxtLink>
       <div class="flex items-center" v-if="!isMobile">
-        <!-- Logowanie -->
-        <NuxtLink to="/blog" 
-          :class="{'text-aquaBlue-500 font-semibold': !isLoggedIn}"
-          class="text-sm mr-4">
-          Blog
-        </NuxtLink>
+        <NuxtLink to="/blog" :class="{ 'text-aquaBlue-500 font-semibold': !isLoggedIn }" class="text-sm mr-4">Blog</NuxtLink>
+        <NuxtLink to="/oferta" :class="{ 'text-aquaBlue-500 font-semibold': !isLoggedIn }" class="text-sm mr-4">Oferta</NuxtLink>
         <NuxtLink v-if="!isLoggedIn" to="/login" class="text-sm font-semibold text-aquaBlue-500">
           Logowanie / Rejestracja
         </NuxtLink>
 
-        <!-- Tworzenie projektów -->
         <NuxtLink
           v-if="isLoggedIn"
           to="/design"
@@ -89,22 +123,56 @@ watch(tokens, (newTokens) => {
         </NuxtLink>
         <NuxtLink v-if="isLoggedIn" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
         <NuxtLink v-if="isLoggedIn" to="/cennik" class="text-sm mr-4">Cennik</NuxtLink>
+
         <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }" v-if="isLoggedIn">
-          <!-- {{ isSubscriptionActive }} -->
           <UAvatar class="w-8 h-8" v-if="!isSubscriptionActive" icon="i-heroicons-user" alt="Avatar" />
           <div class="w-8 h-8" v-else>
-            <UIcon name="pepicons-pencil:crown-circle-filled" width="32" height="32"  style="color: #FFA646" dynamic></UIcon>
+            <UIcon name="pepicons-pencil:crown-circle-filled" class="w-8 h-8" width="32" height="32" style="color: #FFA646" dynamic />
           </div>
 
           <template #account="{ item }">
-            <div class="text-left">
-              <p>Zalogowany jako</p>
-              <p class="font-medium text-gray-900 dark:text-white">{{ item.label }}</p>
+            <div class="flex flex-col gap-2">
+              <div class="text-left">
+  <p class="text-sm text-gray-600">
+    Subskrypcja aktywna do:
+  </p>
+  <p class="font-medium text-gray-900 dark:text-white">
+    {{ formattedSubscriptionEnd || '---' }}
+  </p>
+</div>
+
+<!-- Gdy subskrypcja aktywna i nieanulowana (ani przez backend, ani ręcznie) -->
+<div
+  v-if="isSubscriptionActive && !isCancellationPlanned && !cancelPlannedManually"
+  class="mt-2"
+>
+  <button
+    @click="cancelSubscription"
+    :disabled="cancelling"
+    class="w-full px-3 py-1.5 text-sm bg-red-600 text-white rounded hover:bg-red-700 transition"
+  >
+    {{ cancelling ? 'Anulowanie...' : 'Anuluj subskrypcję' }}
+  </button>
+</div>
+
+<!-- Gdy subskrypcja aktywna, ale anulowana (backend lub ręcznie) -->
+<p
+  v-else-if="isSubscriptionActive && (isCancellationPlanned || cancelPlannedManually)"
+  class="text-sm text-gray-600 italic mt-2"
+>
+  Subskrypcja została anulowana – wygaśnie:
+  <span class="font-medium text-black">
+    {{ formattedSubscriptionEnd }}
+  </span>
+</p>
+
+
             </div>
           </template>
+
           <template #item="{ item }">
             <span class="truncate">{{ item.label }}</span>
-            <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" dynamic/>
+            <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" dynamic />
           </template>
         </UDropdown>
       </div>

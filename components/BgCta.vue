@@ -2,10 +2,10 @@
     <div class="bg-sunsetOrange-500 py-12 w-full">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            3 pierwsze wizualizacje są za darmo.
+            {{ heading }}
         </h2>
         <p class="mt-6 text-xl text-white max-w-3xl">
-            Bez kruczków. Bez podawania danych płatniczych.
+            {{ description }}
         </p>
         <div class="mt-10">
             <NuxtLink v-if="isLoggedIn" to="/design">
@@ -24,6 +24,17 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  heading: {
+    type: String,
+    default: '3 pierwsze wizualizacje są za darmo.',
+  },
+  description: {
+    type: String,
+    default: 'Bez kruczków. Bez podawania danych płatniczych.',
+  },
+});
+
 const { isLoggedIn, getUser } = useLoggedIn();
 onMounted(async () => {
     await getUser();

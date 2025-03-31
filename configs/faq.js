@@ -1,6 +1,10 @@
 // config/faq.js
 
 export const faqs = [
+  {
+    question: 'Od jakich stylów zacząć? Co polecacie?',
+    answer: 'Jeśli interesują Cię nowoczesne wizualizacje, najlepiej sprawdzą się: skandynawski, ekonomiczny, odświeżony, nowoczesny,minimalistyczny, modernistyczny, Ikea'
+  },
     { 
       question: 'Jak działa Instant Room?', 
       answer: 'Instant Room umożliwia przesyłanie zdjęć aktualnego wnętrza, wybranie stylu i rodzaju pomieszczenia, a następnie przeprojektowywanie go. Wygenerowanie wizualizacji zajmuje ok minuty, po czym otrzymujesz fotorealistyczne wizualizacje nowego wnętrza. Narzędzie jest dostępne po rejestracji. Do wygenerowania 1 wizualizacji potrzebujesz 1 tokena. Jednak po rejestracji otrzymasz 5 tokenów zupełnie gratis, bez podawania karty płatniczej! Testuj różne style i pomieszczenia, a następnie zdecyduj, czy chcesz dokupić więcej tokenów!' 
