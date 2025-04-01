@@ -49,14 +49,14 @@
                             Ostatnie wizualizacje</NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
-                        <NuxtLink v-if="user" to="/cennik" class=" text-white mr-4 flex items-center">
+                        <NuxtLink v-if="user" to="/cennik" class=" text-white mr-2 flex items-center">
                             <UIcon name="i-heroicons-shopping-cart-solid" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
                                 Cennik
                         </NuxtLink>
                     </li>
                     <li @click="item.label !== 'Wyloguj'? toggleMenu() : logOut()" class="flex items-center py-3 text-white" v-for="item in menuItems[1]">
-                        <NuxtLink v-if="user" :to="item.url" class="flex text-white mr-4 flex items-center">
-                            <UIcon :name="item.icon" class="mr-4 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" />
+                        <NuxtLink v-if="user" :to="item.url" class="flex text-white mr-2 flex items-center">
+                            <UIcon :name="item.icon" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" />
                           {{ item.label }}
                         </NuxtLink>
                     </li>

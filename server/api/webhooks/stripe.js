@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
   const sig = event.req.headers['stripe-signature'];
 
   try {
-    // Walidacja webhooka
     const webhookEvent = stripe.webhooks.constructEvent(
       rawBody,
       sig,
@@ -83,7 +82,7 @@ export default defineEventHandler(async (event) => {
         const invoice = webhookEvent.data.object;
         console.log('Zdarzenie: invoice.payment_failed', invoice);
 
-        const userId = invoice.metadata?.userId; // Odczyt userId z metadanych
+        const userId = invoice.metadata?.userId;
         if (!userId) {
           console.error('Nie znaleziono userId w metadanych faktury:', invoice.id);
           return { success: false, message: 'Nie znaleziono userId.' };
@@ -106,7 +105,7 @@ export default defineEventHandler(async (event) => {
         const subscription = webhookEvent.data.object;
         console.log('Zdarzenie: customer.subscription.updated', subscription);
 
-        const userId = subscription.metadata?.userId; // Odczyt userId z metadanych
+        const userId = subscription.metadata?.userId;
         if (!userId) {
           console.error('Nie znaleziono userId w metadanych subskrypcji:', subscription.id);
           return { success: false, message: 'Nie znaleziono userId.' };
@@ -134,7 +133,7 @@ export default defineEventHandler(async (event) => {
         const subscription = webhookEvent.data.object;
         console.log('Zdarzenie: customer.subscription.deleted', subscription);
 
-        const userId = subscription.metadata?.userId; // Odczyt userId z metadanych
+        const userId = subscription.metadata?.userId;
         if (!userId) {
           console.error('Nie znaleziono userId w metadanych subskrypcji:', subscription.id);
           return { success: false, message: 'Nie znaleziono userId.' };

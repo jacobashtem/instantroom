@@ -77,7 +77,7 @@ const updateAspectRatio = () => {
       aspectRatio: `${img.width} / ${img.height}`,
     };
   };
-  img.src = props.images[0]; // Zakładamy, że oba obrazy mają te same proporcje
+  img.src = props.images[0];
 };
 
 onMounted(() => {

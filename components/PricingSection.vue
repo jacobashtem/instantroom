@@ -25,11 +25,9 @@
               {{ highlightedInline }}
             </span>
           </p>
-          <p
+          <p v-html="paragraph2"
             class="text-lg font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl"
-          >
-            {{ paragraph2 }}
-          </p>
+          />
         </div>
       </div>
   
@@ -83,6 +81,7 @@
             </NuxtLink>
           </div>
         </div>
+        <p class="text-lg font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl text-left">Wystawiasz mieszkania na sprzedaż lub wynajem? Każde lokum może mieć kilka pomieszczeń (salon, sypialnia, kuchnia), a każde pomieszczenie – kilka różnych ujęć. Dzięki 500 wizualizacjom możesz zaprezentować mnóstwo wariantów: <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">wystarczy dla kilkunastu, a nawet kilkudziesięciu mieszkań</span>, w zależności od tego, ile kadrów i styli zamierzasz wygenerować. Twoja oferta natychmiast zyska na atrakcyjności, bo klienci zobaczą różnorodne odsłony danego wnętrza.</p>
       </div>
     </div>
   </template>
@@ -111,7 +110,7 @@
     },
     paragraph2: {
       type: String,
-      default: 'A gdy będziesz chcieć więcej – sięgnij po abonament.',
+      default: 'A gdy będziesz chcieć więcej – sięgnij po abonament.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Nasza rada: Wygeneruj 5–8 aranżacji na jedno zdjęcie – dzięki temu z łatwością znajdziesz styl, który naprawdę Cię przekona. </span> Nawet przy ograniczeniach AI taka różnorodność pozwala niemal zawsze uzyskać wizualizację, która wyróżni wnętrze i podkreśli jego potencjał.',
     },
     packageTitle: {
       type: String,

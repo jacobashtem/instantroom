@@ -1,4 +1,3 @@
-// composables/useInflection.js
 
 export function useInflection() {
     const inflectToken = (count) => {

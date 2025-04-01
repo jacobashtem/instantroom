@@ -21,7 +21,6 @@ const firstPost = ref({});
 const sliderPosts = ref([]);
 const otherPosts = ref([]);
 
-// Watcher, aby aktualizować posty na podstawie zmiany w `posts`
 watch(posts, () => {
     if (posts.value.length > 0) {
         firstPost.value = posts.value[0];

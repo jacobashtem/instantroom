@@ -1,4 +1,3 @@
-// config/faq.js
 
 export const faqs = [
   {

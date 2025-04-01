@@ -1,7 +1,7 @@
 <template>
     <div class="container max-w-6xl mx-auto mt-24">
       <h2 class="text-3xl font-semibold text-center md:text-left mb-10">
-          Ustawienia <span class="hidden md:inline-block">Twojego </span> <span class="text-sunsetOrange-500">profilu</span>
+          Profil &  <span class="hidden md:inline-block"></span> <span class="text-sunsetOrange-500">Subskrypcja</span>
       </h2>
       <!-- <UVerticalNavigation :links="links" class="col-span-2" /> -->
       <div class="col-span-4">

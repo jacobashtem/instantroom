@@ -3,9 +3,12 @@
     <div class="px-4 mx-autol sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">Jak działa nasz <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">  AI Room</span> Generator?</h2>
-            <p class="text-xl lg:text-2xl mt-6 font-light  tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl">
-                Instant Room to pierwsze polskie narzędzie AI, które pomoże Ci w przeprojektowaniu domu lub mieszkania według Twojej wizji.
+            <p class="text-center text-xl lg:text-2xl mt-6 font-light  tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl">
+            <span class="bg-sunsetOrange-500 font-semibold text-white leading-6 px-3">Pamiętaj!</span> Im lepsza jakość zdjęcia które uploadujesz,<span class="bg-sunsetOrange-500 font-semibold text-white leading-6 px-3">tym lepszy efekt końcowy!</span> <br>  
             </p>
+            <!-- <p class="text-xl lg:text-2xl mt-6 font-light  tracking-tight text-white sm:mt-5 sm:text-xl xl:text-2xl">
+                Instant Room to pierwsze polskie narzędzie AI, które pomoże Ci w przeprojektowaniu domu lub mieszkania według Twojej wizji.
+            </p> -->
         </div>
         <div class="relative mt-12 lg:mt-20">
             <div class="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28"><img alt="" loading="lazy" width="1000" height="500" decoding="async" data-nimg="1" class="w-full" style="color:transparent" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg">

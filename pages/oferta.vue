@@ -12,7 +12,24 @@
     <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">potencjał oferowanych mieszkań</span>,
     nawet tych wymagających remontu.
   </HeroMain>
-
+  <section>
+    <div class="max-w-xl p-6 mx-auto pt-14 pb-24 lg:pt-24 lg:pb-32 px-4 lg:max-w-6xl">
+        <h2 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">
+          Galeria przykładowych
+          <span
+            class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800"
+          >
+          metamorfoz
+          </span>
+        </h2>
+        <p class="text-xl lg:text-2xl mt-6 font-light mb-6">
+          Słabe zdjęcie, kiepska przestrzeń budzą wątpliwości - zniechęcają. Wizualizacja potrafi to odwrócić — nagle widać możliwości, a nie tylko wady.
+          <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">Klient dostrzega potencjał i chętniej myśli o inwestycji.
+          </span>
+        </p>
+        <SlidersGallery/>
+      </div>
+</section>
   <BenefitFeature
     heading="Korzyść #1"
     highlightedText="Zwiększenie "
@@ -74,7 +91,7 @@
   <PricingSection
     heading="Startuj bez ograniczeń"
     highlighted="– nielimitowany dostęp!"
-    paragraph1="To nie projekt architektoniczny, lecz emocjonalna wizualizacja, która ma pomóc klientowi wyobrazić sobie potencjał wnętrza."
+    paragraph1="Nasze wizualizacje, To nie jest projekt architektoniczny, lecz emocjonalna wizualizacja, która ma pomóc klientowi wyobrazić sobie potencjał wnętrza."
     highlightedInline="Wystarczy, by przyciągnąć uwagę i zbudować pierwsze wrażenie – resztę zrobi Twoja oferta. "
     paragraph2="Wygenerowane wizualizacje mogą czasem zawierać drobne artefakty, nietypowe elementy czy uproszczenia. Dlatego oferujemy nielimitowany pakiet – możesz tworzyć tyle wersji, ile potrzebujesz, aż znajdziesz tę najbardziej przekonującą. "
   />

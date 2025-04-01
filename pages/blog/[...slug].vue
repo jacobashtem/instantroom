@@ -55,19 +55,14 @@
 <script setup>
 const route = useRoute();
 const currentPath = ref(route.fullPath);
-// const { posts, fetchPosts } = fetchPosts(2, 'Stworzenia');
-// const { randomPosts, fetchRandomPosts, postsPerPage } = useFetchPosts(locale);
 useHead({
   link: [
     {
       rel: "canonical",
-      href: `https://instantroom.pl/blog/${route.params.slug}`, // Bazuje na slug dokumentu
+      href: `https://instantroom.pl/blog/${route.params.slug}`,
     },
   ],
 });
-// const { posts, fetchPosts } = fetchPosts(2, 'Stworzenia');
-// const { randomPosts, fetchRandomPosts, postsPerPage } = useFetchPosts(locale);
 onMounted(() => {
-  // fetchRandomPosts(doc._id);
 });
 </script>

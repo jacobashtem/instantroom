@@ -19,7 +19,7 @@
                     <div class="relative">
                         <div class="group relative">
                             <img :src="src" alt="output" class="w-[360px] transition-all cursor-pointer object-cover h-64 object-cover group-hover:brightness-50" />
-                            <UIcon @click="lightBoxHandler(src, index)" width="64" height="64" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-all cursor-pointer text-white" name="mdi:eye" dynamic/>
+                            <UIcon @click="lightBoxHandler(src, index)" width="64" height="64" class="w-16 h-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-all cursor-pointer text-white" name="mdi:eye" dynamic/>
                         </div>
                     </div>
                 </div>
@@ -29,8 +29,8 @@
         <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center'}">
         <div class="flex">
             <img class="cursor-pointer" :src="modalImg" alt="">
-            <UIcon @click="downloadImage(modalImg)" width="56" height="56"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
-            <UIcon @click="isLightbox = false;" width="48" height="48"  class="icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
+            <UIcon @click="downloadImage(modalImg)" width="56" height="56"  class="w-[56px] h-[56px] icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
+            <UIcon @click="isLightbox = false;" width="48" height="48"  class="w-12 h-12 icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
         </div>
     </UModal>
     </main>

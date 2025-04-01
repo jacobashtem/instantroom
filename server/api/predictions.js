@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   const { image, theme, roomType, prompt } = body;
   const supabase = await serverSupabaseClient(event)
 
-  // Pobranie prompta z Supabase
+
   const { data, error } = await supabase
     .from('sorted_prompts')
     .select('room_types')

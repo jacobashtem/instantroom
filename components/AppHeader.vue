@@ -1,16 +1,20 @@
 <script setup>
 import { useMediaQuery } from "@vueuse/core";
 import { useRouter } from 'vue-router';
-const isMobile = useMediaQuery("(max-width: 640px)");
 
+const isMobile = useMediaQuery("(max-width: 640px)");
 const router = useRouter();
 const { isLoggedIn, getUser, clearUser } = useLoggedIn();
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const { tokens, getTokens, isSubscriptionActive, subscriptionEnd } = useUserTokens();
 
+
+const cancelPlannedManually = useCancelPlannedManually()
+const resumePlannedManually = useResumePlannedManually()
+
 onMounted(async () => {
-  await getUser(); 
+  await getUser();
   getTokens();
 });
 
@@ -23,7 +27,7 @@ const logout = async () => {
 const items = ref([
   [
     {
-      label: user.value?.email || 'Nieznany użytkownik', 
+      label: user.value?.email || 'Nieznany użytkownik',
       slot: 'account',
       disabled: true,
     },
@@ -36,7 +40,7 @@ const items = ref([
       click: async () => router.push('/cennik'),
     },
     {
-      label: `Ustawienia profilu`,
+      label: `Profil & Subskrypcja`,
       icon: 'i-heroicons-cog-8-tooth-20-solid',
       url: '/settings/profile',
       click: async () => router.push('/settings/profile'),
@@ -44,9 +48,7 @@ const items = ref([
     {
       label: `Wyloguj`,
       icon: 'i-heroicons-arrow-left-on-rectangle',
-      click: async () => {
-        await logout();
-      },
+      click: async () => logout(),
     },
   ],
 ]);
@@ -65,40 +67,9 @@ const formattedSubscriptionEnd = computed(() => {
   });
 });
 
-
-const cancelling = ref(false)
-const cancelPlannedManually = ref(false)
-
 const isCancellationPlanned = computed(() => {
-  return !!user.value?.user_metadata?.cancelled
-})
-
-// Jeśli backend już ustawi `cancelled`, resetujemy lokalny tymczasowy stan
-watchEffect(() => {
-  if (user.value?.user_metadata?.cancelled) {
-    cancelPlannedManually.value = false
-  }
-})
-
-const cancelSubscription = async () => {
-  if (!user.value?.id) return
-
-  cancelling.value = true
-
-  const { data, error } = await useFetch('/api/cancel-subscription', {
-    method: 'POST',
-    body: { userId: user.value.id },
-  })
-
-  if (!error.value && data.value?.success) {
-    console.log('✅ Subskrypcja zaplanowana – aktualizuję lokalne dane użytkownika')
-    cancelPlannedManually.value = true
-    await getUser()
-  }
-
-  cancelling.value = false
-}
-
+  return user.value?.user_metadata?.cancelled && !resumePlannedManually.value;
+});
 </script>
 
 <template>
@@ -107,6 +78,7 @@ const cancelSubscription = async () => {
       <NuxtLink to="/" class="text-xl font-bold">
         <img class="w-10" src="/public/logo.webp" />
       </NuxtLink>
+
       <div class="flex items-center" v-if="!isMobile">
         <NuxtLink to="/blog" :class="{ 'text-aquaBlue-500 font-semibold': !isLoggedIn }" class="text-sm mr-4">Blog</NuxtLink>
         <NuxtLink to="/oferta" :class="{ 'text-aquaBlue-500 font-semibold': !isLoggedIn }" class="text-sm mr-4">Oferta</NuxtLink>
@@ -114,11 +86,8 @@ const cancelSubscription = async () => {
           Logowanie / Rejestracja
         </NuxtLink>
 
-        <NuxtLink
-          v-if="isLoggedIn"
-          to="/design"
-          class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 py-2 text-white mr-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4"
-        >
+        <NuxtLink v-if="isLoggedIn" to="/design"
+          class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-2 text-white mr-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
           Twórz
         </NuxtLink>
         <NuxtLink v-if="isLoggedIn" to="/generations" class="text-sm mr-4">Ostatnie wizualizacje</NuxtLink>
@@ -133,40 +102,20 @@ const cancelSubscription = async () => {
           <template #account="{ item }">
             <div class="flex flex-col gap-2">
               <div class="text-left">
-  <p class="text-sm text-gray-600">
-    Subskrypcja aktywna do:
-  </p>
-  <p class="font-medium text-gray-900 dark:text-white">
-    {{ formattedSubscriptionEnd || '---' }}
-  </p>
-</div>
+                <p>Zalogowany jako</p>
+                <p class="font-medium text-gray-900 dark:text-white">{{ item.label }}</p>
+              </div>
 
-<!-- Gdy subskrypcja aktywna i nieanulowana (ani przez backend, ani ręcznie) -->
-<div
-  v-if="isSubscriptionActive && !isCancellationPlanned && !cancelPlannedManually"
-  class="mt-2"
->
-  <button
-    @click="cancelSubscription"
-    :disabled="cancelling"
-    class="w-full px-3 py-1.5 text-sm bg-red-600 text-white rounded hover:bg-red-700 transition"
-  >
-    {{ cancelling ? 'Anulowanie...' : 'Anuluj subskrypcję' }}
-  </button>
-</div>
-
-<!-- Gdy subskrypcja aktywna, ale anulowana (backend lub ręcznie) -->
-<p
-  v-else-if="isSubscriptionActive && (isCancellationPlanned || cancelPlannedManually)"
-  class="text-sm text-gray-600 italic mt-2"
->
-  Subskrypcja została anulowana – wygaśnie:
-  <span class="font-medium text-black">
-    {{ formattedSubscriptionEnd }}
-  </span>
-</p>
-
-
+              <div class="text-left" v-if="isSubscriptionActive">
+                <p v-if="isSubscriptionActive && !isCancellationPlanned && !cancelPlannedManually" class="text-sm text-gray-600">
+                  Subskrypcja aktywna do:
+                  <span class="font-medium text-black">{{ formattedSubscriptionEnd }}</span>
+                </p>
+                <p v-else class="text-sm text-gray-600">
+                  Subskrypcja została anulowana – wygaśnie:
+                  <span class="font-medium text-black">{{ formattedSubscriptionEnd }}</span>
+                </p>
+              </div>
             </div>
           </template>
 
@@ -176,6 +125,7 @@ const cancelSubscription = async () => {
           </template>
         </UDropdown>
       </div>
+
       <MobileMenu :menu-items="items" v-if="isMobile" />
     </header>
   </div>

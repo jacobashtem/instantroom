@@ -1,5 +1,6 @@
 <template>
-    <section class="bg-aquaBlue-500 h-full">
+  <PricingSection/>
+    <!-- <section class="bg-aquaBlue-500 h-full">
       <div class="mx-auto pt-40 pb-40 px-3 my-3 container max-w-6xl">
         <div class="mb-10">
           <div class="space-y-4">
@@ -97,7 +98,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </template>
   
   <script setup>

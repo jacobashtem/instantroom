@@ -47,7 +47,7 @@
     },
     imagePosition: {
       type: String,
-      default: 'right', // or 'left'
+      default: 'right',
       validator: (val) => ['left', 'right'].includes(val),
     },
     paragraphs: {

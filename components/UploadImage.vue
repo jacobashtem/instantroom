@@ -30,7 +30,7 @@ const supabase = useSupabaseClient();
 const isChosenImgSrc = useState("chosenImgSrc");
 const userUploadedPhotos = useState("userUploadedPhotos");
 const chosenImgSource = useState('chosenImgSource');
-const isModal = useState("modal");
+const isModal = useState("appModal");
 
 const { toastSuccess, toastError } = useAppToast();
 const handleFileChange = () => {

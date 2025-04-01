@@ -4,8 +4,8 @@ export const useUserTokens = () => {
   const gtm = useGtm()
   const tokens = ref(null);
   const showModal = ref(false);
-  const isSubscriptionActive = ref(false); // Dodane: Status subskrypcji
-  const subscriptionEnd = ref(null); // Dodane: Data końca subskrypcji
+  const isSubscriptionActive = ref(false);
+  const subscriptionEnd = ref(null);
 
   const getTokens = () => {
     if (!user.value) {
@@ -122,8 +122,8 @@ export const useUserTokens = () => {
         tokens.value = null;
         showModal.value = false;
         isSubscriptionActive;
-        isSubscriptionActive.value = false; // Reset statusu subskrypcji
-        subscriptionEnd.value = null; // Reset daty końca subskrypcji
+        isSubscriptionActive.value = false;
+        subscriptionEnd.value = null;
       }
     },
     { immediate: true }
