@@ -5,12 +5,11 @@
     :images="images"
   >
     Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia
-    <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">tworzenie wizualizacji wnętrz</span>
+    tworzenie wizualizacji wnętrz
     na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji,
-    <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">agencje i pośrednicy nieruchomości</span>
-    mogą w prosty sposób zaprezentować
-    <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">potencjał oferowanych mieszkań</span>,
-    nawet tych wymagających remontu.
+    agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować
+    <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">potencjał oferowanych mieszkań -
+    nawet tych wymagających remontu.</span>
   </HeroMain>
   <section>
     <div class="max-w-xl p-6 mx-auto pt-14 pb-24 lg:pt-24 lg:pb-32 px-4 lg:max-w-6xl">
@@ -23,9 +22,9 @@
           </span>
         </h2>
         <p class="text-xl lg:text-2xl mt-6 font-light mb-6">
-          Słabe zdjęcie, kiepska przestrzeń budzą wątpliwości - zniechęcają. Wizualizacja potrafi to odwrócić — nagle widać możliwości, a nie tylko wady.
-          <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">Klient dostrzega potencjał i chętniej myśli o inwestycji.
-          </span>
+          Zdjęcia zaniedbanego wnętrza nie zachęcają – klient widzi problem, nie możliwości.
+          <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">Wizualizacja to gamechanger: pokazuje potencjał, zanim zdąży się zniechęcić.
+          </span> Zamiast odrzucić ofertę z powodu pierwszego wrażenia, klient może spojrzeć na nią z zupełnie innej perspektywy.
         </p>
         <SlidersGallery/>
       </div>
@@ -68,8 +67,8 @@
   />
 
   <BgCta
-    :heading="'W abonamencie, wygenerujesz tyle ile chcesz.'"
-    :description="'89.90 zł miesięcznie. Bez limitu wizualizacji.'"
+    :heading="'Dzięki abonamentowi, dasz swoim ofertom drugą szansę.'"
+    :description="'Od 59,90 zł. Wybierz zestaw dopasowany do liczby mieszkań i skali działania'"
   />
 
   <WhyUs
@@ -81,20 +80,14 @@
   <MosaicSection   
     title="Zwiększ zainteresowanie,"
     highlighted="sprzedawaj szybciej"
-    paragraph="Standardowe zdjęcia nieruchomości często nie oddają pełnego potencjału wnętrza, zwłaszcza jeśli wymaga ono remontu lub jest puste. Dzięki wizualizacjom możesz <span class='bg-sunsetOrange-500 font-semibold text-white leading-6'> pokazać klientom coś więcej niż obecny stan – dajesz im wizję przyszłości.</span><br/><br/> Oferty wzbogacone o <span class='bg-sunsetOrange-500 font-semibold text-white leading-6'> wizualizacje od Instant Room przyciągną uwagę na portalach nieruchomości</span> i w materiałach marketingowych, co zwiększy zainteresowanie <br/></br> Szybkie przygotowanie wizualizacji, przyspieszy Twoją sprzedaż.
+    paragraph="Standardowe zdjęcia nieruchomości często nie oddają pełnego potencjału wnętrza, zwłaszcza jeśli wymaga ono remontu lub jest puste. Dzięki wizualizacjom możesz <span class='bg-sunsetOrange-500 font-semibold text-white leading-6'> pokazać klientom coś więcej niż obecny stan – dajesz im wizję przyszłości.</span><br/><br/> Oferty wzbogacone o <span class='bg-sunsetOrange-500 font-semibold text-white leading-6'> wizualizacje od Instant Room przyciągną uwagę na portalach nieruchomości</span> i w materiałach marketingowych, co zwiększy zainteresowanie <br/></br>
 "
   />
-  <ComparisonSection :is-home="true" :images="images"   title="Nie licz, na wyobraźnie klientów."
-  highlighted="Pokaż im potencjał Twoich przestrzeni"
+  <ComparisonSection :is-home="true" :images="images"   title="Wyobraźnia to za mało."
+  highlighted="Klient musi zobaczyć, żeby uwierzyć."
   paragraph="Zamiast używać jedynie opisów i zdjęć, które mogą nie oddawać pełni możliwości wnętrza, możesz pokazać klientowi dokładnie, jak przestrzeń może zostać zaaranżowana. <br/><br/> Wizualizacje pokażą różne możliwości aranżacyjne. To sprawia, że rozmowa staje się bardziej konkretna, a decyzja klienta – bardziej świadoma. " />
   <HowItWorks/>
-  <PricingSection
-    heading="Startuj bez ograniczeń"
-    highlighted="– nielimitowany dostęp!"
-    paragraph1="Nasze wizualizacje, To nie jest projekt architektoniczny, lecz emocjonalna wizualizacja, która ma pomóc klientowi wyobrazić sobie potencjał wnętrza."
-    highlightedInline="Wystarczy, by przyciągnąć uwagę i zbudować pierwsze wrażenie – resztę zrobi Twoja oferta. "
-    paragraph2="Wygenerowane wizualizacje mogą czasem zawierać drobne artefakty, nietypowe elementy czy uproszczenia. Dlatego oferujemy nielimitowany pakiet – możesz tworzyć tyle wersji, ile potrzebujesz, aż znajdziesz tę najbardziej przekonującą. "
-  />
+  <PricingSection/>
   <FaqList/>
 </template>
 

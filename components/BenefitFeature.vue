@@ -1,5 +1,5 @@
 <template>
-    <section class="mx-auto container max-w-6xl lg:scroll-pt-24 pt-14 lg:pb-14">
+    <section class="mx-auto container max-w-6xl lg:scroll-pt-24 lg:pb-14">
       <div
         class="mx-auto px-4 lg:flex lg:gap-8 items-stretch"
         :class="{
