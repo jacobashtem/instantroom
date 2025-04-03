@@ -4,7 +4,7 @@
         v-if="!changeImgView"
         label="Open"
         @click="isModal = true"
-        class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center"
+        class="rounded-lg text-center bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto mx-auto flex justify-center"
       >
         <UIcon class="w-5 h-5 mr-3" name="subway:upload-1" dynamic />
         Wgraj zdjęcie!
@@ -12,7 +12,7 @@
       <div v-else>
         <UIcon
           @click="isModal = true"
-          class="hover:scale-110 transition-all cursor-pointer absolute top-2 right-4 text-white"
+          class="w-9 h-9 hover:scale-110 transition-all cursor-pointer absolute top-2 right-4 text-white"
           width="36"
           height="36"
           name="ic:round-change-circle"
@@ -20,7 +20,7 @@
         />
         <UIcon
           @click="isChosenImgSrc = false;"
-          class="hover:scale-110 transition-all cursor-pointer absolute top-12 right-5 text-white"
+          class="w-[30px] h-[30px] hover:scale-110 transition-all cursor-pointer absolute top-12 right-5 text-white"
           width="30"
           height="30"
           name="zondicons:minus-solid"
@@ -69,7 +69,7 @@
       value: false
     }
   })
-  const isModal = useState("modal");
+  const isModal = useState("appModal");
   const isChosenImgSrc = useState("chosenImgSrc");
   const chosenImgSource = useState('chosenImgSource');
   const userUploadedPhotos = useState("userUploadedPhotos");

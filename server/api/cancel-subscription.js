@@ -1,50 +1,48 @@
-import Stripe from 'stripe';
-import { serverSupabaseServiceRole } from '#supabase/server';
+import Stripe from 'stripe'
+import { serverSupabaseClient } from '#supabase/server'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET);
+const stripe = new Stripe(process.env.STRIPE_SECRET)
 
 export default defineEventHandler(async (event) => {
-  const supabase = serverSupabaseServiceRole(event);
+  const supabase = await serverSupabaseClient(event)
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser()
+
+  if (userError || !user) {
+    console.error('❌ Nie udało się pobrać użytkownika:', userError?.message)
+    return {
+      success: false,
+      message: 'Nie udało się uwierzytelnić użytkownika.',
+    }
+  }
+
+  const subscriptionId = user.user_metadata?.subscriptionId
+  if (!subscriptionId) {
+    return {
+      success: false,
+      message: 'Brak aktywnej subskrypcji do anulowania.',
+    }
+  }
 
   try {
-    // Pobierz userId z ciała żądania
-    const { userId } = await readBody(event);
-
-    // Pobierz dane użytkownika z bazy
-    const { data: user, error: fetchError } = await supabase.auth.admin.getUserById(userId);
-    if (fetchError || !user) {
-      console.error('Nie udało się pobrać danych użytkownika:', fetchError?.message || 'Nie znaleziono użytkownika.');
-      return { success: false, message: 'Nie znaleziono użytkownika.' };
-    }
-
-    const subscriptionId = user.user_metadata?.subscriptionId;
-    if (!subscriptionId) {
-      console.error('Użytkownik nie ma aktywnej subskrypcji.');
-      return { success: false, message: 'Brak aktywnej subskrypcji do anulowania.' };
-    }
-
-    // Ustawienie anulowania subskrypcji na koniec okresu rozliczeniowego
     const cancellation = await stripe.subscriptions.update(subscriptionId, {
       cancel_at_period_end: true,
-    });
+    })
 
-    console.log('Subskrypcja zaplanowana do anulowania w Stripe:', cancellation);
+    console.log('✅ Subskrypcja zaplanowana do anulowania:', cancellation.id)
 
-    // Aktualizuj dane użytkownika w Supabase
-    const { error: updateError } = await supabase.auth.admin.updateUserById(userId, {
-      user_metadata: {
-        isSubscriptionActive: true, // Pozostaje aktywna do końca okresu
-      },
-    });
-
-    if (updateError) {
-      console.error('Błąd aktualizacji danych użytkownika:', updateError.message);
-      return { success: false, message: 'Nie udało się zaktualizować danych użytkownika.' };
+    return {
+      success: true,
+      message: 'Subskrypcja zostanie anulowana po zakończeniu okresu.',
     }
-
-    return { success: true, message: 'Subskrypcja zaplanowana do anulowania.' };
   } catch (error) {
-    console.error('Błąd anulowania subskrypcji:', error.message);
-    return { success: false, message: 'Wystąpił błąd podczas anulowania subskrypcji.' };
+    console.error('❌ Błąd anulowania subskrypcji:', error.message)
+    return {
+      success: false,
+      message: 'Wystąpił błąd podczas anulowania subskrypcji.',
+    }
   }
-});
+})

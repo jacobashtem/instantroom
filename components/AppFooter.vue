@@ -10,10 +10,10 @@
                         <NuxtLink class="hover:opacity-25 transition-all" to="https://pl.pinterest.com/instantroompl/" external target="_blank"><UIcon class="w-10 h-10 bg-white rounded-full" name="logos:pinterest" dynamic /></NuxtLink>
                     </div>
                     <div class="flex flex-col md:flex-row items-center gap-4 justify-center md:justify-start">
-                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="regulamin">Regulamin</NuxtLink>
-                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="polityka-prywatnosci">Polityka
+                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="/regulamin">Regulamin</NuxtLink>
+                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="/polityka-prywatnosci">Polityka
                             prywatności</NuxtLink>
-                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="obowiazek-informacyjny">RODO</NuxtLink>
+                        <NuxtLink class="hover:text-coolGray-200 transition-all" to="/obowiazek-informacyjny">RODO</NuxtLink>
                     </div>
                 </div>
                 <p class="text-center md:text-left">Created by instantroom.pl © 2024</p>

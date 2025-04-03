@@ -1,7 +1,11 @@
 export const useChosenImg = () => useState('chosenImgSrc', () => '');
 export const useUsersUploadedPhotos = () => useState('userUploadedPhotos', () => []);
 export const useExamplePhotos = () => useState('examplePhotos', () => []);
-export const useModal = () => useState('modal', () => '');
+export const useAppModal = () => useState('appModal', () => '');
 export const useModalExample = () => useState('modalNewGallery', () => false);
 export const useLightbox = () => useState('lightbox', () => '');
 export const useSpendTokensModal = () => useState('spendTokensModal', () => '');
+export const useShowCancelModal = () => useState('showCancelModal', () => false);
+export const useShowResumeModal = () => useState('showResumeModal', () => false);
+export const useCancelPlannedManually = () => useState('cancelPlannedManually', () => false);
+export const useResumePlannedManually = () => useState('resumePlannedManually', () => false);

@@ -8,7 +8,7 @@
                 <h1 class="text-4xl font-bold text-gray-800 mb-6">Oops! Pokój nie został znaleziony!</h1>
                 <p class="text-lg text-gray-600 mb-8">Wygląda na to, że zgubiłeś/aś się w labiryncie pomieszczeń. Spokojnie, pomożemy Ci trafić do wymarzonego pokoju.</p>
                 <NuxtLink to="/"
-                class="bg-sunsetOrange-500 inline-block bg-customPrimary-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-customPrimary-700 transition-colors duration-300">
+                class="bg-aquaBlue-500  hover:bg-aquaBlue-700 inline-block  text-white font-semibold px-6 py-3 rounded-md hover:bg-customPrimary-700 transition-colors duration-300">
                 Wróć na stronę główną
             </NuxtLink>
             </div>

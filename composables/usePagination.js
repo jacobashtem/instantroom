@@ -18,7 +18,6 @@ export function usePagination(totalPages) {
       const endPage = Math.min(totalPages.value, currentPage.value + delta);
       const pages = [];
   
-      // Dodaj numery stron do tablicy
       for (let page = startPage; page <= endPage; page++) {
         pages.push(page);
       }

@@ -8,18 +8,19 @@
                         <div class="space-y-2">
                             <span
                                 class="rounded-full uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white">
-                               PROJEKTY WNĘTRZ ai
+                               {{ label }}
                             </span>
-                            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+                            <h1 v-if="!customHeading" class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
                                 <span class="sm:text-6xl">
                                 </span> Zaprojektuj   <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">wnętrze</span>
                                 <br>
                                 w kilka sekund
                             </h1>
+                            <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl" v-else> {{  customHeading }}</h1>
                         </div>
 
                         <p class="text-xl font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
-                          Szukasz ciekawego projektu wnętrz przed nadchodzącym remontem? Zainspiruj się wizualizacjami, stworzonymi na podstawie Twoich zdjęć. Wystarczy dodać obraz, wybrać rodzaj pomieszczenia oraz styl i... gotowe!
+                            <slot>{{ description }}</slot>
                         </p>
                         <NuxtLink v-if="isLoggedIn" to="/design">
                             <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
@@ -54,5 +55,23 @@ onMounted(async () => {
 })
   import img1 from '@/public/examples/before-image-2.webp';
   import img2 from '@/public/examples/after-image-2.webp';
-  const images = [img1, img2];
+
+  const props = defineProps({
+    customHeading: {
+      type: String,
+      default: () => '',
+    },
+    label: {
+      type: String,
+      default: () => 'PROJEKTY WNĘTRZ ai',
+    },
+    description: {
+      type: String,
+      default: () => 'Szukasz ciekawego projektu wnętrz przed nadchodzącym remontem? Zainspiruj się wizualizacjami, stworzonymi na podstawie Twoich zdjęć. Wystarczy dodać obraz, wybrać rodzaj pomieszczenia oraz styl i... gotowe!',
+    },
+    images: {
+      type: Array,
+      default: () => [img1, img2],
+    },
+  });
 </script>

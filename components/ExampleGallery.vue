@@ -20,7 +20,7 @@
         />
         <UIcon
           @click="isChosenImgSrc = false;"
-          class="hover:scale-110 transition-all cursor-pointer absolute top-12 right-5 text-white"
+          class="w-[30px] h-[30px] hover:scale-110 transition-all cursor-pointer absolute top-12 right-5 text-white"
           width="30"
           height="30"
           name="zondicons:minus-solid"
@@ -72,14 +72,14 @@
   
   const baseUrl = "https://uhfzlywrfnqujhcbmzgw.supabase.co/storage/v1/object/public/exampleGallery/";
   
-  // Funkcja wywoływana, gdy użytkownik wybiera obrazek
+
   const chosenImgHandler = (event) => {
     isChosenImgSrc.value = event.target.currentSrc;
     chosenImgSource.value = 'example';
     isModalExample.value = false;
   };
   
-  // Pobranie obrazków z Supabase i budowanie pełnych URL-i
+
   const fetchImages = async () => {
     const { data, error } = await supabase.storage.from("exampleGallery").list("", {
       limit: 100,
@@ -92,11 +92,10 @@
       return;
     }
   
-    // Budowanie pełnych URL-i do obrazków
+
     examplePhotos.value = data.map((file) => `${baseUrl}${file.name}`);
   };
   
-  // Pobranie obrazków po załadowaniu komponentu
   onMounted(() => {
     fetchImages();
   });

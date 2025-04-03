@@ -31,8 +31,8 @@
                             <p class="z-10 relative py-2 px-6 rounded-xl text-white bg-aquaBlue-500/60 font-light text-2xl">{{ item }}</p>
                         </div>
                         <img :class="isSelected(item) ? 'brightness-50' : 'brightness-75'" :src="`/themes/${item}.webp`" width="280" class="h-60 object-cover" draggable="false">
-                        <UIcon v-if="!isSelected(item)" @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" width="36" height="36" name="subway:add" dynamic></UIcon>
-                        <UIcon v-else @click="handleSelectedThemes(item)" class="hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500" width="36" height="36" name="zondicons:minus-solid" dynamic></UIcon>
+                        <UIcon v-if="!isSelected(item)" @click="handleSelectedThemes(item)" class="w-9 h-9 hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" width="36" height="36" name="subway:add" dynamic></UIcon>
+                        <UIcon v-else @click="handleSelectedThemes(item)" class="w-9 h-9 hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-sunsetOrange-500" width="36" height="36" name="zondicons:minus-solid" dynamic></UIcon>
                     </div>
                 </UCarousel>
                 <div class="flex items-center mt-6 justify-center md:justify-start">
@@ -62,8 +62,8 @@
                         <p><span class="text-sunsetOrange-500 font-bold ">{{ tokensToSpend }}</span> tokenów </p>
                     </div>
                     <div class="col-span-4">
-                        <UButton type="submit" variant="solid" :disabled="(!isChosenImgSrc?.length) && (!selectedThemes?.length)" class="bg-coolGray-500 w-full disabled:bg-coolGray-300 rounded-full px-6 py-6 hover:bg-coolGray-700 h-10 flex justify-center text-2xl font-light self-end mb-2" @click="resetForm">Resetuj</UButton>
-                        <UButton type="submit" variant="solid" :disabled="!isChosenImgSrc?.length || !selectedThemes?.length" class="bg-sunsetOrange-500 disabled:bg-sunsetOrange-200 rounded-full px-6 w-full py-6 hover:bg-sunsetOrange-700 h-10 flex justify-center text-2xl font-light self-end" @click="isSpendTokensModal = true">Generuj</UButton>
+                        <UButton type="submit" variant="solid" :disabled="(!isChosenImgSrc?.length) && (!selectedThemes?.length)" class="bg-sunsetOrange-500 w-full disabled:bg-sunsetOrange-300 rounded-full px-6 py-6 hover:bg-sunsetOrange-700 h-10 flex justify-center text-2xl font-light self-end mb-2" @click="resetForm">Resetuj</UButton>
+                        <UButton type="submit" variant="solid" :disabled="!isChosenImgSrc?.length || !selectedThemes?.length" class="bg-aquaBlue-500  hover:bg-aquaBlue-700  disabled:bg-aquaBlue-200 rounded-full px-6 w-full py-6  h-10 flex justify-center text-2xl font-light self-end" @click="isSpendTokensModal = true">Generuj</UButton>
                     </div>
                 </div>
             </template>
@@ -71,11 +71,11 @@
             <GenerationFinishedView :original-image="isChosenImgSrc" :paid-tokens="tokensToSpend" @start-new-generation="resetForm" :generated-images="generatedImages" :selected-themes="selectedThemes" v-else-if="firstGenerationFinished" />
             <UModal :overlay="true" v-model="isSpendTokensModal" :transition="true" :ui="{ container: 'items-center' }">
                 <div class="flex px-4 py-8">
-                    <h3 v-if="!notEnoughTokensAlert" class="text-2xl font-semibold text-center md:text-left">
+                    <h3 v-if="!notEnoughTokensAlert" class="text-xl font-semibold text-center md:text-left">
                         Czy na pewno chcesz zamienić 
-                        <span class="text-sunsetOrange-500 text-2xl">{{ tokensToSpend }} {{ inflectToken(tokensToSpend) }}</span><br />
+                        <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} {{ inflectToken(tokensToSpend) }}</span><br />
                         na 
-                        <span class="text-sunsetOrange-500 text-2xl">{{ tokensToSpend }} {{ inflectVisualization(tokensToSpend) }}</span>?
+                        <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} {{ inflectVisualization(tokensToSpend) }}</span>?
                     </h3>
                     <h3 class="text-xl font-semibold text-center md:text-left" v-else>
                         Masz za mało tokenów. Posiadasz 
@@ -87,15 +87,15 @@
                     </h3>
                 </div>
                 <div class="mb-8 flex justify-between">
-                    <UButton label="Open" @click="closeSpendTokensModal" class="rounded-lg text-center transition-all w-auto mx-auto flex justify-center bg-coolGray-500 disabled:bg-coolGray-300 px-3 sm:px-6 hover:bg-coolGray-700 py-3">
+                    <UButton label="Open" @click="closeSpendTokensModal" class="rounded-lg text-center transition-all w-auto mx-auto flex justify-center bg-sunsetOrange-500 hover:bg-sunsetOrange-700 disabled:bg-sunsetOrange-300 px-3 sm:px-6 py-3">
                         <UIcon class="w-8 h-8 mr-3" name="material-symbols:cancel" dynamic></UIcon>
                         Anuluj
                     </UButton>
-                    <UButton v-if="!notEnoughTokensAlert" label="Open" @click="handleSubmit" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
+                    <UButton v-if="!notEnoughTokensAlert" label="Open" @click="handleSubmit" class="rounded-lg text-center bg-aquaBlue-500  hover:bg-aquaBlue-700  py-3 w-auto mx-auto flex justify-center">
                         <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
                         Tak. Generuj!
                     </UButton>
-                    <UButton v-else label="Open" @click="buyTokens" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
+                    <UButton v-else label="Open" @click="buyTokens" class="rounded-lg text-center bg-aquaBlue-500  hover:bg-aquaBlue-700  py-3 w-auto mx-auto flex justify-center">
                         <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
                         Kup tokeny 
                     </UButton>
