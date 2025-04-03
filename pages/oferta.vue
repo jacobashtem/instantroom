@@ -92,6 +92,12 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'Oferta | Instantroom',
+  ogTitle: 'Oferta | Instantroom',
+  description: 'Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.',
+  ogDescription: 'Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.',
+})
   import img1 from '@/public/offer-1-after.webp';
   import img2 from '@/public/offer-1-before.webp';
   const images = [img1, img2];
