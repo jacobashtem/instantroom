@@ -18,7 +18,7 @@
           </template>
           <template v-else>
             Nie masz aktywnej subskrypcji. Możesz ją aktywować 
-            <NuxtLink to="https://buy.stripe.com/9AQ6pSbNq1bXcrSdQZ?client_reference_id=b78ab2ce-d7bb-489f-8079-0a6ac6badb99" class="text-aquaBlue-500 hover:underline">tutaj</NuxtLink>.
+            <NuxtLink to="/cennik" class="text-aquaBlue-500 hover:underline">tutaj</NuxtLink>.
           </template>
           
         </div>

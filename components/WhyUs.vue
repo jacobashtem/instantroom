@@ -40,7 +40,7 @@
                   {{ item.title }}
                 </h4>
                 <p
-                  class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"
+                  class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl text-justify"
                   v-html="item.description"
                 />
               </div>

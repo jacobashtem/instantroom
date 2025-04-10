@@ -24,7 +24,7 @@
       <UModal v-model="isModalOpen" :transition="false" :ui="{ container: 'items-center justify-center z-[99]' }">
         <div class="flex items-center justify-center w-full h-full relative">
           <ComparisonSlider
-            :images="[beforeImages[activeIndex], afterImages[activeIndex]]"
+            :images="[afterImages[activeIndex], beforeImages[activeIndex]]"
             :is-home="false"
             class="w-full h-full"
           />
