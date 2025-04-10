@@ -2,7 +2,7 @@
   <HeroMain
     :custom-heading="'Oferta dla agencji i pośredników'"
     :label="'Oferta'"
-    :images="images"
+    :images="['/offer-slider-after-3.webp','/offer-slider-before-3.webp']"
   >
     Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia
     tworzenie wizualizacji wnętrz
@@ -67,8 +67,8 @@
   />
 
   <BgCta
-    :heading="'Dzięki abonamentowi, dasz swoim ofertom drugą szansę.'"
-    :description="'Od 59,90 zł. Wybierz zestaw dopasowany do liczby mieszkań i skali działania'"
+    :heading="'Dzięki abonamentowi. dasz swoim ofertom drugą szansę.'"
+    :description="'Od 59,90 zł. Wybierz zestaw dopasowany do liczby mieszkań i skali działania.'"
   />
 
   <WhyUs
@@ -106,19 +106,19 @@ const items = [
     icon: 'mdi:lightning-bolt',
     title: 'Szybkie i realistyczne wizualizacje',
     description: 'Dzięki Instant Room możesz tworzyć wizualizacje wnętrz w zaledwie kilka sekund! Wyobraź sobie, że <span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'>masz nieruchomość w stanie wymagającym remontu –</span> zdjęcia w takim stanie nie zachęcają do wejścia w ogłoszenie. Nasze narzędzie pozwoli Ci przeobrazić takie wnętrze w pełni urządzone i estetyczne pomieszczenie, które wygląda jak prawdziwe.<br/><br/> To, co wcześniej wymagało czasu, pracy projektanta i znacznych nakładów finansowych, teraz jest dostępne natychmiast.',
-    images: ['/offer-slider-before.webp', '/offer-slider-after.webp'],
+    images: ['/offer-slider-after.webp','/offer-slider-before.webp'],
   },
   {
     icon: 'mdi:palette-outline',
     title: 'Różne style architektoniczne',
     description: 'Masz do wyboru różnorodne style – od nowoczesnego, minimalistycznego, odświeżonego po klasyczną elegancję.  Dzięki temu dopasujesz ofertę do różnorodnych gustów klientów, zwiększając szanse na sprzedaż. To narzędzie zmienia sposób, w jaki prezentujesz nieruchomość.<span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'> Pozwala z trudnych do sprzedaży wnętrz uczynić perełki rynkowe, gotowe do pokazania swojego potencjału.</span>',
-    images: ['/offer-slider-before-2.webp', '/offer-slider-after-2.webp'],
+    images: ['/offer-slider-after-2.webp','/offer-slider-before-2.webp'],
   },
   {
     icon: 'mdi:cash-clock',
     title: 'Oszczędność czasu i kosztów',
     description: 'Korzystając z Instant Room, eliminujesz wiele kosztownych i czasochłonnych etapów tradycyjnego przygotowywania nieruchomości do sprzedaży. Tworzenie wizualizacji wnętrz w naszej aplikacji jest szybkie i w pełni zautomatyzowane.<span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'> A zatem nie musisz angażować zewnętrznych projektantów wnętrz, grafików czy fotografów specjalizujących się w home stagingu.</span>',
-    images: ['/offer-slider-before-3.webp', '/offer-slider-after-3.webp'],
+    images: ['/offer-1-after.webp','offer-1-before.webp'],
   },
 ];
 </script>
