@@ -75,11 +75,9 @@
           </UButton>
           <div
             v-else-if="isLoggedIn && isSubscriptionActive"
-            @click="navigate(pack.stripeUrl)"
             variant="solid"
             class="mt-4 font-semibold py-4 rounded-lg text-lg px-4 flex justify-center mx-8"
           >
-            <UIcon width="24" height="24" name="mdi:cart-outline" dynamic />
             Masz już aktywną subskrypcję
         </div>
           <NuxtLink
