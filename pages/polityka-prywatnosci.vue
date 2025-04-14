@@ -212,6 +212,13 @@
             <li>Obsługi programów afiliacyjnych</li>
             <li>Zapewnienia prawnie uzasadnionego interesu Administratora</li>
         </ul>
+        <p class="text-lg">
+            Administrator może przetwarzać dane kontaktowe osób reprezentujących firmy, pozyskane z ogólnodostępnych źródeł (np. stron internetowych, portali branżowych), w celu nawiązania kontaktu zawodowego i przedstawienia informacji o usługach Administratora.
+
+Podstawą prawną przetwarzania jest art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes Administratora polegający na marketingu własnych usług wobec osób działających zawodowo w imieniu organizacji.
+
+Odbiorca ma prawo sprzeciwić się przetwarzaniu swoich danych w dowolnym momencie, kontaktując się z Administratorem lub klikając odpowiedni link w otrzymanej wiadomości.
+        </p>
         <h2 class="text-4xl py-4">§7 Pliki Cookies Serwisów zewnętrznych</h2>
         <p class="text-lg">Administrator w Serwisie wykorzystuje skrypty javascript i komponenty webowe partnerów, którzy mogą
             umieszczać własne pliki cookies na Urządzeniu Użytkownika. Pamiętaj, że w ustawieniach swojej przeglądarki
