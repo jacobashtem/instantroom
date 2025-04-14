@@ -34,7 +34,7 @@
       <div
         v-for="(pack, index) in packages"
         :key="index"
-        class="w-full p-4 lg:w-1/3"
+        class="w-full p-4 md:w-1/2 lg:w-1/4"
       >
         <div class="flex flex-col rounded-xl bg-white text-black pb-4 shadow-2xl">
           <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
@@ -145,23 +145,32 @@ const props = defineProps({
 
 const packages = [
   {
-    title: 'Starter (100 wizualizacji)',
+    title: 'Mini (30 wizualizacji)',
+    price: '24,90',
+    badge: 'Dla zabawy',
+    benefits: [
+      '86 groszy za wizualizację',
+      'Idealne do zabawy lub dla 1-2 pomieszczeń',
+    ],
+    stripeUrl: 'https://buy.stripe.com/6oE9C418M4o9bnO8wI',
+  },
+  {
+    title: 'Standard (100 wizualizacji)',
     price: '59,90',
-    badge: 'Dla testujących',
+    badge: 'Dla całego mieszkania',
     benefits: [
       '60 groszy za wizualizację',
-      'Idealne dla 1 mieszkania',
+      'Idealne dla 1 mieszkania lub domu',
     ],
     stripeUrl: 'https://buy.stripe.com/7sI6pS18M4o99fG9AL',
   },
   {
     title: 'Pro (500 wizualizacji)',
     price: '89,90',
-    badge: 'Najczęściej wybierany',
+    badge: 'Dla pośredników',
     benefits: [
       '17 groszy za wizualizację',
       'Idealne dla kilku/kilkunastu mieszkań',
-      'Najpopularniejszy pakiet',
     ],
     stripeUrl: 'https://buy.stripe.com/9AQ6pSbNq1bXcrSdQZ',
   },
