@@ -42,6 +42,7 @@
         <h2 class="text-4xl py-4"><span>Skąd pozyskujemy dane osobowe i jakie są ich źródła?</span></h2>
         <p class="text-lg">Dane pozyskiwane są z następujących źródeł:</p>
         <ul class="list-decimal text-lg py-2 pl-16">
+            <li><span>z ogólnodostępnych źródeł publicznych (np. strony internetowe firm, portale branżowe) w celach kontaktu B2B</span></li>
             <li><span>od osób, których dane dotyczą</span></li>
             <li><span>w przypadku rejestracji przy użyciu portali społecznościowych, za wyrażoną świadomą zgodą tych
                     osób, z tych portali społecznościowych</span></li>
@@ -56,6 +57,8 @@
             <a class="text-sunsetOrange-500" href="https://instantroom.pl/polityka-prywatnosci">Polityce Prywatności</a>.
         </p>
         <h2 class="text-4xl py-4"><span>Jakie są cele przetwarzania przez nas danych?</span></h2>
+        <p class="text-lg">Nawiązywanie kontaktu handlowego z osobami reprezentującymi firmy, których dane zostały pozyskane z ogólnodostępnych źródeł, w ramach marketingu bezpośredniego usług świadczonych przez Administratora (na podstawie art. 6 ust. 1 lit. f RODO – uzasadniony interes)
+        </p>
         <p class="text-lg">Dane osobowe dobrowolnie podane przez Użytkowników są przetwarzane w jednym z następujących
             celów:</p>
         <ul class="list-decimal text-lg py-2 pl-16">
@@ -100,6 +103,7 @@
         <h2 class="text-4xl py-4"><span>Jaki jest prawnie uzasadniony interes realizowany przez Administratora?</span>
         </h2>
         <ul class="list-decimal text-lg py-2 pl-16">
+            <li><span>prowadzenie marketingu bezpośredniego produktów i usług Administratora wobec osób działających zawodowo w imieniu organizacji (kontakt B2B)</span></li>
             <li><span>W celu ewentualnego ustalenia, dochodzenia lub obrony przed roszczeniami – podstawą prawną
                     przetwarzania jest nasz uzasadniony interes (art. 6 ust. 1 lit. f) RODO) polegający na ochronie
                     naszych praw, w tym między innymi;</span></li>

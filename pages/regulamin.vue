@@ -418,6 +418,7 @@
                 dokumencie nie spełnił swojego podstawowego celu.</span></p>
         <p><br></p>
         <h2 class="text-4xl py-4"><span>VIII. Gromadzenie danych o Usługobiorcach</span></h2>
+        <p>Administrator może również przetwarzać dane kontaktowe osób reprezentujących firmy, które zostały pozyskane z ogólnodostępnych źródeł (np. stron internetowych lub portali branżowych), w celu nawiązania kontaktu zawodowego oraz przedstawienia informacji o usługach oferowanych w ramach Serwisu, zgodnie z art. 6 ust. 1 lit. f RODO (uzasadniony interes Administratora).</p>
         <p><span>W celu prawidłowego świadczenia usług przez Serwis, zabezpieczenia prawnego interesu Usługodawcy oraz w celu
                 zapewnienia zgodności działania Serwisu z obowiązującym prawem, Usługodawca za pośrednictwem Serwisu gromadzi i
                 przetwarza niekt&oacute;re dane o Usługobiorcach.</span></p>
@@ -429,6 +430,7 @@
                 &bdquo;</span><NuxtLink class="text-sunsetOrange-500" to="polityka-prywatnosci/"><u><span
                        >Polityce prywatności</span></u></NuxtLink><span>&bdquo;, stanowiących
                 integralną część Regulaminu.</span></p>
+            <p>Usługodawca może także przetwarzać dane kontaktowe osób reprezentujących firmy, które zostały pozyskane z ogólnodostępnych źródeł (np. stron internetowych firm, portali branżowych lub katalogów zawodowych), wyłącznie w celu nawiązania kontaktu zawodowego oraz przedstawienia informacji o usługach dostępnych w ramach Serwisu. Podstawą prawną takiego przetwarzania danych jest prawnie uzasadniony interes Usługodawcy, zgodnie z art. 6 ust. 1 lit. f Rozporządzenia RODO.</p>
         <ul class="list-decimal text-lg py-2 pl-16">
             <li class="py-2">
                 <p><em><span>Dane zbierane automatycznie:</span></em><em><span><br></span></em><span>Do sprawnego działania
