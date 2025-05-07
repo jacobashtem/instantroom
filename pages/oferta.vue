@@ -68,7 +68,7 @@
 
   <BgCta
     :heading="'Dzięki abonamentowi. dasz swoim ofertom drugą szansę.'"
-    :description="'Od 59,90 zł. Wybierz zestaw dopasowany do liczby mieszkań i skali działania.'"
+    :description="'Od 24,90 zł. Wybierz zestaw dopasowany do liczby mieszkań i skali działania.'"
   />
 
   <WhyUs
