@@ -154,16 +154,16 @@ const packages = [
     ],
     stripeUrl: 'https://buy.stripe.com/6oE9C418M4o9bnO8wI',
   },
-  {
-    title: 'Standard (100 wizualizacji)',
-    price: '59,90',
-    badge: 'Dla całego mieszkania',
-    benefits: [
-      '60 groszy za wizualizację',
-      'Idealne dla 1 mieszkania lub domu',
-    ],
-    stripeUrl: 'https://buy.stripe.com/7sI6pS18M4o99fG9AL',
-  },
+//  {
+//     title: 'Standard (100 wizualizacji)',
+//     price: '59,90',
+//     badge: 'Dla całego mieszkania',
+//     benefits: [
+//       '60 groszy za wizualizację',
+//       'Idealne dla 1 mieszkania lub domu',
+//     ],
+//     stripeUrl: 'https://buy.stripe.com/7sI6pS18M4o99fG9AL',
+//   }, 
   {
     title: 'Pro (500 wizualizacji)',
     price: '89,90',
