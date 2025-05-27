@@ -1,5 +1,6 @@
 <template>
   <div>
+     <client-only>
     <UTabs :items="items" @change="onChange">
       <template #item="{ item }">
         <div v-if="showResetPassword">
@@ -55,6 +56,7 @@
         </div>
       </template>
     </UTabs>
+    </client-only>
   </div>
 </template>
 
