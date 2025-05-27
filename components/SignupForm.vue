@@ -1,7 +1,6 @@
 <template>
   <div>
-     <client-only>
-    <UTabs :items="items" @change="onChange">
+    <UTabs :defaultIndex="activeTab" :items="items" @change="onChange">
       <template #item="{ item }">
         <div v-if="showResetPassword">
           <UForm :state="state" :schema="resetPasswordSchema" class="mx-auto max-w-xs" @submit="resetPassword">
@@ -56,7 +55,6 @@
         </div>
       </template>
     </UTabs>
-    </client-only>
   </div>
 </template>
 
@@ -64,6 +62,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { z } from "zod";
 
+const activeTab = ref(0)
 const items = [ {
   key: 'Logowanie',
   label: 'Logowanie',
@@ -237,9 +236,9 @@ onMounted(() => {
   });
 });
 const emit = defineEmits(['formType'])
-const onChange = (index) => {
-  const item = items[index]
 
-  emit('formType', item.label);
+function onChange(index) {
+  activeTab.value = index
+  emit('formType', items[index].label)
 }
 </script>
