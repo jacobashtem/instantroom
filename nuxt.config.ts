@@ -71,6 +71,7 @@ content: {
   runtimeConfig: {
     public: {
       replicateApiToken: process.env.REPLICATE_API_TOKEN,
+      defaultLocale: process.env.NUXT_PUBLIC_DEFAULT_LOCALE || 'pl',
       gtm: {
         id: "GTM-KSNTQNG8",
         defer: false,
