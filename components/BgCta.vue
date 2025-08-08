@@ -10,12 +10,12 @@
         <div class="mt-10">
             <NuxtLink v-if="isLoggedIn" to="/design">
                 <UButton variant="solid"  class="mt-4 finline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-600">
-                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Start project
                 </UButton>
             </NuxtLink>
             <NuxtLink v-else to="/login">
                 <UButton variant="solid"  class="mt-4 finline-block bg-white py-3 px-8 border border-transparent rounded-md text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-600">
-                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Start project
                 </UButton>
             </NuxtLink>
         </div>
@@ -27,11 +27,11 @@
 const props = defineProps({
   heading: {
     type: String,
-    default: '3 pierwsze wizualizacje są za darmo.',
+    default: 'The first 3 visualizations are free.',
   },
   description: {
     type: String,
-    default: 'Bez kruczków. Bez podawania danych płatniczych.',
+    default: 'No gimmicks. No payment details required.',
   },
 });
 

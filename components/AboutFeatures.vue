@@ -2,12 +2,12 @@
 <section class="w-full">
   <div class="max-w-xl p-6 mx-auto pt-14 pb-24 lg:pt-24 lg:pb-32 px-4 lg:max-w-6xl">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">Dlaczego 
+      <h2 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">Why
         <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">
-            warto? 
+            choose us?
         </span>
         </h2>
-      <p class="text-xl lg:text-2xl mt-6 font-light">Co wyróżnia instantroom i czyni wyjątkowym?</p>
+      <p class="text-xl lg:text-2xl mt-6 font-light">What makes Instantroom stand out and unique?</p>
     </div>
     <div class="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
       <div>
@@ -19,8 +19,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Każdy projekt jest unikalny</h4>
-              <p class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> ...i dostosowany do Twoich potrzeb. Wizualizacje są tworzone na <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">podstawie Twojego pomieszczenia,</span> czyli uwzględniają kształt pomieszczenia i nierzadko przekształcają meble widoczne na zdjęciu.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">Every project is unique</h4>
+              <p class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> ...and tailored to your needs. Visualizations are created on <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">the basis of your room,</span> taking into account its shape and often transforming the furniture visible in the photo.</p>
             </div>
           </div>
           <div class="flex">
@@ -30,8 +30,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Twoje generacje nie będą posiadały znaku wodnego</h4>
-              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">a ty będziesz mógł/a je wykorzystywać zarówno do użytku osobistego jak i komercyjnego.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">Your generations will not have a watermark</h4>
+              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">and you can use them for both personal and commercial purposes.</p>
             </div>
           </div>
           <div class="flex">
@@ -41,8 +41,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Oszczędź czas i nerwy!</h4>
-              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> Jeśli męczy Cię przeczesywanie internetu w poszukiwaniu inspiracji do remontu, przeglądanie setek stron i zdjęć, nasz AI Room Decorator jest dla Ciebie rozwiązaniem! Nie trać dłużej czasu i za pomocą kilku kliknięć, sprawdź jak zaprezentuje się Twój salon w stylu boho, modernistycznym, czy glamour.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">Save time and nerves!</h4>
+              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> If you're tired of combing the internet for renovation inspiration, browsing hundreds of pages and photos, our AI Room Decorator is the solution for you! Don't waste time anymore and with just a few clicks, see how your living room looks in boho, modern, or glamour style.</p>
             </div>
           </div>
           <div class="flex">
@@ -52,8 +52,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Pierwsze 3 wizualizacje masz zupełnie za darmo!</h4>
-              <p class="mt-4 ext-lg font-light tracking-tight sm:mt-2 sm:text-xl text-lg xl:text-2xl"><span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Bez kruczków, bez płatności.</span>  Jeśli nasze narzędzie Ci się spodoba, oczywiście zachęcamy do wykupienia tokenów!</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">The first 3 visualizations are completely free!</h4>
+              <p class="mt-4 ext-lg font-light tracking-tight sm:mt-2 sm:text-xl text-lg xl:text-2xl"><span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">No gimmicks, no payments.</span> If you like our tool, we encourage you to purchase tokens!</p>
             </div>
           </div>
         </div>

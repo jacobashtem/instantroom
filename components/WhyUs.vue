@@ -22,7 +22,7 @@
           class="grid lg:grid-cols-2 lg:gap-10 lg:items-center"
           :class="{ 'lg:flex-row-reverse': index % 2 === 1 }"
         >
-          <!-- Tekst -->
+          <!-- Text -->
           <div :class="index % 2 === 1 ? 'lg:order-2' : ''">
             <div class="flex">
               <div class="flex-shrink-0">
@@ -70,15 +70,15 @@ import ComparisonSlider from '@/components/ComparisonSlider.vue'
 const props = defineProps({
   heading: {
     type: String,
-    default: 'Dlaczego',
+    default: 'Why',
   },
   highlighted: {
     type: String,
-    default: 'warto?',
+    default: 'choose us?',
   },
   subtitle: {
     type: String,
-    default: 'Co wyróżnia Instantroom i czyni wyjątkowym?',
+    default: 'What sets Instantroom apart and makes it unique?',
   },
   items: {
     type: Array,

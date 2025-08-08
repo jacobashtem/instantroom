@@ -1,15 +1,15 @@
 <template>
   <section id="portfolio" class="portfolio-section pt-14 pb:24 lg:pt-24 lg:pb-32 px-4 w-full max-w-6xl">
     <div class="mx-auto w-full">
-      <!-- Tytuł sekcji -->
-      <div class="text-center mb-12">
-        <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">Przykładowe
-          <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">wizualizacje</span>
-        </h2>
-        <p class="text-xl lg:text-2xl mt-3 font-light">Przygotuj się na remont bez stresu – z Instant Room masz wszystko pod kontrolą, a do tego odrobinę rozrywki na deser!</p>
-      </div>
+        <!-- Section title -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">Sample
+            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">visualizations</span>
+          </h2>
+          <p class="text-xl lg:text-2xl mt-3 font-light">Get ready for renovation without stress – with Instant Room you have everything under control, plus a bit of entertainment as a bonus!</p>
+        </div>
 
-      <!-- Przyciski filtrów -->
+        <!-- Filter buttons -->
       <div class="flex flex-wrap md:flex-row items-center mb-8 gap-3 justify-center">
         <button v-for="category in categories" :key="category" @click="setActiveCategory(category)" :class="{
           'bg-aquaBlue-500 text-white': activeCategory === category,
@@ -19,7 +19,7 @@
         </button>
       </div>
 
-      <!-- Lista projektów -->
+        <!-- Project list -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <div v-for="(project, index) in visibleProjects" :key="index"
              class="group portfolio-item relative hover:shadow-lg shadow-md rounded-lg overflow-hidden"
@@ -33,13 +33,13 @@
         </div>
       </div>
 
-      <!-- Przycisk Wczytaj więcej -->
-      <div class="text-center mt-8 mb-4 lg:mb-0" v-if="hasMoreProjects">
-        <UButton @click="loadMoreProjects" variant="solid" class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
-          <UIcon width="24" height="24" :name="'mdi:chevron-double-down'" dynamic />
-          Wczytaj więcej
-        </UButton>
-      </div>
+        <!-- Load more button -->
+        <div class="text-center mt-8 mb-4 lg:mb-0" v-if="hasMoreProjects">
+          <UButton @click="loadMoreProjects" variant="solid" class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
+            <UIcon width="24" height="24" :name="'mdi:chevron-double-down'" dynamic />
+            Load more
+          </UButton>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -71,7 +71,7 @@ const { data, pending, error } = useFetch('/api/projects');
 const projects = computed(() => data.value?.projects || []);
 const categories = computed(() => data.value?.categories || []);
 
-const activeCategory = ref('Salon');
+const activeCategory = ref('Living Room');
 const visibleProjectsCount = ref(6); 
 const generateTitleFromFilename = (filename) => {
   const fileNameWithoutPath = filename.split('/').pop();
@@ -82,7 +82,7 @@ const generateTitleFromFilename = (filename) => {
 };
 
 const filteredProjects = computed(() => {
-  if (activeCategory.value === 'Wszystkie') {
+  if (activeCategory.value === 'All') {
     return projects.value;
   }
   return projects.value.filter((project) =>
