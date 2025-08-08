@@ -51,13 +51,15 @@
     </div>
     <div class="mb-8 flex justify-between">
       <UButton @click="handleModalClose" label="Open" class="rounded-lg text-center bg-sunsetOrange-500 transition-all hover:bg-sunsetOrange-700 py-3 w-auto mx-auto flex justify-center">
-        Rozpocznij wizualizacje
+        {{ t('home.startVisualization')}}
+    
         <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic />
       </UButton>
     </div>
   </UModal>
 </template>
 <script setup>
+const { t } = useI18n();
 const gtm = useGtm();
 const router = useRouter();
 const { showModal, closeFreeTokensGrantedModal } = useUserTokens();
