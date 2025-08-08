@@ -1,6 +1,6 @@
 <template>
     <div class="border-b border-black/10">
-      <button @click="toggleAnswer" class="lg:text-xl question-btn flex w-full items-start gap-x-5 justify-between rounded-lg text-left text-lg font-bold text-slate-800 focus:outline-none p-5">
+      <button @click="toggleAnswer" :aria-expanded="isOpen" aria-label="Toggle answer" class="lg:text-xl question-btn flex w-full items-start gap-x-5 justify-between rounded-lg text-left text-lg font-bold text-slate-800 focus:outline-none p-5">
         <span>{{ question }}</span>
         <svg 
           :class="{'rotate-180': isOpen}" 

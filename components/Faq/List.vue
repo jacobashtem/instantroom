@@ -2,10 +2,10 @@
     <div class="bg-white">
       <section class="max-w-6xl mx-auto pb-24">
         <div class="text-center lg:text-left flex items-center justify-center flex-col gap-y-2 py-5">
-          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none">
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Najczęściej</span> zadawane pytania
-          </h2>
-          <p class="text-xl lg:text-2xl mt-3 font-light">Wszystko co musisz wiedzieć o instantroom</p>
+            <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none">
+              <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Frequently</span> asked questions
+            </h2>
+            <p class="text-xl lg:text-2xl mt-3 font-light">Everything you need to know about instantroom</p>
         </div>
         <div class="w-full px-7 md:px-10 xl:px-2 py-4">
           <div class="mx-auto w-full max-w-6xl border border-slate-400/20 rounded-lg bg-white">
@@ -41,7 +41,7 @@
     showAllFaqs.value = !showAllFaqs.value;
   };
   
-  const buttonLabel = computed(() => (showAllFaqs.value ? 'Zwiń pytania' : 'Pokaż więcej pytań'));
+    const buttonLabel = computed(() => (showAllFaqs.value ? 'Hide questions' : 'Show more questions'));
   
   const buttonIcon = computed(() => (!showAllFaqs.value ? 'mdi:chevron-double-down' : 'mdi:chevron-double-up'));
   </script>
