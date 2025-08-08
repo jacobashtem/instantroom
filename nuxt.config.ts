@@ -5,6 +5,7 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+
   modules: [
     "@nuxt/content",
     '@nuxthq/studio',
@@ -17,36 +18,44 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     "@unlok-co/nuxt-stripe"
   ],
+
   disqus: {
   shortname: "instantroom",
 },
-schemaOrg: {
-  identity: {
-    type: 'Organization',
-    name: 'instantroom',
-    logo: '/logo.png',
-  }
-},
-router: {
-  options: {
-    scrollBehaviorType: "smooth",
+
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: 'instantroom',
+      logo: '/logo.png',
+    }
   },
-},
-content: {
-  markdown: {
-    remarkPlugins: ["remark-reading-time"],
+
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
   },
-},
+
+  content: {
+    markdown: {
+      remarkPlugins: ["remark-reading-time"],
+    },
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   css: ["/layouts/global.css"],
+
   colorMode: {
     preference: 'light'
   },
+
   supabase: {
     redirectOptions: {
       login: '/login',
@@ -56,6 +65,7 @@ content: {
       cookieRedirect: false,
     }
   },
+
   stripe: {
     // Server
     server: {
@@ -68,6 +78,7 @@ content: {
       options: {},
     },
   },
+
   runtimeConfig: {
     public: {
       replicateApiToken: process.env.REPLICATE_API_TOKEN,
@@ -84,4 +95,6 @@ content: {
       },
     }
   },
+
+  compatibilityDate: '2025-08-08',
 })
