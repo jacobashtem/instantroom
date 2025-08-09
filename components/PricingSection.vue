@@ -40,7 +40,7 @@
           <div class="py-5 text-sunsetOrange-500 bg-white rounded-xl">
             <h3>{{ pack.title }}</h3>
             <p class="text-5xl font-bold pb-0">
-              {{ pack.price }}<span class="text-2xl">zł</span>
+              {{ pack.price }}<span class="text-2xl">PLN</span>
             </p>
             <span
               class="rounded-xl uppercase bg-sunsetOrange-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white"
@@ -78,7 +78,7 @@
             variant="solid"
             class="mt-4 font-semibold py-4 rounded-lg text-lg px-4 flex justify-center mx-8"
           >
-            Masz już aktywną subskrypcję
+            You already have an active subscription
         </div>
           <NuxtLink
             v-else
@@ -94,12 +94,12 @@
     </div>
 
     <p class="text-lg font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl text-left mt-12">
-      Przygotowujesz mieszkanie do sprzedaży lub remontu? A może jesteś pośrednikiem albo prowadzisz agencję?
-Jedna oferta to zwykle kilka pomieszczeń i wiele zdjęć – a każde warto pokazać w różnych stylach.
+      Are you preparing an apartment for sale or renovation? Or maybe you're an agent or run an agency?
+ One listing usually means several rooms and many photos — and each is worth showing in different styles.
       <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">
-        Dzięki pakietom wygenerujesz dziesiątki wariantów, co wystarczy na obsługę od kilku do kilkudziesięciu mieszkań. 
+        With our plans you'll generate dozens of variants, enough to handle anything from a few to several dozen properties. 
       </span>,
-      Twoje ogłoszenia od razu zyskają na atrakcyjności.
+      Your listings will immediately become more attractive.
     </p>
   </div>
 </template>
@@ -110,47 +110,47 @@ const { isSubscriptionActive } = useUserTokens()
 const props = defineProps({
   topBadge: {
     type: String,
-    default: 'Nawet 1500 wizualizacji w ramach pakietu  – generuj tyle, ile potrzebujesz',
+    default: 'Up to 1500 renders per plan — generate as many as you need',
   },
   heading: {
     type: String,
-    default: 'Pierwsze 3 wizualizacje',
+    default: 'The first 3 visualizations',
   },
   highlighted: {
     type: String,
-    default: 'masz za darmo!',
+    default: 'are free!',
   },
   paragraph1: {
     type: String,
-    default: 'Bez kruczków, bez karty. Wizualizacje generujesz',
+    default: 'No fine print, no card. Start generating',
   },
   highlightedInline: {
     type: String,
-    default: 'natychmiast po zalogowaniu!',
+    default: 'immediately after login!',
   },
   paragraph2: {
     type: String,
     default:
-      'A gdy będziesz chcieć więcej – sięgnij po abonament.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Nasza rada: Wygeneruj 5–8 aranżacji na jedno zdjęcie – dzięki temu z łatwością znajdziesz styl, który naprawdę Cię przekona. </span> Nawet przy ograniczeniach AI taka różnorodność pozwala niemal zawsze uzyskać wizualizację, która wyróżni wnętrze i podkreśli jego potencjał.',
+      'And when you want more — switch to a subscription.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Pro tip: Generate 5–8 variations per photo — this makes it easy to find a style that truly convinces you. </span> Even with AI limitations, this variety almost always produces a visualization that highlights the interior and its potential.',
   },
   buyButtonText: {
     type: String,
-    default: 'Kup pakiet',
+    default: 'Buy plan',
   },
   loginButtonText: {
     type: String,
-    default: 'Przejdź do logowania',
+    default: 'Login',
   },
 });
 
 const packages = [
   {
-    title: 'Mini (30 wizualizacji)',
+    title: 'Mini (30 visualizations)',
     price: '24,90',
-    badge: 'Dla zabawy',
+    badge: 'For fun',
     benefits: [
-      '86 groszy za wizualizację',
-      'Idealne do zabawy lub dla 1-2 pomieszczeń',
+      '0.86 PLN per visualization',
+      'Ideal for fun or 1–2 rooms',
     ],
     stripeUrl: 'https://buy.stripe.com/6oE9C418M4o9bnO8wI',
   },
@@ -165,22 +165,22 @@ const packages = [
 //     stripeUrl: 'https://buy.stripe.com/7sI6pS18M4o99fG9AL',
 //   }, 
   {
-    title: 'Pro (500 wizualizacji)',
+    title: 'Pro (500 visualizations)',
     price: '89,90',
-    badge: 'Dla pośredników',
+    badge: 'For agents',
     benefits: [
-      '17 groszy za wizualizację',
-      'Idealne dla kilku/kilkunastu mieszkań',
+      '0.17 PLN per visualization',
+      'Ideal for several to a dozen properties',
     ],
     stripeUrl: 'https://buy.stripe.com/9AQ6pSbNq1bXcrSdQZ',
   },
   {
-    title: 'Enterprise (1500 wizualizacji)',
+    title: 'Enterprise (1500 visualizations)',
     price: '119,00',
-    badge: 'Dla agencji i zespołów',
+    badge: 'For agencies and teams',
     benefits: [
-      '7 groszy za wizualizację',
-      'Idealne dla kilkudziesięciu mieszkań',
+      '0.07 PLN per visualization',
+      'Ideal for several dozen properties',
     ],
     stripeUrl: 'https://buy.stripe.com/5kAg0s04I7AlcrS9AK',
   },
