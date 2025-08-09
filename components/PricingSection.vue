@@ -103,36 +103,35 @@ const { isSubscriptionActive } = useUserTokens()
 const props = defineProps({
   topBadge: {
     type: String,
-    default: 'Nawet 1500 wizualizacji w ramach pakietu  – generuj tyle, ile potrzebujesz',
+    default: '',
   },
   heading: {
     type: String,
-    default: 'Pierwsze 3 wizualizacje',
+    default: '',
   },
   highlighted: {
     type: String,
-    default: 'masz za darmo!',
+    default: '',
   },
   paragraph1: {
     type: String,
-    default: 'Bez kruczków, bez karty. Wizualizacje generujesz',
+    default: '',
   },
   highlightedInline: {
     type: String,
-    default: 'natychmiast po zalogowaniu!',
+    default: '',
   },
   paragraph2: {
     type: String,
-    default:
-      'A gdy będziesz chcieć więcej – sięgnij po abonament.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Nasza rada: Wygeneruj 5–8 aranżacji na jedno zdjęcie – dzięki temu z łatwością znajdziesz styl, który naprawdę Cię przekona. </span> Nawet przy ograniczeniach AI taka różnorodność pozwala niemal zawsze uzyskać wizualizację, która wyróżni wnętrze i podkreśli jego potencjał.',
+    default: '',
   },
   buyButtonText: {
     type: String,
-    default: 'Kup pakiet',
+    default: '',
   },
   loginButtonText: {
     type: String,
-    default: 'Przejdź do logowania',
+    default: '',
   },
 });
 
