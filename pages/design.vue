@@ -4,18 +4,18 @@
             <template v-if="!isGenerationStarted">
                 <div class="flex flex-col mb-9">
                     <h2 class="text-3xl font-semibold text-center md:text-left">
-                        Find <span class="hidden md:inline-block">your</span> <span class="text-sunsetOrange-500">inspiration.</span>
+                        {{ t('design.heading.pre') }} <span class="hidden md:inline-block">{{ t('design.heading.your') }}</span> <span class="text-sunsetOrange-500">{{ t('design.heading.highlight') }}</span>
                     </h2>
                     <div class="grid grid-cols-1 items-center gap-2">
                         <div class="flex mt-6 items-center justify-center md:justify-start">
                             <div v-if="!isChosenImgSrc">
                                 <div class="flex  w-full justify-center flex-wrap gap-1">
-                                      <p class="mr-6 hidden md:inline-block text-2xl font-semibold">First: </p>
-                                        <UploadedGallery /> <span class="flex items-center mx-4">or</span> <ExampleGallery />
+                                      <p class="mr-6 hidden md:inline-block text-2xl font-semibold">{{ t('design.first') }} </p>
+                                        <UploadedGallery /> <span class="flex items-center mx-4">{{ t('design.or') }}</span> <ExampleGallery />
                                 </div>
                             </div>
                             <div class="col-span-4 flex flex-col" v-else>
-                                <h3 class="text-2xl font-semibold mb-2 text-center md:text-left">Selected <span class="text-sunsetOrange-500">image: </span></h3>
+                                <h3 class="text-2xl font-semibold mb-2 text-center md:text-left">{{ t('design.selectedImage.pre') }} <span class="text-sunsetOrange-500">{{ t('design.selectedImage.highlight') }}</span></h3>
                                 <div class="relative">
                                     <img class="h-40 w-80 object-cover mb-2 brightness-75" :src="isChosenImgSrc" alt="selected image">
                                     <UploadedGallery v-if="chosenImgSource === 'uploaded'" changeImgView />
@@ -36,17 +36,17 @@
                     </div>
                 </UCarousel>
                 <div class="flex items-center mt-6 justify-center md:justify-start">
-                      <p class="text-2xl font-semibold mr-4"><span class="md:inline-block hidden">Second: </span>
-                          <span class="text-sunsetOrange-500 capitalize md:normal-case"> transform</span>
+                      <p class="text-2xl font-semibold mr-4"><span class="md:inline-block hidden">{{ t('design.second') }} </span>
+                          <span class="text-sunsetOrange-500 capitalize md:normal-case"> {{ t('design.transform') }}</span>
                         <span class="hidden md:inline-block"></span></p>
                     <UFormGroup class="ring-0">
-                        <USelect option-attribute="label" size="xl" selected padded class="text-center font-semibold text-sunsetOrange-500" v-model="selectedRoomType" :options="roomTypes.map(type => ({ label: type.displayName, value: type.name }))" />
+                        <USelect option-attribute="label" size="xl" selected padded class="text-center font-semibold text-sunsetOrange-500" v-model="selectedRoomType" :options="roomTypeOptions" />
                     </UFormGroup>
                 </div>
                 <div class="shadow-2xl rounded-2xl mt-9 py-8 px-4 flex-col items-left grid grid-cols-1 xs:grid-cols-12 gap-4">
                     <div class="col-span-4">
                         <h3 class="text-left text-2xl font-semibold mb-2">
-                              Selected <span class="text-sunsetOrange-500">themes: </span>
+                              {{ t('design.selectedThemes.pre') }} <span class="text-sunsetOrange-500">{{ t('design.selectedThemes.highlight') }}</span>
                         </h3>
                         <div v-if="selectedThemes.length" class="col-span-6 flex flex-wrap gap-4 mt-4">
                             <div v-for="theme in selectedThemes" :key="theme">
@@ -55,15 +55,15 @@
                                 </p>
                             </div>
                         </div>
-                          <p v-else>No themes selected.</p>
+                          <p v-else>{{ t('design.noThemes') }}</p>
                     </div>
                     <div class="col-span-4">
-                          <h3 class="text-left text-2xl font-semibold mb-2">For the selected visualizations, you will spend:</h3>
-                          <p><span class="text-sunsetOrange-500 font-bold ">{{ tokensToSpend }}</span> tokens </p>
+                          <h3 class="text-left text-2xl font-semibold mb-2">{{ t('design.spendLine') }}</h3>
+                          <p><span class="text-sunsetOrange-500 font-bold ">{{ tokensToSpend }}</span> {{ t('design.tokensWord') }} </p>
                     </div>
                     <div class="col-span-4">
-                          <UButton type="submit" variant="solid" :disabled="(!isChosenImgSrc?.length) && (!selectedThemes?.length)" class="bg-sunsetOrange-500 w-full disabled:bg-sunsetOrange-300 rounded-full px-6 py-6 hover:bg-sunsetOrange-700 h-10 flex justify-center text-2xl font-light self-end mb-2" @click="resetForm">Reset</UButton>
-                          <UButton type="submit" variant="solid" :disabled="!isChosenImgSrc?.length || !selectedThemes?.length" class="bg-aquaBlue-500  hover:bg-aquaBlue-700  disabled:bg-aquaBlue-200 rounded-full px-6 w-full py-6  h-10 flex justify-center text-2xl font-light self-end" @click="isSpendTokensModal = true">Generate</UButton>
+                          <UButton type="submit" variant="solid" :disabled="(!isChosenImgSrc?.length) && (!selectedThemes?.length)" class="bg-sunsetOrange-500 w-full disabled:bg-sunsetOrange-300 rounded-full px-6 py-6 hover:bg-sunsetOrange-700 h-10 flex justify-center text-2xl font-light self-end mb-2" @click="resetForm">{{ t('design.reset') }}</UButton>
+                          <UButton type="submit" variant="solid" :disabled="!isChosenImgSrc?.length || !selectedThemes?.length" class="bg-aquaBlue-500  hover:bg-aquaBlue-700  disabled:bg-aquaBlue-200 rounded-full px-6 w-full py-6  h-10 flex justify-center text-2xl font-light self-end" @click="isSpendTokensModal = true">{{ t('design.generate') }}</UButton>
                     </div>
                 </div>
             </template>
@@ -72,32 +72,32 @@
             <UModal :overlay="true" v-model="isSpendTokensModal" :transition="true" :ui="{ container: 'items-center' }">
                 <div class="flex px-4 py-8">
                       <h3 v-if="!notEnoughTokensAlert" class="text-xl font-semibold text-center md:text-left">
-                          Are you sure you want to exchange
-                          <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} tokens</span><br />
-                          for
-                          <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} visualizations</span>?
+                          {{ t('design.modal.confirm') }}
+                          <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} {{ t('design.modal.tokens') }}</span><br />
+                          {{ t('design.modal.for') }}
+                          <span class="text-sunsetOrange-500 text-xl">{{ tokensToSpend }} {{ t('design.modal.visualizations') }}</span>
                       </h3>
                       <h3 class="text-xl font-semibold text-center md:text-left" v-else>
-                          You don't have enough tokens. You have
-                          <span class="text-sunsetOrange-500 text-lg">{{ tokens }} tokens</span>, <br />
-                          but you're trying to generate
+                          {{ t('design.modal.insufficient') }}
+                          <span class="text-sunsetOrange-500 text-lg">{{ tokens }} {{ t('design.modal.tokens') }}</span>, <br />
+                          {{ t('design.modal.butTrying') }}
                           <span class="text-sunsetOrange-500 text-lg">
-                            {{ tokensToSpend }} visualizations.
-                          </span><br /> 1 token equals 1 visualization
+                            {{ tokensToSpend }} {{ t('design.modal.visualizations') }}
+                          </span><br /> {{ t('design.modal.oneTokenEquals') }}
                       </h3>
                 </div>
                 <div class="mb-8 flex justify-between">
                     <UButton label="Open" @click="closeSpendTokensModal" class="rounded-lg text-center transition-all w-auto mx-auto flex justify-center bg-sunsetOrange-500 hover:bg-sunsetOrange-700 disabled:bg-sunsetOrange-300 px-3 sm:px-6 py-3">
                           <UIcon class="w-8 h-8 mr-3" name="material-symbols:cancel" dynamic></UIcon>
-                          Cancel
+                          {{ t('design.modal.cancel') }}
                     </UButton>
                       <UButton v-if="!notEnoughTokensAlert" label="Open" @click="handleSubmit" class="rounded-lg text-center bg-aquaBlue-500  hover:bg-aquaBlue-700  py-3 w-auto mx-auto flex justify-center">
                           <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
-                          Yes. Generate!
+                          {{ t('design.modal.yesGenerate') }}
                       </UButton>
                       <UButton v-else label="Open" @click="buyTokens" class="rounded-lg text-center bg-aquaBlue-500  hover:bg-aquaBlue-700  py-3 w-auto mx-auto flex justify-center">
                           <UIcon class="w-8 h-8 mr-3" name="carbon:next-filled" dynamic></UIcon>
-                          Buy tokens
+                          {{ t('design.modal.buyTokens') }}
                       </UButton>
                 </div>
             </UModal>
@@ -109,6 +109,7 @@
 definePageMeta({
   middleware: ["auth"]
 })
+const { t, locale } = useI18n();
 const isGenerationStarted = ref(false);
 const firstGenerationFinished = ref(false);
 const upladedImageSrc = ref('');
@@ -124,7 +125,7 @@ const loading = ref(false);
 const prediction = ref(null);
 const error = ref(null);
 const imgSrc = ref('');
-const currentStatus = ref('Warming up');
+const currentStatus = ref(t('design.warmingUp'));
 const tokensToSpend = computed(() => selectedThemes.value.length);
 
 const supabase = useSupabaseClient();
@@ -137,27 +138,28 @@ images.value = userData?.user?.user_metadata?.imagesUploaded || [];
 userUploadedPhotos.value = (userData?.user?.user_metadata?.imagesUploaded?.slice() || []).reverse();
 
 const themes = ref([]);
-const roomTypes = ref([
-    { name: 'Living room', displayName: 'Living room' },
-    { name: 'Dining room', displayName: 'Dining room' },
-    { name: 'Bedroom', displayName: 'Bedroom' },
-    { name: 'Bathroom', displayName: 'Bathroom' },
-    { name: 'Office', displayName: 'Office' },
-    { name: 'Kitchen', displayName: 'Kitchen' },
-    { name: 'Terrace', displayName: 'Terrace' },
-    { name: 'Kids room', displayName: 'Kids room' },
-]);
+const roomTypes = [
+    { name: 'Living room', key: 'livingRoom' },
+    { name: 'Dining room', key: 'diningRoom' },
+    { name: 'Bedroom', key: 'bedroom' },
+    { name: 'Bathroom', key: 'bathroom' },
+    { name: 'Office', key: 'office' },
+    { name: 'Kitchen', key: 'kitchen' },
+    { name: 'Terrace', key: 'terrace' },
+    { name: 'Kids room', key: 'kidsRoom' },
+];
+const roomTypeOptions = computed(() => roomTypes.map(type => ({ label: t(`design.rooms.${type.key}`), value: type.name })));
 
 const isSelected = (item) => selectedThemes.value.includes(item);
 
 onMounted(async () => {
     const { data: themesData, error: themesError } = await supabase.from('sorted_prompts').select('theme');
     if (themesError) {
-        toastError({ title: 'Error fetching themes', description: themesError.message });
+        toastError({ title: t('design.errorFetchingThemes'), description: themesError.message });
         return;
     }
     themes.value = themesData.map(theme => theme.theme);
-    selectedRoomType.value = roomTypes.value[0].name
+    selectedRoomType.value = roomTypes[0].name
     removeExpiredCookies();
 });
 
@@ -179,7 +181,7 @@ const removeExpiredCookies = () => {
 };
 
 const getImage = (imageSrc) => {
-    toastSuccess({ title: 'Image successfully selected from the gallery' });
+    toastSuccess({ title: t('design.imageSelected') });
     upladedImageSrc.value = imageSrc;
 };
 
@@ -270,7 +272,7 @@ const resetForm = async () => {
     selectedThemes.value = [];
     isChosenImgSrc.value = '';
     generatedImages.value = [];
-    selectedRoomType.value = roomTypes.value[0].name;
+    selectedRoomType.value = roomTypes[0].name;
     isGenerationStarted.value = false;
     firstGenerationFinished.value = false;
     upladedImageSrc.value = '';

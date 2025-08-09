@@ -1,9 +1,9 @@
 <template>
     <div class="border-b border-black/10">
-      <button @click="toggleAnswer" :aria-expanded="isOpen" aria-label="Toggle answer" class="lg:text-xl question-btn flex w-full items-start gap-x-5 justify-between rounded-lg text-left text-lg font-bold text-slate-800 focus:outline-none p-5">
+      <button @click="toggleAnswer" :aria-expanded="isOpen" :aria-label="t('faq.toggleAria')" class="lg:text-xl question-btn flex w-full items-start gap-x-5 justify-between rounded-lg text-left text-lg font-bold text-slate-800 focus:outline-none p-5">
         <span>{{ question }}</span>
-        <svg 
-          :class="{'rotate-180': isOpen}" 
+        <svg
+          :class="{'rotate-180': isOpen}"
           stroke="currentColor" 
           fill="currentColor" 
           stroke-width="0" 
@@ -28,11 +28,12 @@
     question: String,
     answer: String
   })
-  
+
   const isOpen = ref(false)
-  
+
   const toggleAnswer = () => {
     isOpen.value = !isOpen.value
   }
+  const { t } = useI18n();
   </script>
   
