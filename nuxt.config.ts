@@ -10,8 +10,8 @@ export default defineNuxtConfig({
     "@nuxt/content",
     '@nuxthq/studio',
     '@nuxt/image-edge',
-    '@nuxt/image',
     '@nuxt/ui',
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/supabase',
     '@zadigetvoltaire/nuxt-gtm',
     'nuxt-disqus',
@@ -50,7 +50,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["/layouts/global.css"],
+  css: ["~/assets/css/main.css"],
 
   colorMode: {
     preference: 'light'
