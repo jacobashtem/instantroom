@@ -3,14 +3,14 @@
         <article class="col-span-12 px-4 rounded bg-white mt-12 ">
                 <div class="flex flex-col mb-9">
                     <h2 v-if="validImages?.length > 0 " class="text-3xl font-semibold mb-4">
-                        Twoje ostatnio wygenerowane <span class="text-sunsetOrange-500">wizualizacje.</span> Przechowujemy je tylko przez 1h.
+                        <span v-html="t('generations.hasAnyTitle')"></span>
                     </h2>
                     <h2 class="text-3xl font-semibold mb-4" v-else>
-                        Nie masz żadnych wizualizacji <span class="text-sunsetOrange-500">wygenerowanych</span> w przeciągu ostatniej godziny.
+                        <span v-html="t('generations.emptyTitle')"></span>
                     </h2>
 
                     <UButton v-if="validImages?.length > 0 " @click="downloadAllImages" variant="solid" class="max-w-96 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
-                        <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Pobierz wszystkie wizualizacje
+                        <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> {{ t('generations.downloadAll') }}
                     </UButton>
                 </div>
                 <div class="mt-5">
@@ -18,7 +18,7 @@
                 <div v-for="(src, index) in validImages" :key="index" class="relative w-full flex items-center">
                     <div class="relative">
                         <div class="group relative">
-                            <img :src="src" alt="output" class="w-[360px] transition-all cursor-pointer object-cover h-64 object-cover group-hover:brightness-50" />
+                            <img :src="src" :alt="t('generations.alt')" class="w-[360px] transition-all cursor-pointer object-cover h-64 object-cover group-hover:brightness-50" />
                             <UIcon @click="lightBoxHandler(src, index)" width="64" height="64" class="w-16 h-16 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-all cursor-pointer text-white" name="mdi:eye" dynamic/>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
         </article>
         <UModal v-model="isLightbox" :transition="false" :ui="{container: 'items-center'}">
         <div class="flex">
-            <img class="cursor-pointer" :src="modalImg" alt="">
+            <img class="cursor-pointer" :src="modalImg" :alt="t('generations.alt')">
             <UIcon @click="downloadImage(modalImg)" width="56" height="56"  class="w-[56px] h-[56px] icon hover:scale-110 transition-all cursor-pointer absolute top-20 right-3 text-white" dynamic name="ic:round-download-for-offline"/>
             <UIcon @click="isLightbox = false;" width="48" height="48"  class="w-12 h-12 icon hover:scale-110 transition-all cursor-pointer absolute top-4 right-4 text-white" name="zondicons:close-solid" dynamic/>
         </div>
@@ -37,6 +37,8 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
+
 definePageMeta({
   middleware: ["auth"]
 })
@@ -66,7 +68,7 @@ const downloadImage = (url) => {
     .then(blob => {
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = `wizualizacja-${currentVisualizationIndex.value}.png`;
+      link.download = `${t('generations.filenamePrefix')}-${currentVisualizationIndex.value}.png`;
       link.click();
       URL.revokeObjectURL(link.href);
     })

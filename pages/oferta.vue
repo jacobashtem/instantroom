@@ -1,15 +1,10 @@
 <template>
   <HeroMain
-    :custom-heading="'Oferta dla agencji i pośredników'"
-    :label="'Oferta'"
+    :custom-heading="t('offer.hero.heading')"
+    :label="t('offer.hero.label')"
     :images="['/offer-slider-after-3.webp','/offer-slider-before-3.webp']"
   >
-    Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia
-    tworzenie wizualizacji wnętrz
-    na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji,
-    agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować
-    <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">potencjał oferowanych mieszkań -
-    nawet tych wymagających remontu.</span>
+    {{ t('offer.hero.description') }}
   </HeroMain>
   <section>
     <div class="max-w-xl p-6 mx-auto pt-14 pb-24 lg:pt-24 lg:pb-32 px-4 lg:max-w-6xl">
@@ -92,11 +87,12 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
 useSeoMeta({
-  title: 'Oferta | Instantroom',
-  ogTitle: 'Oferta | Instantroom',
-  description: 'Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.',
-  ogDescription: 'Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.',
+  title: t('offer.seo.title'),
+  ogTitle: t('offer.seo.title'),
+  description: t('offer.seo.description'),
+  ogDescription: t('offer.seo.description'),
 })
   import img1 from '@/public/offer-1-after.webp';
   import img2 from '@/public/offer-1-before.webp';
