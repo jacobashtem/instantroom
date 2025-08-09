@@ -71,7 +71,8 @@ const { data, pending, error } = useFetch('/api/projects');
 const projects = computed(() => data.value?.projects || []);
 const categories = computed(() => data.value?.categories || []);
 
-const activeCategory = ref('Living Room');
+// Set after categories load; default to 'Wszystkie' (All) when available
+const activeCategory = ref('');
 const visibleProjectsCount = ref(6); 
 const generateTitleFromFilename = (filename) => {
   const fileNameWithoutPath = filename.split('/').pop();
@@ -82,7 +83,7 @@ const generateTitleFromFilename = (filename) => {
 };
 
 const filteredProjects = computed(() => {
-  if (activeCategory.value === 'All') {
+  if (['All', 'Wszystkie'].includes(activeCategory.value)) {
     return projects.value;
   }
   return projects.value.filter((project) =>
@@ -113,6 +114,13 @@ const setActiveCategory = (category) => {
 watch(activeCategory, () => {
   visibleProjectsCount.value = 6;
 });
+
+// Initialize active category when categories arrive
+watch(categories, (newCategories) => {
+  if (!activeCategory.value && Array.isArray(newCategories) && newCategories.length > 0) {
+    activeCategory.value = newCategories.includes('Wszystkie') ? 'Wszystkie' : newCategories[0];
+  }
+}, { immediate: true });
 </script>
 
 <style scoped>
