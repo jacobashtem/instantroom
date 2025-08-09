@@ -233,6 +233,7 @@ export const messages = {
             "Moje mieszkanie od dawna nie widziało remontu. Teraz po kilku wizualizacjach już wiem mniej więcej jak chciałabym odmienić swoje wnętrze.",
         },
       },
+    },
     confirm: {
       loggingIn: "Trwa logowanie...",
     },
@@ -256,11 +257,13 @@ export const messages = {
       hero: {
         heading: "Oferta dla agencji i pośredników",
         label: "Oferta",
-        description: "Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia tworzenie wizualizacji wnętrz na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji, agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować potencjał oferowanych mieszkań — nawet tych wymagających remontu.",
+        description:
+          "Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia tworzenie wizualizacji wnętrz na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji, agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować potencjał oferowanych mieszkań — nawet tych wymagających remontu.",
       },
       seo: {
         title: "Oferta | Instantroom",
-        description: "Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.",
+        description:
+          "Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.",
       },
     },
     subscriptionSuccess: {
@@ -315,7 +318,7 @@ export const messages = {
       },
     },
   },
-},
+
   en: {
     home: {
       startVisualization: "Start visualization",
@@ -543,15 +546,16 @@ export const messages = {
           title: "Our interior designer was happy :)",
           content:
             "It's easier for him to propose something for me when, instead of a bunch of unrelated internet pictures, he got a pack of photos from instantroom.",
+        },
         c6: {
           title: "Perfect for inspiration!",
           content:
             "My apartment hasn't seen a renovation for a long time. Now after a few visualizations I already know roughly how I'd like to change my interior.",
         },
       },
+    },
     confirm: {
       loggingIn: "Logging in...",
-    },
     },
     generations: {
       hasAnyTitle: "Your recently generated visualizations. We store them only for 1h.",
@@ -573,11 +577,13 @@ export const messages = {
       hero: {
         heading: "Offer for agencies and agents",
         label: "Offer",
-        description: "Instant Room is an innovative AI-powered tool that enables creating interior visualizations based on uploaded photos in just a few seconds. With this app, real estate agencies and agents can easily showcase the potential of the properties — even those requiring renovation.",
+        description:
+          "Instant Room is an innovative AI-powered tool that enables creating interior visualizations based on uploaded photos in just a few seconds. With this app, real estate agencies and agents can easily showcase the potential of the properties — even those requiring renovation.",
       },
       seo: {
         title: "Offer | Instantroom",
-        description: "Choose a visualization package tailored to you – for homeowners, agents and agencies. Create AI arrangements that show the potential of interiors.",
+        description:
+          "Choose a visualization package tailored to you – for homeowners, agents and agencies. Create AI arrangements that show the potential of interiors.",
       },
     },
     subscriptionSuccess: {
@@ -632,5 +638,4 @@ export const messages = {
       },
     },
   },
-},
-}
+};
