@@ -7,7 +7,7 @@
         class="rounded-lg text-center bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto mx-auto flex justify-center"
       >
         <UIcon class="w-5 h-5 mr-3" name="material-symbols:photo-library-rounded" dynamic />
-        Użyj jednego z naszych!
+        {{ t('design.step1.desc').replace('...swojego pomieszczenia lub skorzystaj z naszej Biblioteki', '').trim() || 'Use one of ours!' }}
       </UButton>
       <div v-else>
         <UIcon
@@ -31,7 +31,7 @@
         <div class="flex flex-wrap md:flex-nowrap relative">
           <div v-if="examplePhotos.length" class="flex flex-col justify-between p-4 w-full">
             <h2 class="text-2xl font-semibold text-center md:text-left">
-              Galeria przykładowych  <span class="text-sunsetOrange-500">pomieszczeń</span>
+              {{ t('design.heading.pre') }} <span class="text-sunsetOrange-500">{{ t('design.rooms.livingRoom') }}</span>
             </h2>
             <div class="grid grid-cols-12 pl-0 p-4 place-items-center gap-2">
               <img
@@ -58,6 +58,7 @@
   
   <script setup>
   const supabase = useSupabaseClient();
+  const { t } = useI18n();
   const props = defineProps({
     changeImgView: {
       type: Boolean,
@@ -67,11 +68,17 @@
   
   const isModalExample = useModalExample();
   const isChosenImgSrc = useChosenImg();
-  const chosenImgSource = useState("chosenImgSource");
+  const chosenImgSource = useState('chosenImgSource');
   const examplePhotos = useExamplePhotos();
   
-  const baseUrl = "https://uhfzlywrfnqujhcbmzgw.supabase.co/storage/v1/object/public/exampleGallery/";
+  const baseUrl = 'https://uhfzlywrfnqujhcbmzgw.supabase.co/storage/v1/object/public/exampleGallery/';
   
+  const localFallback = [
+    '/examples/before-image-2.webp',
+    '/gallery-before-1.webp',
+    '/gallery-before-2.webp',
+    '/gallery-before-3.webp',
+  ];
 
   const chosenImgHandler = (event) => {
     isChosenImgSrc.value = event.target.currentSrc;
@@ -79,21 +86,19 @@
     isModalExample.value = false;
   };
   
-
   const fetchImages = async () => {
-    const { data, error } = await supabase.storage.from("exampleGallery").list("", {
-      limit: 100,
-      offset: 0,
-      sortBy: { column: "name"},
-    });
-  
-    if (error) {
-      console.error("Błąd pobierania plików z bucketa:", error.message);
-      return;
+    try {
+      const { data, error } = await supabase.storage.from('exampleGallery').list('', {
+        limit: 100,
+        offset: 0,
+        sortBy: { column: 'name' },
+      });
+      if (error) throw error;
+      examplePhotos.value = (data || []).map((file) => `${baseUrl}${file.name}`);
+    } catch (err) {
+      // Fallback to local examples in production when Supabase is not accessible for anon
+      examplePhotos.value = localFallback;
     }
-  
-
-    examplePhotos.value = data.map((file) => `${baseUrl}${file.name}`);
   };
   
   onMounted(() => {
