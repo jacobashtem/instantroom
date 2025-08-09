@@ -109,6 +109,15 @@ export const messages = {
       imageSelected: "Pomyślnie wybrano obraz z galerii",
       warmingUp: "Rozgrzewanie",
     },
+    exampleGallery: {
+      open: "Otwórz",
+      useOneOfOurs: "Użyj jednego z naszych!",
+      heading: {
+        pre: "Galeria przykładowych",
+        highlight: "pomieszczeń",
+      },
+      errorFetchingFiles: "Błąd pobierania plików z bucketa:",
+    },
     faq: {
       title: {
         highlight: "Najczęściej",
@@ -229,6 +238,15 @@ export const messages = {
       errorFetchingThemes: "Error fetching themes",
       imageSelected: "Image successfully selected from the gallery",
       warmingUp: "Warming up",
+    },
+    exampleGallery: {
+      open: "Open",
+      useOneOfOurs: "Use one of ours!",
+      heading: {
+        pre: "Sample gallery of",
+        highlight: "rooms",
+      },
+      errorFetchingFiles: "Error fetching files from bucket:",
     },
     faq: {
       title: {

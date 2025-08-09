@@ -2,12 +2,12 @@
     <div class="w-full md:w-auto">
       <UButton
         v-if="!changeImgView"
-        label="Open"
+        :label="t('exampleGallery.open')"
         @click="isModalExample = true"
         class="rounded-lg text-center bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto mx-auto flex justify-center"
       >
         <UIcon class="w-5 h-5 mr-3" name="material-symbols:photo-library-rounded" dynamic />
-        Użyj jednego z naszych!
+        {{ t('exampleGallery.useOneOfOurs') }}
       </UButton>
       <div v-else>
         <UIcon
@@ -31,7 +31,8 @@
         <div class="flex flex-wrap md:flex-nowrap relative">
           <div v-if="examplePhotos.length" class="flex flex-col justify-between p-4 w-full">
             <h2 class="text-2xl font-semibold text-center md:text-left">
-              Galeria przykładowych  <span class="text-sunsetOrange-500">pomieszczeń</span>
+              {{ t('exampleGallery.heading.pre') }}
+              <span class="text-sunsetOrange-500">{{ t('exampleGallery.heading.highlight') }}</span>
             </h2>
             <div class="grid grid-cols-12 pl-0 p-4 place-items-center gap-2">
               <img
@@ -58,6 +59,7 @@
   
   <script setup>
   const supabase = useSupabaseClient();
+  const { t } = useI18n();
   const props = defineProps({
     changeImgView: {
       type: Boolean,
@@ -88,7 +90,7 @@
     });
   
     if (error) {
-      console.error("Błąd pobierania plików z bucketa:", error.message);
+      console.error(t('exampleGallery.errorFetchingFiles'), error.message);
       return;
     }
   
