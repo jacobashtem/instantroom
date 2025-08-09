@@ -4,16 +4,16 @@
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
           <h3 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            {{ title }}
+            {{ titleText }}
             <br />
             <span
               class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800"
-            >{{ highlighted }}</span>
+            >{{ highlightedText }}</span>
           </h3>
 
           <p
             class="mb-4 text-xl font-light tracking-tight text-white sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl"
-            v-html="paragraph"
+            v-html="paragraphText"
           />
 
           <NuxtLink v-if="isLoggedIn" to="/design">
@@ -22,7 +22,7 @@
               class="mt-4 font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4"
             >
               <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic />
-              Rozpocznij projekt
+              {{ t('hero.startProject') }}
             </UButton>
           </NuxtLink>
           <NuxtLink v-else to="/login">
@@ -31,7 +31,7 @@
               class="mt-4 font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4"
             >
               <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic />
-              Rozpocznij projekt
+              {{ t('hero.startProject') }}
             </UButton>
           </NuxtLink>
         </div>
@@ -93,20 +93,19 @@ onMounted(async () => {
 const props = defineProps({
   title: {
     type: String,
-    default: 'Pomocnik',
+    default: '',
   },
   highlighted: {
     type: String,
-    default: 'przedRemontowy',
+    default: '',
   },
   paragraph: {
     type: String,
-    default: `
-      - Dzięki wizualizacjom, zobaczysz jak wybrane style, kolory i meble komponują się z Twoim pomieszczeniem
-      - <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">zanim podejmiesz ostateczną decyzję.</span><br/><br/>
-      - W kilka sekund testujesz mnóstwo koncepcji, szukając tej, która najlepiej oddaje Twój gust i potrzeby.<br/><br/>
-      - W prosty sposób, możesz <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">przekazać swoją wizję ekipie remontowej lub projektantowi wnętrz</span>, eliminując ryzyko nieporozumień.
-    `,
+    default: '',
   },
 });
+const { t } = useI18n();
+const titleText = computed(() => (props.title && props.title.trim().length ? props.title : t('mosaic.title')));
+const highlightedText = computed(() => (props.highlighted && props.highlighted.trim().length ? props.highlighted : t('mosaic.highlighted')));
+const paragraphText = computed(() => (props.paragraph && props.paragraph.trim().length ? props.paragraph : t('mosaic.paragraph')));
 </script>

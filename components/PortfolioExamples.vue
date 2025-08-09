@@ -3,10 +3,10 @@
     <div class="mx-auto w-full">
         <!-- Section title -->
         <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">Przykładowe
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">wizualizacje</span>
+          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">{{ t('portfolio.title.pre') }}
+            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">{{ t('portfolio.title.highlight') }}</span>
           </h2>
-          <p class="text-xl lg:text-2xl mt-3 font-light">Przygotuj się na remont bez stresu – z Instant Room masz wszystko pod kontrolą, a do tego odrobinę zabawy!</p>
+          <p class="text-xl lg:text-2xl mt-3 font-light">{{ t('portfolio.subtitle') }}</p>
         </div>
 
         <!-- Filter buttons -->
@@ -37,7 +37,7 @@
         <div class="text-center mt-8 mb-4 lg:mb-0" v-if="hasMoreProjects">
           <UButton @click="loadMoreProjects" variant="solid" class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
             <UIcon width="24" height="24" :name="'mdi:chevron-double-down'" dynamic />
-            Załaduj więcej
+            {{ t('portfolio.loadMore') }}
           </UButton>
         </div>
     </div>
@@ -66,12 +66,14 @@ const openModal = (project) => {
   isModalOpen.value = true;
 };
 
+const { t } = useI18n();
 const { data, pending, error } = useFetch('/api/projects');
 
 const projects = computed(() => data.value?.projects || []);
 const categories = computed(() => data.value?.categories || []);
 
-const activeCategory = ref('Wszystkie');
+// Set after categories load; default to 'Wszystkie' (All) when available
+const activeCategory = ref('');
 const visibleProjectsCount = ref(6); 
 const generateTitleFromFilename = (filename) => {
   const fileNameWithoutPath = filename.split('/').pop();
@@ -82,7 +84,7 @@ const generateTitleFromFilename = (filename) => {
 };
 
 const filteredProjects = computed(() => {
-  if (activeCategory.value === 'Wszystkie') {
+  if (['All', 'Wszystkie'].includes(activeCategory.value)) {
     return projects.value;
   }
   return projects.value.filter((project) =>
@@ -113,6 +115,13 @@ const setActiveCategory = (category) => {
 watch(activeCategory, () => {
   visibleProjectsCount.value = 6;
 });
+
+// Initialize active category when categories arrive
+watch(categories, (newCategories) => {
+  if (!activeCategory.value && Array.isArray(newCategories) && newCategories.length > 0) {
+    activeCategory.value = newCategories.includes('Wszystkie') ? 'Wszystkie' : newCategories[0];
+  }
+}, { immediate: true });
 </script>
 
 <style scoped>

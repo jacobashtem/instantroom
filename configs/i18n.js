@@ -119,6 +119,121 @@ export const messages = {
       hide: "Ukryj pytania",
       toggleAria: "Przełącz odpowiedź",
     },
+    aboutFeatures: {
+      heading: { pre: "Dlaczego", highlight: "warto nas wybrać?" },
+      subtitle: "Co wyróżnia Instantroom i czyni je wyjątkowym?",
+      items: {
+        unique: {
+          title: "Każdy projekt jest wyjątkowy",
+          desc:
+            "...i dopasowany do Twoich potrzeb. Wizualizacje powstają <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">na podstawie Twojego pomieszczenia,</span> uwzględniając jego kształt i często modyfikując meble widoczne na zdjęciu.",
+        },
+        nowatermark: {
+          title: "Twoje wizualizacje nie będą posiadały znaku wodnego",
+          desc: "i możesz je wykorzystywać zarówno prywatnie, jak i komercyjnie.",
+        },
+        saveTime: {
+          title: "Oszczędzaj czas i nerwy!",
+          desc:
+            "Jeśli masz dość przeszukiwania internetu w poszukiwaniu inspiracji remontowych, przeglądania setek stron i zdjęć, nasz AI Dekorator Wnętrz jest rozwiązaniem dla Ciebie! Nie trać więcej czasu — kilkoma kliknięciami zobaczysz, jak Twój salon wygląda w stylu boho, nowoczesnym lub glamour.",
+        },
+        free: {
+          title: "Pierwsze 3 wizualizacje są całkowicie darmowe!",
+          desc:
+            "<span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">Bez haczyków, bez płatności.</span> Jeśli spodoba Ci się nasze narzędzie, zachęcamy do zakupu tokenów!",
+        },
+      },
+    },
+    bgCta: {
+      heading: "Pierwsze 3 wizualizacje są darmowe.",
+      description: "Bez haczyków. Nie wymagamy danych do płatności.",
+    },
+    portfolio: {
+      title: { pre: "Przykładowe", highlight: "wizualizacje" },
+      subtitle:
+        "Przygotuj się na remont bez stresu – z Instant Room masz wszystko pod kontrolą, a do tego odrobinę zabawy!",
+      loadMore: "Załaduj więcej",
+    },
+    comparison: {
+      title: { pre: "Do czego przyda Ci się ", highlight: "Instant Room?" },
+      paragraph:
+        "Instant Room to przede wszystkim <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">generator inspiracji</span> i pomysłów! Nasze wizualizacje ułatwią Twoją komunikację z ekipą remontową, czy projektantami wnętrz.<br/><br/>\n        Nie musisz sobie 'wyobrażać' – zobacz, czy bardziej pasowałyby Ci <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">panele</span>, czy może jednak <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">glazura!</span><br/><br/>\n        Instant Room nie jest kompleksowym narzędziem do projektowania wnętrz, <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">nie zamierzamy zabrać pracy architektom :)</span>",
+    },
+    mosaic: {
+      title: "Pomocnik",
+      highlighted: "przedRemontowy",
+      paragraph:
+        "- Dzięki wizualizacjom, zobaczysz jak wybrane style, kolory i meble komponują się z Twoim pomieszczeniem\n      - <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">zanim podejmiesz ostateczną decyzję.</span><br/><br/>\n      - W kilka sekund testujesz mnóstwo koncepcji, szukając tej, która najlepiej oddaje Twój gust i potrzeby.<br/><br/>\n      - W prosty sposób, możesz <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">przekazać swoją wizję ekipie remontowej lub projektantowi wnętrz</span>, eliminując ryzyko nieporozumień.",
+    },
+    pricing: {
+      topBadge:
+        "Nawet 1500 wizualizacji w ramach pakietu  – generuj tyle, ile potrzebujesz",
+      heading: { pre: "Pierwsze 3 wizualizacje", highlight: "masz za darmo!" },
+      paragraph1: { pre: "Bez kruczków, bez karty. Wizualizacje generujesz", highlight: "natychmiast po zalogowaniu!" },
+      paragraph2:
+        'A gdy będziesz chcieć więcej – sięgnij po abonament.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Nasza rada: Wygeneruj 5–8 aranżacji na jedno zdjęcie – dzięki temu z łatwością znajdziesz styl, który naprawdę Cię przekona. </span> Nawet przy ograniczeniach AI taka różnorodność pozwala niemal zawsze uzyskać wizualizację, która wyróżni wnętrze i podkreśli jego potencjał.',
+      buyButtonText: "Kup pakiet",
+      loginButtonText: "Przejdź do logowania",
+      alreadySubscribed: "Masz już aktywną subskrypcję",
+      footer:
+        "Przygotowujesz mieszkanie do sprzedaży lub remontu? A może jesteś pośrednikiem albo prowadzisz agencję?\nJedna oferta to zwykle kilka pomieszczeń i wiele zdjęć – a każde warto pokazać w różnych stylach.\n      <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">\n        Dzięki pakietom wygenerujesz dziesiątki wariantów, co wystarczy na obsługę od kilku do kilkudziesięciu mieszkań. \n      </span>,\n      Twoje ogłoszenia od razu zyskają na atrakcyjności.",
+      packages: {
+        mini: {
+          title: "Mini (30 wizualizacji)",
+          badge: "Dla zabawy",
+          b1: "86 groszy za wizualizację",
+          b2: "Idealne do zabawy lub dla 1-2 pomieszczeń",
+        },
+        pro: {
+          title: "Pro (500 wizualizacji)",
+          badge: "Dla pośredników",
+          b1: "17 groszy za wizualizację",
+          b2: "Idealne dla kilku/kilkunastu mieszkań",
+        },
+        enterprise: {
+          title: "Enterprise (1500 wizualizacji)",
+          badge: "Dla agencji i zespołów",
+          b1: "7 groszy za wizualizację",
+          b2: "Idealne dla kilkudziesięciu mieszkań",
+        },
+      },
+    },
+    testimonials: {
+      title: { pre: "Opinie naszych", highlight: "użytkowników" },
+      subtitle: "Co mówią o instantroom?",
+      cards: {
+        c1: {
+          title: "Każdy znajdzie coś dla siebie",
+          content:
+            "Bardzo fajna aplikacja, prosta w obsłudze. Stylów do wyboru jest naprawdę sporo!",
+        },
+        c2: {
+          title: "Mega przyjemny produkt",
+          content:
+            "Łatwo się użytkuje, kilka klików i mam już pomysł na wymarzoną kuchnie w stylu glamour :)",
+        },
+        c3: {
+          title: "Przede wszystkim prosta w obsłudze",
+          content:
+            "Jeśli chcesz szybko i sprawnie wygenerować mnóstwo pomysłów na urządzenie swojego przyszłego królestwa, instantroom jest dla Ciebie. Nie rozczarujesz się!",
+        },
+        c4: {
+          title: "Instantroom jest świetne.",
+          content:
+            "Generuje przepiękne pokoje w parę sekund. Mój ulubiony styl? Póki co skandynawski.",
+        },
+        c5: {
+          title: "Architekt wnętrz się ucieszył :)",
+          content:
+            "Łatwiej mu zaproponować coś dla mnie, gdy zamiast masy niepowiązanych zdjęć z internetu, dostał ode mnie paczkę zdjęć z instantroom",
+        },
+        c6: {
+          title: "Idealne do inspiracji!",
+          content:
+            "Moje mieszkanie od dawna nie widziało remontu. Teraz po kilku wizualizacjach już wiem mniej więcej jak chciałabym odmienić swoje wnętrze.",
+        },
+      },
+    },
     confirm: {
       loggingIn: "Trwa logowanie...",
     },
@@ -142,11 +257,13 @@ export const messages = {
       hero: {
         heading: "Oferta dla agencji i pośredników",
         label: "Oferta",
-        description: "Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia tworzenie wizualizacji wnętrz na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji, agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować potencjał oferowanych mieszkań — nawet tych wymagających remontu.",
+        description:
+          "Instant Room to innowacyjne narzędzie oparte na sztucznej inteligencji, które umożliwia tworzenie wizualizacji wnętrz na podstawie przesłanych zdjęć w zaledwie kilka sekund. Dzięki tej aplikacji, agencje i pośrednicy nieruchomości mogą w prosty sposób zaprezentować potencjał oferowanych mieszkań — nawet tych wymagających remontu.",
       },
       seo: {
         title: "Oferta | Instantroom",
-        description: "Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.",
+        description:
+          "Wybierz pakiet wizualizacji dopasowany do siebie – dla właścicieli mieszkań, pośredników i agencji. Twórz aranżacje AI, które pokazują potencjał wnętrz.",
       },
     },
     subscriptionSuccess: {
@@ -201,6 +318,7 @@ export const messages = {
       },
     },
   },
+
   en: {
     home: {
       startVisualization: "Start visualization",
@@ -321,6 +439,121 @@ export const messages = {
       hide: "Hide questions",
       toggleAria: "Toggle answer",
     },
+    aboutFeatures: {
+      heading: { pre: "Why", highlight: "choose us?" },
+      subtitle: "What sets Instantroom apart and makes it unique?",
+      items: {
+        unique: {
+          title: "Every project is unique",
+          desc:
+            "...and tailored to your needs. Visualizations are created <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">based on your room,</span> taking into account its shape and often modifying the furniture visible in the photo.",
+        },
+        nowatermark: {
+          title: "Your visualizations will not have a watermark",
+          desc: "and you can use them both privately and commercially.",
+        },
+        saveTime: {
+          title: "Save time and nerves!",
+          desc:
+            "If you're tired of searching the internet for renovation inspiration and browsing hundreds of pages and photos, our AI Interior Decorator is the solution for you! Don't waste more time — with a few clicks you'll see how your living room looks in boho, modern or glamour style.",
+        },
+        free: {
+          title: "The first 3 visualizations are completely free!",
+          desc:
+            "<span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">No catches, no payments.</span> If you like our tool, feel free to buy tokens!",
+        },
+      },
+    },
+    bgCta: {
+      heading: "The first 3 visualizations are free.",
+      description: "No catches. No payment details required.",
+    },
+    portfolio: {
+      title: { pre: "Example", highlight: "visualizations" },
+      subtitle:
+        "Get ready for a stress-free renovation — with Instant Room you have everything under control, and a little fun too!",
+      loadMore: "Load more",
+    },
+    comparison: {
+      title: { pre: "What can you use ", highlight: "Instant Room for?" },
+      paragraph:
+        "Instant Room is first and foremost an <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">inspiration generator</span> and a source of ideas! Our visualizations will make it easier to communicate with your renovation team or interior designers.<br/><br/>\n        You don't have to 'imagine' — see whether <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">panels</span> or perhaps <span class=\"font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\">tiles</span> would suit you better!<br/><br/>\n        Instant Room is not a comprehensive interior design tool — <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">we don't intend to take jobs from architects :)</span>",
+    },
+    mosaic: {
+      title: "Pre-renovation",
+      highlighted: "assistant",
+      paragraph:
+        "- Thanks to visualizations, you will see how selected styles, colors and furniture fit your room\n      - <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">before you make the final decision.</span><br/><br/>\n      - In a few seconds you can test many concepts, looking for the one that best reflects your taste and needs.<br/><br/>\n      - You can easily <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">convey your vision to the renovation team or interior designer</span>, eliminating the risk of misunderstandings.",
+    },
+    pricing: {
+      topBadge:
+        "Up to 1500 visualizations in a package — generate as many as you need",
+      heading: { pre: "The first 3 visualizations", highlight: "are free!" },
+      paragraph1: { pre: "No tricks, no card. You can generate visualizations", highlight: "immediately after logging in!" },
+      paragraph2:
+        'And when you want more — choose a subscription.<span class="bg-sunsetOrange-500 font-semibold text-white leading-6"> Our tip: Generate 5–8 arrangements for one photo — this way you will easily find the style that really convinces you. </span> Even with AI limitations, such variety almost always allows you to get a visualization that will make the interior stand out and highlight its potential.',
+      buyButtonText: "Buy package",
+      loginButtonText: "Go to login",
+      alreadySubscribed: "You already have an active subscription",
+      footer:
+        "Preparing an apartment for sale or renovation? Or maybe you're an agent or run an agency?\nOne listing is usually several rooms and many photos — and each is worth showing in different styles.\n      <span class=\"bg-sunsetOrange-500 font-semibold text-white leading-6\">\n        With packages you can generate dozens of variants — enough to handle several to dozens of apartments. \n      </span>\n      Your listings will immediately become more attractive.",
+      packages: {
+        mini: {
+          title: "Mini (30 visualizations)",
+          badge: "For fun",
+          b1: "0.86 PLN per visualization",
+          b2: "Ideal for fun or 1–2 rooms",
+        },
+        pro: {
+          title: "Pro (500 visualizations)",
+          badge: "For agents",
+          b1: "0.17 PLN per visualization",
+          b2: "Ideal for several apartments",
+        },
+        enterprise: {
+          title: "Enterprise (1500 visualizations)",
+          badge: "For agencies and teams",
+          b1: "0.07 PLN per visualization",
+          b2: "Ideal for dozens of apartments",
+        },
+      },
+    },
+    testimonials: {
+      title: { pre: "What our", highlight: "users say" },
+      subtitle: "What do people say about instantroom?",
+      cards: {
+        c1: {
+          title: "There is something for everyone",
+          content:
+            "A very nice app, easy to use. There are really a lot of styles to choose from!",
+        },
+        c2: {
+          title: "A very pleasant product",
+          content:
+            "Easy to use, a few clicks and I already have an idea for my dream kitchen in the glamour style :)",
+        },
+        c3: {
+          title: "Above all, easy to use",
+          content:
+            "If you want to quickly and efficiently generate lots of ideas for arranging your future kingdom, instantroom is for you. You won't be disappointed!",
+        },
+        c4: {
+          title: "Instantroom is great.",
+          content:
+            "It generates beautiful rooms in a few seconds. My favorite style? For now, Scandinavian.",
+        },
+        c5: {
+          title: "Our interior designer was happy :)",
+          content:
+            "It's easier for him to propose something for me when, instead of a bunch of unrelated internet pictures, he got a pack of photos from instantroom.",
+        },
+        c6: {
+          title: "Perfect for inspiration!",
+          content:
+            "My apartment hasn't seen a renovation for a long time. Now after a few visualizations I already know roughly how I'd like to change my interior.",
+        },
+      },
+    },
     confirm: {
       loggingIn: "Logging in...",
     },
@@ -344,11 +577,13 @@ export const messages = {
       hero: {
         heading: "Offer for agencies and agents",
         label: "Offer",
-        description: "Instant Room is an innovative AI-powered tool that enables creating interior visualizations based on uploaded photos in just a few seconds. With this app, real estate agencies and agents can easily showcase the potential of the properties — even those requiring renovation.",
+        description:
+          "Instant Room is an innovative AI-powered tool that enables creating interior visualizations based on uploaded photos in just a few seconds. With this app, real estate agencies and agents can easily showcase the potential of the properties — even those requiring renovation.",
       },
       seo: {
         title: "Offer | Instantroom",
-        description: "Choose a visualization package tailored to you – for homeowners, agents and agencies. Create AI arrangements that show the potential of interiors.",
+        description:
+          "Choose a visualization package tailored to you – for homeowners, agents and agencies. Create AI arrangements that show the potential of interiors.",
       },
     },
     subscriptionSuccess: {

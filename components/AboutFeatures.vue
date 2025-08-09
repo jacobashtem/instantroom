@@ -2,12 +2,12 @@
 <section class="w-full">
   <div class="max-w-xl p-6 mx-auto pt-14 pb-24 lg:pt-24 lg:pb-32 px-4 lg:max-w-6xl">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">Dlaczego
+      <h2 class="text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-5xl">{{ t('aboutFeatures.heading.pre') }}
         <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">
-            warto nas wybrać?
+            {{ t('aboutFeatures.heading.highlight') }}
         </span>
         </h2>
-      <p class="text-xl lg:text-2xl mt-6 font-light">Co wyróżnia Instantroom i czyni je wyjątkowym?</p>
+      <p class="text-xl lg:text-2xl mt-6 font-light">{{ t('aboutFeatures.subtitle') }}</p>
     </div>
     <div class="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
       <div>
@@ -19,8 +19,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Każdy projekt jest wyjątkowy</h4>
-              <p class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> ...i dopasowany do Twoich potrzeb. Wizualizacje powstają <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">na podstawie Twojego pomieszczenia,</span> uwzględniając jego kształt i często modyfikując meble widoczne na zdjęciu.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">{{ t('aboutFeatures.items.unique.title') }}</h4>
+              <p class="mt-4 text-lg font-light tracking-tight sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl" v-html="t('aboutFeatures.items.unique.desc')"></p>
             </div>
           </div>
           <div class="flex">
@@ -30,8 +30,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Twoje wizualizacje nie będą posiadały znaku wodnego</h4>
-              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">i możesz je wykorzystywać zarówno prywatnie, jak i komercyjnie.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">{{ t('aboutFeatures.items.nowatermark.title') }}</h4>
+              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">{{ t('aboutFeatures.items.nowatermark.desc') }}</p>
             </div>
           </div>
           <div class="flex">
@@ -41,8 +41,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Oszczędzaj czas i nerwy!</h4>
-              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl"> Jeśli masz dość przeszukiwania internetu w poszukiwaniu inspiracji remontowych, przeglądania setek stron i zdjęć, nasz AI Dekorator Wnętrz jest rozwiązaniem dla Ciebie! Nie trać więcej czasu — kilkoma kliknięciami zobaczysz, jak Twój salon wygląda w stylu boho, nowoczesnym lub glamour.</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">{{ t('aboutFeatures.items.saveTime.title') }}</h4>
+              <p class="mt-4 text-lg font-light tracking-tight  sm:mt-2 sm:text-xl lg:text-lg xl:text-2xl">{{ t('aboutFeatures.items.saveTime.desc') }}</p>
             </div>
           </div>
           <div class="flex">
@@ -52,8 +52,8 @@
             </div>
             </div>
             <div class="ml-4">
-              <h4 class="text-2xl lg:text-2xl font-medium leading">Pierwsze 3 wizualizacje są całkowicie darmowe!</h4>
-              <p class="mt-4 ext-lg font-light tracking-tight sm:mt-2 sm:text-xl text-lg xl:text-2xl"><span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">Bez haczyków, bez płatności.</span> Jeśli spodoba Ci się nasze narzędzie, zachęcamy do zakupu tokenów!</p>
+              <h4 class="text-2xl lg:text-2xl font-medium leading">{{ t('aboutFeatures.items.free.title') }}</h4>
+              <p class="mt-4 ext-lg font-light tracking-tight sm:mt-2 sm:text-xl text-lg xl:text-2xl" v-html="t('aboutFeatures.items.free.desc')"></p>
             </div>
           </div>
         </div>
@@ -66,3 +66,7 @@
 </section>
 
 </template>
+
+<script setup>
+const { t } = useI18n();
+</script>
