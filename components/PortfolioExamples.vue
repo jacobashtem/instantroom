@@ -3,10 +3,10 @@
     <div class="mx-auto w-full">
         <!-- Section title -->
         <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">Sample
-            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">visualizations</span>
+          <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold leading-none mb-4">{{ t('portfolio.title.pre') }}
+            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">{{ t('portfolio.title.highlight') }}</span>
           </h2>
-          <p class="text-xl lg:text-2xl mt-3 font-light">Get ready for renovation without stress – with Instant Room you have everything under control, plus a bit of entertainment as a bonus!</p>
+          <p class="text-xl lg:text-2xl mt-3 font-light">{{ t('portfolio.subtitle') }}</p>
         </div>
 
         <!-- Filter buttons -->
@@ -37,7 +37,7 @@
         <div class="text-center mt-8 mb-4 lg:mb-0" v-if="hasMoreProjects">
           <UButton @click="loadMoreProjects" variant="solid" class="focus:shadow-outline focus:outline-none tracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
             <UIcon width="24" height="24" :name="'mdi:chevron-double-down'" dynamic />
-            Load more
+            {{ t('portfolio.loadMore') }}
           </UButton>
         </div>
     </div>
@@ -66,6 +66,7 @@ const openModal = (project) => {
   isModalOpen.value = true;
 };
 
+const { t } = useI18n();
 const { data, pending, error } = useFetch('/api/projects');
 
 const projects = computed(() => data.value?.projects || []);
