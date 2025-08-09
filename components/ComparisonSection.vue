@@ -17,15 +17,15 @@
           <div class="mt-10 mx-auto max-w-6xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div class="sm:text-center lg:text-left">
               <h2 class="my-6 text-3xl font-bold tracking-tight text-black sm:text-4xl md:text-6xl">
-                {{ title }}
+                {{ titleText }}
                 <span
                   class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800"
                 >
-                  {{ highlighted }}
+                  {{ highlightedText }}
                 </span>
               </h2>
   
-              <p class="text-xl lg:text-2xl mt-6 font-light" v-html="paragraph" />
+              <p class="text-xl lg:text-2xl mt-6 font-light" v-html="paragraphText" />
             </div>
           </div>
         </div>
@@ -46,20 +46,20 @@
   const props = defineProps({
     title: {
       type: String,
-      default: 'Do czego przyda Ci się ',
+      default: '',
     },
     highlighted: {
       type: String,
-      default: 'Instant Room?',
+      default: '',
     },
     paragraph: {
       type: String,
-      default: `
-        Instant Room to przede wszystkim <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">generator inspiracji</span> i pomysłów! Nasze wizualizacje ułatwią Twoją komunikację z ekipą remontową, czy projektantami wnętrz.<br/><br/>
-        Nie musisz sobie 'wyobrażać' – zobacz, czy bardziej pasowałyby Ci <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">panele</span>, czy może jednak <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800">glazura!</span><br/><br/>
-        Instant Room nie jest kompleksowym narzędziem do projektowania wnętrz, <span class="bg-sunsetOrange-500 font-semibold text-white leading-6">nie zamierzamy zabrać pracy architektom :)</span>
-      `,
+      default: '',
     },
   });
+  const { t } = useI18n();
+  const titleText = computed(() => (props.title && props.title.trim().length ? props.title : t('comparison.title.pre')));
+  const highlightedText = computed(() => (props.highlighted && props.highlighted.trim().length ? props.highlighted : t('comparison.title.highlight')));
+  const paragraphText = computed(() => (props.paragraph && props.paragraph.trim().length ? props.paragraph : t('comparison.paragraph')));
   </script>
   
