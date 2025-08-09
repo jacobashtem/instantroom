@@ -5,8 +5,10 @@
     >
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
         <div class="mt-12 flex flex-col items-center">
-          <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">Zaloguj się</h1>
-          <p>Założenie konta oznacza akceptację <NuxtLink class="text-sunsetOrange-500" href="/regulamin">Regulaminu</NuxtLink  ></p>
+          <h1  class="text-customDarkRed-500 text-2xl xl:text-xl font-extrabold text-left">{{ t('login.title') }}</h1>
+          <p>
+            {{ t('login.acceptTos') }} <NuxtLink class="text-sunsetOrange-500" href="/regulamin">{{ t('login.terms') }}</NuxtLink>
+          </p>
           <div class="w-full flex-1 mt-8">
             <div class="flex flex-col items-center mb-8">
               <AuthGoogle />
@@ -15,7 +17,7 @@
             <div class="mb-4 border-b text-center">
             <div
               class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-              lub {{formTypeTxt === 'Logowanie' ? 'zaloguj się': 'zarejestruj się'}} za pomocą e-mail
+              {{ t('login.or') }} {{formTypeTxt === 'Logowanie' ? t('login.login') : t('login.register')}} {{ t('login.withEmail') }}
             </div>
           </div>
             <SignupForm @form-type="(formType) =>formTypeTxt = formType" />
@@ -35,6 +37,7 @@
 </template>
   
   <script setup>
+const { t } = useI18n();
 const success = ref(false);
 const pending = ref(false);
 const formTypeTxt = ref('Logowanie');

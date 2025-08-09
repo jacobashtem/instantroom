@@ -1,12 +1,14 @@
 <template>
     <UCard>
         <template #header>
-            Trwa logowanie...
+            {{ t('confirm.loggingIn') }}
         </template>
     </UCard>
 </template>
 
 <script setup>
+const { t } = useI18n();
+
 definePageMeta({
   middleware: ["auth"]
 })
