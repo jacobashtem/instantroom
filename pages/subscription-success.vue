@@ -3,7 +3,7 @@
       <article class="col-span-12 px-4 rounded bg-white mt-12">
         <div v-if="loading">
           <h2 class="text-3xl font-semibold mb-6 text-coolGray-500 animate-pulse">
-            Trwa weryfikowanie płatności... <span class="text-sunsetOrange-500"></span>
+            {{ t('subscriptionSuccess.verifying') }} <span class="text-sunsetOrange-500"></span>
           </h2>
           <UProgress animation="carousel" />
         </div>
@@ -11,13 +11,13 @@
           <div class="grid grid-cols-1 lg:grid-cols-12">
             <div class="space-y-2 col-span- text-center lg:text-left col-span-4">
               <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl lg:text-6xl">
-                <span class="sm:text-6xl"></span> Subskrypcja została<span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800"><br/>aktywowana.</span>
+                <span class="sm:text-6xl"></span> {{ t('subscriptionSuccess.heading') }}
                 <br>
               </h1>
-              <p class="text-base font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">Dodaliśmy {{ tokens }} tokenów do Twojego konta.</p>
+              <p class="text-base font-light tracking-tight text-black sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl"><span>{{ t('subscriptionSuccess.addedTokens.pre') }}</span> {{ tokens }} <span>{{ t('subscriptionSuccess.addedTokens.post') }}</span></p>
               <NuxtLink to="/design">
                 <UButton variant="solid" class="mt-4 focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
-                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Rozpocznij projekt
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> {{ t('hero.startProject') }}
                 </UButton>
             </NuxtLink>
             </div>
@@ -29,6 +29,7 @@
   </template>
   
   <script setup>
+const { t } = useI18n();
   const route = useRoute();
   const router = useRouter();
   const user = useSupabaseUser();

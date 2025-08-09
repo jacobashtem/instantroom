@@ -2,43 +2,43 @@
   <div>
     <section>
       <h3 class="text-left text-2xl font-semibold mb-2">
-        Zarządzanie subskrypcją
+        {{ t('profile.subscriptionManagement') }}
       </h3>
       <div class="mb-4 flex flex-col gap-4">
         <div class="text-gray-700">
           <template v-if="isSubscriptionActive">
             <p v-if="isSubscriptionActive && !isCancellationPlanned && !cancelPlannedManually">
-              Subskrypcja jest aktywna do:
+              {{ t('profile.activeUntil') }}
               <span class="font-medium text-black">{{ formattedSubscriptionEnd }}</span>
             </p>
             <p v-else>
-              Subskrypcja została anulowana – wygaśnie:
+              {{ t('profile.cancelledExpires') }}
               <span class="font-medium text-black">{{ formattedSubscriptionEnd }}</span>
             </p>
           </template>
           <template v-else>
-            Nie masz aktywnej subskrypcji. Możesz ją aktywować 
-            <NuxtLink to="/cennik" class="text-aquaBlue-500 hover:underline">tutaj</NuxtLink>.
+            {{ t('profile.noneActive') }} 
+            <NuxtLink to="/cennik" class="text-aquaBlue-500 hover:underline">{{ t('profile.here') }}</NuxtLink>.
           </template>
           
         </div>
 
         <div v-if="isSubscriptionActive && !isCancellationPlanned && !cancelPlannedManually">
           <UButton @click="showCancelModal = true" :disabled="cancelling" class="rounded-lg bg-sunsetOrange-500 py-3 hover:bg-sunsetOrange-700">
-            <span v-if="!cancelling">Anuluj subskrypcję</span>
+            <span v-if="!cancelling">{{ t('profile.cancel') }}</span>
             <span v-else class="flex items-center gap-2">
               <span class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-              Anulowanie...
+              {{ t('profile.cancelling') }}
             </span>
           </UButton>
         </div>
 
         <div v-else-if="isSubscriptionActive && (isCancellationPlanned || cancelPlannedManually) && !resumePlannedManually">
           <UButton @click="showResumeModal = true" :disabled="resuming" class="rounded-lg bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto">
-            <span v-if="!resuming">Wznów subskrypcję</span>
+            <span v-if="!resuming">{{ t('profile.resume') }}</span>
             <span v-else class="flex items-center gap-2">
               <span class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-              Wznawianie...
+              {{ t('profile.resuming') }}
             </span>
           </UButton>
         </div>
@@ -47,13 +47,13 @@
       <!-- MODAL: Anulowanie -->
       <UModal v-model="showCancelModal">
         <div class="p-6">
-          <h3 class="text-lg font-semibold text-gray-900">Potwierdź anulowanie subskrypcji</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('profile.cancelModal.title') }}</h3>
           <p class="text-sm text-gray-600 mt-2">
-            Czy na pewno chcesz anulować subskrypcję? Nadal będzie aktywna do: <span class="font-medium">{{ formattedSubscriptionEnd }}</span>
+            {{ t('profile.cancelModal.messagePre') }} <span class="font-medium">{{ formattedSubscriptionEnd }}</span>
           </p>
           <div class="mt-4 flex justify-end gap-2">
-            <UButton @click="showCancelModal = false" variant="ghost">Anuluj</UButton>
-            <UButton @click="cancelSubscription" :loading="cancelling" class="bg-sunsetOrange-500 hover:bg-sunsetOrange-700">Tak, anuluj</UButton>
+            <UButton @click="showCancelModal = false" variant="ghost">{{ t('profile.cancelModal.cancel') }}</UButton>
+            <UButton @click="cancelSubscription" :loading="cancelling" class="bg-sunsetOrange-500 hover:bg-sunsetOrange-700">{{ t('profile.cancelModal.confirm') }}</UButton>
           </div>
         </div>
       </UModal>
@@ -61,38 +61,38 @@
       <!-- MODAL: Wznawianie -->
       <UModal v-model="showResumeModal">
         <div class="p-6">
-          <h3 class="text-lg font-semibold text-gray-900">Potwierdź wznowienie subskrypcji</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('profile.resumeModal.title') }}</h3>
           <p class="text-sm text-gray-600 mt-2">
-            Twoja subskrypcja została wcześniej anulowana. Czy chcesz ją teraz wznowić?
+            {{ t('profile.resumeModal.message') }}
           </p>
           <div class="mt-4 flex justify-end gap-2">
-            <UButton @click="showResumeModal = false" variant="ghost">Nie</UButton>
-            <UButton @click="resumeSubscription" :loading="resuming" class="rounded-lg bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto">Tak, wznów</UButton>
+            <UButton @click="showResumeModal = false" variant="ghost">{{ t('profile.resumeModal.no') }}</UButton>
+            <UButton @click="resumeSubscription" :loading="resuming" class="rounded-lg bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto">{{ t('profile.resumeModal.yes') }}</UButton>
           </div>
         </div>
       </UModal>
     </section>
 
     <section>
-      <h3 class="text-left text-2xl font-semibold mb-2">Zmiana hasła</h3>
+      <h3 class="text-left text-2xl font-semibold mb-2">{{ t('profile.changePassword') }}</h3>
       <UForm :state="state" @submit="saveProfile">
-        <UFormGroup class="mb-4" label="Email" name="email">
+        <UFormGroup class="mb-4" :label="t('profile.email')" name="email">
           <UInput v-model="state.email" disabled />
           <p v-if="errors.email" class="text-red-500">{{ errors.email }}</p>
         </UFormGroup>
 
-        <UFormGroup class="mb-4" label="Nowe hasło" name="password">
+        <UFormGroup class="mb-4" :label="t('profile.newPassword')" name="password">
           <UInput v-model="state.password" type="password" />
           <p v-if="errors.password" class="text-red-500">{{ errors.password }}</p>
         </UFormGroup>
 
-        <UFormGroup class="mb-4" label="Potwierdź nowe hasło" name="confirmPassword">
+        <UFormGroup class="mb-4" :label="t('profile.confirmNewPassword')" name="confirmPassword">
           <UInput v-model="state.confirmPassword" type="password" />
           <p v-if="errors.confirmPassword" class="text-red-500">{{ errors.confirmPassword }}</p>
         </UFormGroup>
 
         <UButton class="rounded-lg bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto" type="submit" :loading="pending" :disabled="pending || !isFormValid" :class="{ 'opacity-50': pending || !isFormValid }">
-          Zapisz
+          {{ t('profile.save') }}
         </UButton>
       </UForm>
     </section>
@@ -102,6 +102,7 @@
 <script setup>
 import { z } from 'zod'
 
+const { t, locale } = useI18n();
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const { toastSuccess, toastError } = useAppToast()
@@ -119,7 +120,8 @@ const resuming = ref(false)
 const formattedSubscriptionEnd = computed(() => {
   if (!subscriptionEnd.value) return null
   const timestamp = Number(subscriptionEnd.value) * 1000
-  return new Date(timestamp).toLocaleDateString('pl-PL', {
+  const localeTag = locale.value === 'pl' ? 'pl-PL' : 'en-US'
+  return new Date(timestamp).toLocaleDateString(localeTag, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -150,13 +152,13 @@ const cancelSubscription = async () => {
       cancelPlannedManually.value = true
       resumePlannedManually.value = false
       await getUser()
-      toastSuccess({ title: 'Subskrypcja została anulowana. Wygaśnie na koniec okresu rozliczeniowego.' })
+      toastSuccess({ title: t('profile.success.cancelled') })
       showCancelModal.value = false
     } else {
-      toastError({ title: 'Wystąpił błąd podczas anulowania subskrypcji.' })
+      toastError({ title: t('profile.errors.cancelSubscription') })
     }
   } catch (e) {
-    toastError({ title: 'Wystąpił błąd podczas anulowania subskrypcji.' })
+    toastError({ title: t('profile.errors.cancelSubscription') })
   } finally {
     cancelling.value = false
   }
@@ -174,13 +176,13 @@ const resumeSubscription = async () => {
       resumePlannedManually.value = true
       cancelPlannedManually.value = false
       await getUser()
-      toastSuccess({ title: 'Subskrypcja została wznowiona.' })
+      toastSuccess({ title: t('profile.success.resumed') })
       showResumeModal.value = false
     } else {
-      toastError({ title: 'Nie udało się wznowić subskrypcji.' })
+      toastError({ title: t('profile.errors.resumeSubscription') })
     }
   } catch (e) {
-    toastError({ title: 'Nie udało się wznowić subskrypcji.' })
+    toastError({ title: t('profile.errors.resumeSubscription') })
   } finally {
     resuming.value = false
   }
@@ -195,8 +197,8 @@ const state = ref({
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(6).min(6,'Wymagane co najmniej 6 znaków').optional(),
-  confirmPassword: z.string().min(6, 'Wymagane co najmniej 6 znaków').optional()
+  password: z.string().min(6).min(6, t('profile.errors.min6')).optional(),
+  confirmPassword: z.string().min(6, t('profile.errors.min6')).optional()
 })
 
 const errors = ref({})
@@ -206,7 +208,7 @@ const validate = () => {
   try {
     schema.parse(state.value)
     if (state.value.password && state.value.password !== state.value.confirmPassword) {
-      errors.value.confirmPassword = 'Hasła nie są takie same'
+      errors.value.confirmPassword = t('profile.errors.passwordsNotSame')
     }
   } catch (e) {
     e.errors.forEach(error => {
@@ -222,7 +224,7 @@ const isFormValid = computed(() => Object.keys(errors.value).length === 0)
 const saveProfile = async () => {
   validate()
   if (!isFormValid.value) {
-    toastError({ title: 'Błąd w formularzu', description: 'Popraw błędy w formularzu przed zapisem' })
+    toastError({ title: t('profile.errors.formTitle'), description: t('profile.errors.formDesc') })
     return
   }
   pending.value = true
@@ -237,9 +239,9 @@ const saveProfile = async () => {
       const { error: passwordError } = await supabase.auth.updateUser({ password: state.value.password })
       if (passwordError) throw passwordError
     }
-    toastSuccess({ title: 'Profil zaktualizowany', description: 'Twój profil został zaktualizowany' })
+    toastSuccess({ title: t('profile.success.profileUpdatedTitle'), description: t('profile.success.profileUpdatedDesc') })
   } catch (error) {
-    toastError({ title: 'Błąd aktualizacji profilu', description: error.message })
+    toastError({ title: t('profile.errors.profileUpdateTitle'), description: error.message })
   } finally {
     pending.value = false
   }
