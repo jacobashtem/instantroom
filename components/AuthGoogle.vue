@@ -33,6 +33,7 @@ const signInWithGoogle = async (response) => {
         const redirectTo = window.location.origin + '/confirm';
         await supabase.auth.signInWithOAuth({
             provider: "google",
+            options: { redirectTo: window.location.origin + '/confirm' }
         });
     } finally {
         pending.value = false;
