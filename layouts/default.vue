@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto">
+    <div class="mx-auto bg-white dark:bg-gray-900">
       <AppHeader />
       <main>
         <slot />
