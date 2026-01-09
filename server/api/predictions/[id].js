@@ -1,5 +1,9 @@
 import replicate from '~/server/services/replicate';
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function fetchWithRetry(fetchFn, retries = 20, waitTime = 2000) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
