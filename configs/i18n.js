@@ -50,6 +50,7 @@ export const messages = {
       step1: {
         title: "1. Wgraj zdjęcie...",
         desc: "...swojego pomieszczenia lub skorzystaj z naszej Biblioteki",
+        button: "Skorzystaj z naszej Biblioteki",
       },
       step2: {
         title: "2. Wybierz rodzaj pokoju...",
@@ -416,6 +417,7 @@ export const messages = {
       step1: {
         title: "1. Upload a photo...",
         desc: "...of your room or use our Library",
+        button: "Use our Library",
       },
       step2: {
         title: "2. Choose the room type...",
