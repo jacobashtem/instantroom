@@ -356,6 +356,13 @@ export const messages = {
       exampleGallery: "Galeria przykładowa",
       uploadedGallery: "Wgrane zdjęcia",
     },
+    generationFinished: {
+      success: "Udało się! Poniżej znajdziesz",
+      yourVisualization: "Twoją wizualizację:",
+      yourVisualizations: "Twoje wizualizacje:",
+      downloadAll: "Pobierz wszystkie",
+      startOver: "Zacznij od nowa",
+    },
   },
 
   en: {
@@ -714,6 +721,13 @@ export const messages = {
       uploadYourImage: "Upload your image",
       exampleGallery: "Example gallery",
       uploadedGallery: "Uploaded photos",
+    },
+    generationFinished: {
+      success: "Success! Below you will find",
+      yourVisualization: "your visualization:",
+      yourVisualizations: "your visualizations:",
+      downloadAll: "Download all",
+      startOver: "Start over",
     },
   },
 };
