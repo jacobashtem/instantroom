@@ -7,7 +7,7 @@
         class="rounded-lg text-center bg-aquaBlue-500 transition-all hover:bg-aquaBlue-700 py-3 w-auto mx-auto flex justify-center"
       >
         <UIcon class="w-5 h-5 mr-3" name="material-symbols:photo-library-rounded" dynamic />
-        {{ t('design.step1.desc').replace('...swojego pomieszczenia lub skorzystaj z naszej Biblioteki', '').trim() || 'Use one of ours!' }}
+        {{ t('howItWorks.step1.button') }}
       </UButton>
       <div v-else>
         <UIcon
