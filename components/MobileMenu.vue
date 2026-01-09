@@ -23,38 +23,38 @@
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="!user" to="/login" class="font-semibold text-white flex items-center">
                             <UIcon name="mdi:user" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                            Logowanie / Rejestracja
+                            {{ t('navigation.login') }}
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink  to="/blog" class="font-semibold text-white flex items-center">
                             <UIcon name="material-symbols:article" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                            Blog
+                            {{ t('navigation.blog') }}
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink  to="/oferta" class="font-semibold text-white flex items-center">
-                            <UIcon name="ic:baseline-local-offer" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />Oferta
+                            <UIcon name="ic:baseline-local-offer" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />{{ t('navigation.offer') }}
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="user" to="/design" class="font-semibold text-white flex items-center">
                             <UIcon name="clarity:design-solid" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                            Twórz
+                            {{ t('navigation.create') }}
                         </NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="user" to="/generations" class=" text-white flex items-center">
                             <UIcon name="ic:round-image" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                            Ostatnie wizualizacje</NuxtLink>
+                            {{ t('navigation.recentVisualizations') }}</NuxtLink>
                     </li>
                     <li class="py-3" @click="toggleMenu">
                         <NuxtLink v-if="user" to="/cennik" class=" text-white mr-2 flex items-center">
                             <UIcon name="i-heroicons-shopping-cart-solid" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" dynamic />
-                                Cennik
+                                {{ t('navigation.pricing') }}
                         </NuxtLink>
                     </li>
-                    <li @click="item.label !== 'Wyloguj'? toggleMenu() : logOut()" class="flex items-center py-3 text-white" v-for="item in menuItems[1]">
+                    <li @click="item.label !== t('navigation.logout') ? toggleMenu() : logOut()" class="flex items-center py-3 text-white" v-for="item in menuItems[1]">
                         <NuxtLink v-if="user" :to="item.url" class="flex text-white mr-2 flex items-center">
                             <UIcon :name="item.icon" class="mr-2 flex-shrink-0 h-8 w-8 text-white-400 dark:text-white" />
                           {{ item.label }}
@@ -67,6 +67,7 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
 const props = defineProps({
     menuItems: {
         type: Array,

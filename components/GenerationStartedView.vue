@@ -3,50 +3,49 @@
     <div class="flex flex-wrap md:flex-nowrap">
       <div class="mb-4">
         <h2 class="w-full text-3xl font-semibold mb-6 grid-cols-7">
-          Trwa generowanie <span class="text-sunsetOrange-500">
-            {{ props.selectedThemes.length <= 1 ? 'Twojej' : 'Twoich' }} {{ props.selectedThemes.length }} </span>
-              wizualizacji...<br />
+          {{ t('generationProgress.generating') }} <span class="text-sunsetOrange-500">
+            {{ props.selectedThemes.length <= 1 ? t('generationProgress.your') : t('generationProgress.yourPlural') }} {{ props.selectedThemes.length }} </span>
+              {{ t('generationProgress.visualizations') }}<br />
         </h2>
         <p class="text-2xl mb-2 animate-pulse">
-          Obecny status to:
+          {{ t('generationProgress.currentStatus') }}
           <span v-if="hasProcessingStarted" class="text-green-600">
             <UIcon class="w-14 h-14 text-green-600" name="pepicons-print:paint-pallet-off" dynamic />
-            Wizualizowanie...
+            {{ t('generationProgress.visualizing') }}
           </span>
           <span v-else-if="generationFailed" class="text-sunsetOrange-600">
             <UIcon class="w-20 h-20 text-sunsetOrange-600" name="fluent:paint-brush-subtract-32-filled" dynamic />
-            Przerwano
+            {{ t('generationProgress.interrupted') }}
           </span>
           <span v-else class="text-goldenAmber-500">
             <UIcon class="w-20 h-20 text-goldenAmber-500" name="hugeicons:workout-stretching" dynamic />
-            Rozgrzewka...
+            {{ t('generationProgress.warmup') }}
           </span>
         </p>
         <div v-if="!generationFailed" class="flex flex-wrap text-base mb-2 text-coolGray-500"><span
-            class="inline-block mr-2">I trwa już:</span>
+            class="inline-block mr-2">{{ t('generationProgress.andItTakes') }}</span>
           <Counter :is-generating="true" />
         </div>
 
         <p v-if="!generationFailed" class="text-base mb-2 text-coolGray-500">
           <span class="text-goldenAmber-500">
-            Rozgrzewka
+            {{ t('generationProgress.warmup').replace('...', '') }}
             <UIcon class="w-10 h-10 text-goldenAmber-500" name="hugeicons:workout-stretching" dynamic /> -
-          </span> według niektórych, to najważniejszy element treningu. Dla naszego modelu AI również, bo <b>zajmuje aż
-            około 95% całego czasu!</b> 😁
-          Zwykle potrwa od kilku sekund, do nawet 5-10 minut. Wystarczy cierpliwie poczekać!<br /><br />
+          </span> {{ t('generationProgress.warmupDescription') }} <b>{{ t('generationProgress.warmupImportant') }}</b> 😁
+          {{ t('generationProgress.warmupWait') }}<br /><br />
 
           <span class="text-green-600">
-            Wizualizowanie <UIcon class="w-10 h-10" name="pepicons-print:paint-pallet-off" dynamic></UIcon>
-          </span> - rozpoczyna się zaraz po rozgrzewce i potrwa już tylko kilkanaście sekund.
+            {{ t('generationProgress.visualizing').replace('...', '') }} <UIcon class="w-10 h-10" name="pepicons-print:paint-pallet-off" dynamic></UIcon>
+          </span> - {{ t('generationProgress.visualizingDescription') }}
         </p>
         <p v-else-if="generationFailed" class="text-base text-coolGray-500" >
           <span class="text-sunsetOrange-600">
-            Przerwano <UIcon class="w-10 h-10" name="fluent:paint-brush-subtract-32-filled" dynamic></UIcon>
-          </span> generowanie wizualizacji. Spokojnie, nie pobierzemy tokenów! Spróbuj ponownie za chwilę.
+            {{ t('generationProgress.interrupted') }} <UIcon class="w-10 h-10" name="fluent:paint-brush-subtract-32-filled" dynamic></UIcon>
+          </span> {{ t('generationProgress.interruptedDescription') }}
         </p>
         <UButton v-if="generationFailed" @click="emit('start-new-generation')" variant="solid"
           class="bg-coolGray-500 font-semibold mt-4 disabled:bg-coolGray-300 rounded-lg hover:bg-coolGray-700 text-lg  p-4">
-          <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> Zacznij od nowa
+          <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> {{ t('generationProgress.startOver') }}
         </UButton>
       </div>
       <NuxtImg class="w-full sm:w-1/2 object-contain" src="/generation.webp" />
@@ -55,6 +54,7 @@
   </div>
 </template>
 <script setup>
+const { t } = useI18n();
 const props = defineProps({
   selectedThemes: {
     type: Array,

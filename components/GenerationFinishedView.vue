@@ -1,17 +1,17 @@
 <template>
     <div>
         <h2 class="text-3xl font-semibold">
-            Udało się! Poniżej znajdziesz
+            {{ t('generationFinished.success') }}
             <span class="text-sunsetOrange-500">
-                {{selectedThemes.length <= 1 ? 'Twoją wizualizację:' : 'Twoje wizualizacje:' }} 
-            </span> 
+                {{ selectedThemes.length <= 1 ? t('generationFinished.yourVisualization') : t('generationFinished.yourVisualizations') }}
+            </span>
         </h2>
         <div class="flex flex-wrap items-center gap-6 mt-6 justify-between">
             <UButton @click="downloadAllImages" variant="solid" class="focus:shadow-outline focus:outline-nonetracking-wide font-semibold bg-sunsetOrange-500 hover:bg-sunsetOrange-700 text-gray-100 py-4 rounded-lg transition-all duration-300 ease-in-out text-lg px-4">
-                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> Pobierz wszystkie
+                <UIcon width="24" height="24" name="fluent:paint-brush-arrow-down-24-filled" dynamic /> {{ t('generationFinished.downloadAll') }}
             </UButton>
             <UButton @click="emit('start-new-generation')" variant="solid" class="bg-coolGray-500 font-semibold disabled:bg-coolGray-300 rounded-lg hover:bg-coolGray-700 text-lg  p-4">
-                <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> Zacznij od nowa
+                <UIcon width="24" height="24" name="ph:key-return-fill" dynamic /> {{ t('generationFinished.startOver') }}
             </UButton>
         </div>
         <div v-if="error" class="text-red-500 mt-2">{{ error }}</div>
@@ -49,6 +49,7 @@
 
 </template>
 <script setup>
+const { t } = useI18n();
 const error = ref(null);
 const isLightbox = useState("lightbox");
 const modalImg = ref();
