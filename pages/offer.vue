@@ -101,19 +101,19 @@ const items = [
   {
     icon: 'mdi:lightning-bolt',
     title: 'Fast and realistic visualizations',
-    description: 'Thanks to Instant Room, you can create interior visualizations in just a few seconds! Imagine that <span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'>you have a property requiring renovation –</span> photos in such a state don't encourage viewing the listing. Our tool allows you to transform such an interior into a fully furnished and aesthetic room that looks real.<br/><br/> What previously required time, a designer's work, and significant financial outlay is now available instantly.',
+    description: "Thanks to Instant Room, you can create interior visualizations in just a few seconds! Imagine that <span class='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800'>you have a property requiring renovation –</span> photos in such a state don't encourage viewing the listing. Our tool allows you to transform such an interior into a fully furnished and aesthetic room that looks real.<br/><br/> What previously required time, a designer's work, and significant financial outlay is now available instantly.",
     images: ['/offer-slider-after.webp','/offer-slider-before.webp'],
   },
   {
     icon: 'mdi:palette-outline',
     title: 'Various architectural styles',
-    description: 'You have a choice of various styles – from modern, minimalist, refreshed to classic elegance. This allows you to match the offer to different client tastes, increasing sales chances. This tool changes the way you present properties.<span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'> It allows you to turn difficult-to-sell interiors into market gems, ready to show their potential.</span>',
+    description: "You have a choice of various styles – from modern, minimalist, refreshed to classic elegance. This allows you to match the offer to different client tastes, increasing sales chances. This tool changes the way you present properties.<span class='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800'> It allows you to turn difficult-to-sell interiors into market gems, ready to show their potential.</span>",
     images: ['/offer-slider-after-2.webp','/offer-slider-before-2.webp'],
   },
   {
     icon: 'mdi:cash-clock',
     title: 'Saving time and costs',
-    description: 'By using Instant Room, you eliminate many costly and time-consuming stages of traditional property preparation for sale. Creating interior visualizations in our app is fast and fully automated.<span class=\'font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800\'> Therefore, you don't need to engage external interior designers, graphic designers, or photographers specializing in home staging.</span>',
+    description: "By using Instant Room, you eliminate many costly and time-consuming stages of traditional property preparation for sale. Creating interior visualizations in our app is fast and fully automated.<span class='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sunsetOrange-500 to-sunsetOrange-800'> Therefore, you don't need to engage external interior designers, graphic designers, or photographers specializing in home staging.</span>",
     images: ['/offer-1-after.webp','offer-1-before.webp'],
   },
 ];
